@@ -13,14 +13,20 @@
     xmlns:ns5="activity.jsonParser.input+8635c669-8e2a-4899-aa54-844e2cc3ee4a+ActivityInputType"
     xmlns:ns6="http://tns.tibco.com/bw/palette/internal/activityerror+bw.restjson.JsonParser"
     xmlns:ns7="http://www.example.org/FxResponse"
+    xmlns:ns8="http://tns.tibco.com/bw/palette/internal/errorlinkhandler+04e0ff7e-1087-4d28-bc46-226cb296300c"
+    xmlns:ns9="http://www.example.org/ErrorResponse"
     xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca/200912"
     xmlns:sca-bpel="http://docs.oasis-open.org/ns/opencsa/sca-bpel/200801"
     xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"
     xmlns:tibprop="http://ns.tibco.com/bw/property" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <tibex:VariableDescriptor type="MemorySaving">
-        <task name="End">
+        <task name="flow">
             <endingVariables>
                 <variable>Start</variable>
+            </endingVariables>
+        </task>
+        <task name="End">
+            <endingVariables>
                 <variable>ParseFxResponse</variable>
             </endingVariables>
         </task>
@@ -38,6 +44,12 @@
             <endingVariables>
                 <variable>ParseFxResponse-input</variable>
                 <variable>GetFxRate</variable>
+            </endingVariables>
+        </task>
+        <task name="ThrowFxError">
+            <endingVariables>
+                <variable>ThrowFxError-input</variable>
+                <variable>_error_GetFxRate</variable>
             </endingVariables>
         </task>
     </tibex:VariableDescriptor>
@@ -531,23 +543,6 @@
             <element name="ValidationException" type="tns:ValidationExceptionType"/>
         </schema>
         <schema elementFormDefault="unqualified"
-            targetNamespace="http://tns.tibco.com/bw/palette/internal/activityerror+bw.http.sendHTTPRequest"
-            xmlns="http://www.w3.org/2001/XMLSchema"
-            xmlns:Q1="http://schemas.tibco.com/bw/plugins/http/5.0/httpExceptions"
-            xmlns:Q2="http://schemas.tibco.com/bw/pe/plugin/5.0/exceptions" xmlns:tns="http://tns.tibco.com/bw/palette/internal/activityerror+bw.http.sendHTTPRequest">
-            <import namespace="http://schemas.tibco.com/bw/pe/plugin/5.0/exceptions"/>
-            <import namespace="http://schemas.tibco.com/bw/plugins/http/5.0/httpExceptions"/>
-            <element name="ActivityErrorData" type="tns:ActivityErrorDataType"/>
-            <complexType name="ActivityErrorDataType">
-                <choice>
-                    <element maxOccurs="1" minOccurs="0" ref="Q1:HttpClientException"/>
-                    <element maxOccurs="1" minOccurs="0" ref="Q1:HttpServerException"/>
-                    <element maxOccurs="1" minOccurs="0" ref="Q1:HttpCommunicationException"/>
-                    <element maxOccurs="1" minOccurs="0" ref="Q2:ActivityTimedOutException"/>
-                </choice>
-            </complexType>
-        </schema>
-        <schema elementFormDefault="unqualified"
             targetNamespace="http://tns.tibco.com/bw/palette/internal/activityerror+bw.restjson.JsonParser"
             xmlns="http://www.w3.org/2001/XMLSchema"
             xmlns:Q1="http://schemas.tibco.com/bw/plugins/xml/5.0/JSONActivitiesExceptions" xmlns:tns="http://tns.tibco.com/bw/palette/internal/activityerror+bw.restjson.JsonParser">
@@ -559,6 +554,23 @@
                 </choice>
             </complexType>
         </schema>
+        <schema elementFormDefault="unqualified"
+            targetNamespace="http://tns.tibco.com/bw/palette/internal/errorlinkhandler+04e0ff7e-1087-4d28-bc46-226cb296300c"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:Q1="http://schemas.tibco.com/bw/plugins/http/5.0/httpExceptions"
+            xmlns:Q2="http://schemas.tibco.com/bw/pe/plugin/5.0/exceptions" xmlns:tns="http://tns.tibco.com/bw/palette/internal/errorlinkhandler+04e0ff7e-1087-4d28-bc46-226cb296300c">
+            <import namespace="http://schemas.tibco.com/bw/pe/plugin/5.0/exceptions"/>
+            <import namespace="http://schemas.tibco.com/bw/plugins/http/5.0/httpExceptions"/>
+            <element name="ErrorLinkHandlerFaultData" type="tns:ErrorLinkHandlerFaultDataType"/>
+            <complexType name="ErrorLinkHandlerFaultDataType">
+                <choice>
+                    <element maxOccurs="1" minOccurs="0" ref="Q1:HttpClientException"/>
+                    <element maxOccurs="1" minOccurs="0" ref="Q1:HttpServerException"/>
+                    <element maxOccurs="1" minOccurs="0" ref="Q1:HttpCommunicationException"/>
+                    <element maxOccurs="1" minOccurs="0" ref="Q2:ActivityTimedOutException"/>
+                </choice>
+            </complexType>
+        </schema>
     </tibex:Types>
     <tibex:ProcessInfo callable="true" createdBy="user"
         createdOn="Thu Oct 08 11:40:46 CEST 2026" description=""
@@ -566,7 +578,12 @@
         productVersion="6.9.0 V26 2022-11-02" scalable="true"
         singleton="true" stateless="false" type="IT"/>
     <tibex:ProcessInterface context=""
-        input="{http://www.example.org/FxRate}FxRateRequest" output="{http://www.example.org/FxRate}FxRateResult"/>
+        input="{http://www.example.org/FxRate}FxRateRequest" output="{http://www.example.org/FxRate}FxRateResult">
+        <tibex:errorList>
+            <tibex:error
+                error="{http://www.example.org/ErrorResponse}ErrorResponse" name="ErrorResponse"/>
+        </tibex:errorList>
+    </tibex:ProcessInterface>
     <tibex:ProcessTemplateConfigurations/>
     <notation:Diagram measurementUnit="Pixel" type="BWProcess"
         xmlns:bwnotation="http://tns.tibco.com/bw/runtime/BWNotation"
@@ -763,6 +780,41 @@
                                     <layoutConstraint x="30"
                                     xsi:type="notation:Bounds" y="435"/>
                                     </children>
+                                    <children type="4002">
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.5"/>
+                                    <layoutConstraint x="175"
+                                    xsi:type="notation:Bounds" y="300"/>
+                                    </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
                                     <styles xsi:type="notation:SortingStyle"/>
                                     <styles xsi:type="notation:FilteringStyle"/>
@@ -871,9 +923,21 @@
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
             <element href="//0/@process/@activity/@activity/@links/@children.4"/>
-            <bendpoints points="[0, 0, 0, -465]$[0, 465, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
+            <bendpoints
+                points="[25, -12, 25, -503]$[142, -12, 142, -503]$[142, 528, 142, 37]$[25, 528, 25, 37]" xsi:type="notation:RelativeBendpoints"/>
             <sourceAnchor id="(0.4897959183673469,1.0)" xsi:type="notation:IdentityAnchor"/>
             <targetAnchor id="(0.4897959183673469,0.0)" xsi:type="notation:IdentityAnchor"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3"
+            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.5" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="255" xsi:type="notation:ConnectorStyle"/>
+            <styles fontColor="255" fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.5"/>
+            <bendpoints points="[25, 0, -98, 0]$[99, 0, -24, 0]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
     </notation:Diagram>
     <tibex:NamespaceRegistry enabled="true">
@@ -888,9 +952,12 @@
             namespace="http://www.tibco.com/pe/WriteToLogActivitySchema" prefix="tns2"/>
         <tibex:namespaceItem
             namespace="activity.jsonParser.input+8635c669-8e2a-4899-aa54-844e2cc3ee4a+ActivityInputType" prefix="tns3"/>
+        <tibex:namespaceItem
+            namespace="http://www.example.org/ErrorResponse" prefix="tns4"/>
     </tibex:NamespaceRegistry>
     <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://www.example.org/FxRate"/>
     <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://www.example.org/FxResponse"/>
+    <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://www.example.org/ErrorResponse"/>
     <bpws:variables>
         <bpws:variable element="ns:ProcessContext"
             name="_processContext" sca-bpel:internal="true"/>
@@ -911,7 +978,7 @@
             name="GetFxRate-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns3:RequestActivityOutput"
             name="GetFxRate" sca-bpel:internal="true"/>
-        <bpws:variable element="ns4:ActivityErrorData"
+        <bpws:variable element="ns8:ErrorLinkHandlerFaultData"
             name="_error_GetFxRate" sca-bpel:internal="true"/>
         <bpws:variable element="ns:ErrorReport" name="_error" sca-bpel:internal="true"/>
         <bpws:variable element="ns5:ActivityInputClass"
@@ -919,6 +986,11 @@
         <bpws:variable element="ns7:FxResponse" name="ParseFxResponse" sca-bpel:internal="true"/>
         <bpws:variable element="ns6:ActivityErrorData"
             name="_error_ParseFxResponse" sca-bpel:internal="true"/>
+        <bpws:variable name="FaultName" sca-bpel:internal="true" type="xsd:string"/>
+        <bpws:variable element="ns:OptionalErrorReport"
+            name="_errorOptional" sca-bpel:internal="true"/>
+        <bpws:variable element="ns9:ErrorResponse"
+            name="ThrowFxError-input" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -936,6 +1008,7 @@
                 <bpws:link name="SendHTTPRequestToParseJSON" tibex:linkType="SUCCESS"/>
                 <bpws:link name="ParseJSONToEnd" tibex:linkType="SUCCESS"/>
                 <bpws:link name="StartToEnd" tibex:linkType="SUCCESSWITHCONDITION"/>
+                <bpws:link name="GetFxRateToThrow" tibex:linkType="ERROR"/>
             </bpws:links>
             <bpws:extensionActivity>
                 <tibex:receiveEvent createInstance="yes"
@@ -973,7 +1046,7 @@
                     </bpws:targets>
                     <tibex:inputBindings>
                         <tibex:inputBinding
-                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://www.example.org/FxRate&quot; xmlns:tns=&quot;http://www.example.org/FxResponse&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;Start&quot;/>&lt;xsl:param name=&quot;ParseFxResponse&quot;/>&lt;xsl:template name=&quot;End-input&quot; match=&quot;/&quot;>&lt;tns1:FxRateResult>&lt;tns1:fxRate>&lt;xsl:value-of select=&quot;if ($Start/tns1:currency = 'EUR') then 1 else $ParseFxResponse/tns:rates/tns:EUR&quot;/>&lt;/tns1:fxRate>&lt;/tns1:FxRateResult>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://www.example.org/FxRate&quot; xmlns:tns5=&quot;http://www.example.org/FxResponse&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;Start&quot;/>&#xa;    &lt;xsl:param name=&quot;ParseFxResponse&quot;/>&#xa;    &lt;xsl:template name=&quot;End-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns1:FxRateResult>&#xa;            &lt;tns1:fxRate>&#xa;                &lt;xsl:value-of select=&quot;if ($Start/tns1:currency = 'EUR') then 1 else $ParseFxResponse/tns5:rates/tns5:EUR&quot;/>&#xa;            &lt;/tns1:fxRate>&#xa;        &lt;/tns1:FxRateResult>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                     </tibex:inputBindings>
                     <tibex:config>
                         <bwext:BWActivity
@@ -1035,6 +1108,13 @@
                     </bpws:targets>
                     <bpws:sources>
                         <bpws:source linkName="SendHTTPRequestToParseJSON"/>
+                        <bpws:source linkName="GetFxRateToThrow"
+                            tibex:faultDetailsVar="GetFxRate" tibex:faultNameVar="FaultName">
+                            <tibex:DesignExpression>
+                                <tibex:expression expression="##error##" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
+                            </tibex:DesignExpression>
+                            <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[##error##]]></bpws:transitionCondition>
+                        </bpws:source>
                     </bpws:sources>
                     <tibex:inputBindings>
                         <tibex:inputBinding
@@ -1098,6 +1178,16 @@
                     </tibex:config>
                 </tibex:activityExtension>
             </bpws:extensionActivity>
+            <bpws:throw faultName="ns9:ErrorResponse"
+                faultVariable="ThrowFxError-input" name="ThrowFxError" tibex:xpdlId="c44884fa-16c8-4b18-a129-904f1ae077ad">
+                <tibex:inputBindings>
+                    <tibex:partBinding
+                        expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns4=&quot;http://www.example.org/ErrorResponse&quot; xmlns:tns=&quot;http://schemas.tibco.com/bw/plugins/http/5.0/httpExceptions&quot; xmlns:tns1=&quot;http://www.example.org/FxRate&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;Start&quot;/>&lt;xsl:param name=&quot;_error_GetFxRate&quot;/>&lt;xsl:template name=&quot;ThrowFxError-input&quot; match=&quot;/&quot;>&lt;tns4:ErrorResponse>&lt;tns4:code>&lt;xsl:value-of select=&quot;if (exists($_error_GetFxRate/tns:HttpClientException)) then 'INVALID_CURRENCY' else 'UPSTREAM_FX_UNAVAILABLE'&quot;/>&lt;/tns4:code>&lt;tns4:message>&lt;xsl:value-of select=&quot;if (exists($_error_GetFxRate/tns:HttpClientException)) then concat('Valuta non riconosciuta: ', $Start/tns1:currency) else 'Servizio dei cambi non disponibile'&quot;/>&lt;/tns4:message>&lt;/tns4:ErrorResponse>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                </tibex:inputBindings>
+                <bpws:targets>
+                    <bpws:target linkName="GetFxRateToThrow"/>
+                </bpws:targets>
+            </bpws:throw>
         </bpws:flow>
     </bpws:scope>
 </bpws:process>

@@ -27,6 +27,8 @@
   <sca:property xmi:id="_msXTkML4EfGKzekG0wbg4w" name="nager.baseUrl" type="XMLSchema:string" publicAccess="true" scalable="true"/>
   <sca:property xmi:id="__g3q0ML_EfGKzekG0wbg4w" name="Property" type="XMLSchema:string" scaext:simpleValue="" publicAccess="true" scalable="true"/>
   <sca:property xmi:id="_BpaEoMMAEfGKzekG0wbg4w" name="Property1" type="XMLSchema:string" scaext:simpleValue="" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_tTPb8MMvEfGhcpgzKuosig" name="fx.ssl" type="XMLSchema:boolean" scaext:simpleValue="false" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_tma2oMMvEfGhcpgzKuosig" name="nager.ssl" type="XMLSchema:boolean" scaext:simpleValue="false" publicAccess="true" scalable="true"/>
   <sca:component xmi:id="_NKt6AMJjEfGXGc6o7LKevA" name="ComponentMain_Orders" compositeext:version="1.0.0.qualifier">
     <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_NKt6AcJjEfGXGc6o7LKevA" processName="orderenrichment.Main_Orders"/>
     <sca:service xmi:id="_NK78cMJjEfGXGc6o7LKevA" name="orders">

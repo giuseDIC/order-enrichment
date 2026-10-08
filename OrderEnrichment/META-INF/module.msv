@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <msv:DocumentRoot xmlns:msv="http://tns.tibco.com/bw/model/core/moduleSV">
-  <moduleSharedVariables/>
+  <moduleSharedVariables>
+    <moduleSharedVariable name="holidaysCache" type="{http://www.example.org/HolidaysCache}HolidaysCache" initialValueMode="literal" initialValue="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;tns:HolidaysCache xmlns:tns=&quot;http://www.example.org/HolidaysCache&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;>&lt;/tns:HolidaysCache>&#xA;"/>
+  </moduleSharedVariables>
+  <import importType="http://www.w3.org/2001/XMLSchema" namespace="http://www.example.org/HolidaysCache" location="../Schemas/HolidayCache.xsd"/>
 </msv:DocumentRoot>

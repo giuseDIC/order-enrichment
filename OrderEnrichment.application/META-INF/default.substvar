@@ -84,7 +84,7 @@
 		</globalVariable>
 		<globalVariable>
 			<name>//OrderEnrichment//fx.baseUrl</name>
-			<value>http://localhost:8081</value>
+			<value>https://api.frankfurter.dev:443</value>
 			<deploymentSettable>false</deploymentSettable>
 			<serviceSettable>false</serviceSettable>
 			<type>String</type>
@@ -111,10 +111,28 @@
 		</globalVariable>
 		<globalVariable>
 			<name>//OrderEnrichment//nager.baseUrl</name>
-			<value>http://localhost:8081</value>
+			<value>https://date.nager.at:443</value>
 			<deploymentSettable>false</deploymentSettable>
 			<serviceSettable>false</serviceSettable>
 			<type>String</type>
+			<isOverride>false</isOverride>
+			<useLookupValue>false</useLookupValue>
+		</globalVariable>
+		<globalVariable>
+			<name>//OrderEnrichment//nager.ssl</name>
+			<value>true</value>
+			<deploymentSettable>false</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>Boolean</type>
+			<isOverride>false</isOverride>
+			<useLookupValue>false</useLookupValue>
+		</globalVariable>
+		<globalVariable>
+			<name>//OrderEnrichment//fx.ssl</name>
+			<value>true</value>
+			<deploymentSettable>false</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>Boolean</type>
 			<isOverride>false</isOverride>
 			<useLookupValue>false</useLookupValue>
 		</globalVariable>

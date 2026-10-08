@@ -7,7 +7,7 @@
   <xs:element name="Holidays">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="holiday" maxOccurs="unbounded">
+        <xs:element name="holiday" minOccurs="0" maxOccurs="unbounded">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="date" type="xs:date"/>
@@ -16,8 +16,8 @@
               <xs:element name="countryCode" type="xs:string"/>
               <xs:element name="fixed" type="xs:boolean" minOccurs="0"/>
               <xs:element name="global" type="xs:boolean"/>
-              <xs:element name="counties" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-              <xs:element name="launchYear" type="xs:integer" minOccurs="0"/>
+              <xs:element name="counties" type="xs:string" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+              <xs:element name="launchYear" type="xs:integer" minOccurs="0" nillable="true"/>
               <xs:element name="types" type="xs:string" maxOccurs="unbounded"/>
             </xs:sequence>
           </xs:complexType>
