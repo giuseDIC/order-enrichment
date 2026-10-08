@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.example.org/ErrorResponse"
+           xmlns:tns="http://www.example.org/ErrorResponse"
+           elementFormDefault="qualified">
+
+  <xs:element name="ErrorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="code">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="VALIDATION_ERROR"></xs:enumeration>
+                    <xs:enumeration value="INVALID_CURRENCY"></xs:enumeration>
+                    <xs:enumeration value="UPSTREAM_FX_UNAVAILABLE"></xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:element>
+        <xs:element name="message" type="xs:string"></xs:element>
+        <xs:element name="details" minOccurs="0" maxOccurs="unbounded">
+            <xs:complexType>
+                <xs:sequence>
+                    <xs:element name="field" type="xs:string"></xs:element>
+                    <xs:element name="issue" type="xs:string"></xs:element>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

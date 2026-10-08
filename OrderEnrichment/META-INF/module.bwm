@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:ErrorResponse="http://www.example.org/ErrorResponse" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:rest="http://xsd.tns.tibco.com/bw/models/binding/rest" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_8V0O4MJhEfGXGc6o7LKevA" targetNamespace="http://tns.tibco.com/bw/composite/OrderEnrichment" name="OrderEnrichment" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="_NLCqIMJjEfGXGc6o7LKevA" name="orders" promote="ComponentMain_Orders/orders">
+    <sca:interface.wsdl xmi:id="_NLL0EMJjEfGXGc6o7LKevA" interface="http://xmlns.example.com/20261007172436PLT#wsdl.interface(orders)" scaext:wsdlLocation="../Processes/orderenrichment/Main_Orders.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_NLR6sMJjEfGXGc6o7LKevA" name="RestService" path="/orders" docBasePath="http://localhost:7777/OrderEnrichment" docResourcePath="Main_Orders" basePath="/" connector="orderenrichment.Main_Orders" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/orderenrichment.Main_Orders-Main_Orders.json">
+      <operation xmi:id="_NLf9IMJjEfGXGc6o7LKevA" operationName="post" nickname="post-orders" httpMethod="POST" notes="postMain_Orders" responseStyle="element" requestStyle="element" outputPartName="item">
+        <responseStatus xmi:id="_HJ9xIMJmEfGXGc6o7LKevA" statusCode="400" reasonPhrase="Bad Request" elementQName="ErrorResponse:ErrorResponse"/>
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_NN-CUMJjEfGXGc6o7LKevA"/>
+      <import xmi:id="_RhBrkMJmEfGXGc6o7LKevA" importType="http://www.w3.org/2001/XMLSchema" namespace="http://www.example.org/ErrorResponse"/>
+      <advancedConfig xmi:id="_NLfWEMJjEfGXGc6o7LKevA" blockingQueueSize="2147483647"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_NLf9IcJjEfGXGc6o7LKevA" bindingName="RestService"/>
+  </sca:service>
+  <sca:property xmi:id="_9YS_kMJhEfGXGc6o7LKevA" name="BW.DEPLOYMENTUNIT.TYPE" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_9Yd-sMJhEfGXGc6o7LKevA" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_9Yd-scJhEfGXGc6o7LKevA" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_9Yd-ssJhEfGXGc6o7LKevA" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_9Yi3MMJhEfGXGc6o7LKevA" name="BW.DOMAIN.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_9Yi3McJhEfGXGc6o7LKevA" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_9YmhkMJhEfGXGc6o7LKevA" name="BW.APPSPACE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_9YmhkcJhEfGXGc6o7LKevA" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_9YqL8MJhEfGXGc6o7LKevA" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_jXDkoML4EfGKzekG0wbg4w" name="fx.baseUrl" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_msXTkML4EfGKzekG0wbg4w" name="nager.baseUrl" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="__g3q0ML_EfGKzekG0wbg4w" name="Property" type="XMLSchema:string" scaext:simpleValue="" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_BpaEoMMAEfGKzekG0wbg4w" name="Property1" type="XMLSchema:string" scaext:simpleValue="" publicAccess="true" scalable="true"/>
+  <sca:component xmi:id="_NKt6AMJjEfGXGc6o7LKevA" name="ComponentMain_Orders" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_NKt6AcJjEfGXGc6o7LKevA" processName="orderenrichment.Main_Orders"/>
+    <sca:service xmi:id="_NK78cMJjEfGXGc6o7LKevA" name="orders">
+      <sca:interface.wsdl xmi:id="_NK78ccJjEfGXGc6o7LKevA" interface="http://xmlns.example.com/20261007172436PLT#wsdl.interface(orders)" scaext:wsdlLocation="../Processes/orderenrichment/Main_Orders.bwp"/>
+    </sca:service>
+  </sca:component>
+</sca:composite>

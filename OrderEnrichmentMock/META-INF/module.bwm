@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:rest="http://xsd.tns.tibco.com/bw/models/binding/rest" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_x2YRwML0EfGKzekG0wbg4w" targetNamespace="http://tns.tibco.com/bw/composite/OrderEnrichmentMock" name="OrderEnrichmentMock" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="_Sl74MsL1EfGKzekG0wbg4w" name="v1-latest" promote="ComponentMockFxRate/v1-latest">
+    <sca:interface.wsdl xmi:id="_SmTEkML1EfGKzekG0wbg4w" interface="http://xmlns.example.com/20261008105019PLT#wsdl.interface(v1-latest)" scaext:wsdlLocation="../Processes/orderenrichmentmock/MockFxRate.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_SmhHAML1EfGKzekG0wbg4w" name="RestService" path="/v1/latest" docBasePath="http://localhost:7777/OrderEnrichmentMock" docResourcePath="MockFxRate" basePath="/" connector="orderenrichmentmock.MockFxRate" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/orderenrichmentmock.MockFxRate-MockFxRate.json">
+      <operation xmi:id="_SmobwML1EfGKzekG0wbg4w" operationName="get" nickname="get-v1-latest" httpMethod="GET" notes="getMockFxRate" responseStyle="element" outputPartName="item">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_Sn_Go8L1EfGKzekG0wbg4w"/>
+      <advancedConfig xmi:id="_SmhHAcL1EfGKzekG0wbg4w" blockingQueueSize="2147483647"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_SmobwcL1EfGKzekG0wbg4w" bindingName="RestService"/>
+  </sca:service>
+  <sca:service xmi:id="_PMA5lML2EfGKzekG0wbg4w" name="api-v3-PublicHolidays" promote="ComponentMockHoliday/api-v3-PublicHolidays">
+    <sca:interface.wsdl xmi:id="_PMA5mML2EfGKzekG0wbg4w" interface="http://xmlns.example.com/20261008105705PLT#wsdl.interface(api-v3-PublicHolidays)" scaext:wsdlLocation="../Processes/orderenrichmentmock/MockHoliday.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_PMA5mcL2EfGKzekG0wbg4w" name="RestService1" path="/api/v3/PublicHolidays/{year}/{countryCode}" docBasePath="http://localhost:7777/OrderEnrichmentMock" docResourcePath="MockHoliday" basePath="/" connector="orderenrichmentmock.MockFxRate" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/orderenrichmentmock.MockHoliday-MockHoliday.json">
+      <operation xmi:id="_PMA5m8L2EfGKzekG0wbg4w" operationName="get" nickname="get-api-v3-PublicHolidays" httpMethod="GET" notes="getMockHoliday" responseStyle="array" outputPartName="item">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_PNWWUML2EfGKzekG0wbg4w">
+        <parameterMapping xmi:id="_PNWWUcL2EfGKzekG0wbg4w" parameterName="year" parameterType="Path" required="true"/>
+        <parameterMapping xmi:id="_PNWWUsL2EfGKzekG0wbg4w" parameterName="countryCode" parameterType="Path" required="true"/>
+      </parameters>
+      <advancedConfig xmi:id="_PMA5msL2EfGKzekG0wbg4w" blockingQueueSize="2147483647"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_PMA5nML2EfGKzekG0wbg4w" bindingName="RestService1"/>
+  </sca:service>
+  <sca:property xmi:id="_0i_pAML0EfGKzekG0wbg4w" name="BW.DEPLOYMENTUNIT.TYPE" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_0i_pAcL0EfGKzekG0wbg4w" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_0i_pAsL0EfGKzekG0wbg4w" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_0i_pA8L0EfGKzekG0wbg4w" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_0i_pBML0EfGKzekG0wbg4w" name="BW.DOMAIN.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_0i_pBcL0EfGKzekG0wbg4w" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_0i_pBsL0EfGKzekG0wbg4w" name="BW.APPSPACE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_0i_pB8L0EfGKzekG0wbg4w" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_0i_pCML0EfGKzekG0wbg4w" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:component xmi:id="_Sl404ML1EfGKzekG0wbg4w" name="ComponentMockFxRate" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_Sl404cL1EfGKzekG0wbg4w" processName="orderenrichmentmock.MockFxRate"/>
+    <sca:service xmi:id="_Sl74MML1EfGKzekG0wbg4w" name="v1-latest">
+      <sca:interface.wsdl xmi:id="_Sl74McL1EfGKzekG0wbg4w" interface="http://xmlns.example.com/20261008105019PLT#wsdl.interface(v1-latest)" scaext:wsdlLocation="../Processes/orderenrichmentmock/MockFxRate.bwp"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_PMA5kML2EfGKzekG0wbg4w" name="ComponentMockHoliday" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_PMA5kcL2EfGKzekG0wbg4w" processName="orderenrichmentmock.MockHoliday"/>
+    <sca:service xmi:id="_PMA5ksL2EfGKzekG0wbg4w" name="api-v3-PublicHolidays">
+      <sca:interface.wsdl xmi:id="_PMA5k8L2EfGKzekG0wbg4w" interface="http://xmlns.example.com/20261008105705PLT#wsdl.interface(api-v3-PublicHolidays)" scaext:wsdlLocation="../Processes/orderenrichmentmock/MockHoliday.bwp"/>
+    </sca:service>
+  </sca:component>
+</sca:composite>

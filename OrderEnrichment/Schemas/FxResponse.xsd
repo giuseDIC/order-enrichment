@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.example.org/FxResponse"
+           xmlns:tns="http://www.example.org/FxResponse"
+           elementFormDefault="qualified">
+
+  <xs:element name="FxResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="amount" type="xs:decimal"></xs:element>
+        <xs:element name="base" type="xs:string"></xs:element>
+        <xs:element name="date" type="xs:date"></xs:element>
+        <xs:element name="rates">
+            <xs:complexType>
+                <xs:sequence>
+                    <xs:element name="EUR" type="xs:decimal"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

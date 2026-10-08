@@ -1,0 +1,13 @@
+{
+    "records": [],
+    "resources": [
+        {
+            "location": "Service Descriptors/orderenrichmentmock.MockFxRate-MockFxRate.json",
+            "type": "generated"
+        },
+        {
+            "location": "Service Descriptors/orderenrichmentmock.MockHoliday-MockHoliday.json",
+            "type": "generated"
+        }
+    ]
+}

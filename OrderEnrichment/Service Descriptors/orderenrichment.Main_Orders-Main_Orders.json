@@ -1,0 +1,151 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "Main_Orders",
+    "description" : "Main_Orders service"
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/orders" : {
+      "post" : {
+        "summary" : "postMain_Orders",
+        "description" : "postMain_Orders",
+        "operationId" : "post-orders",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/orders"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a OrdersResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/OrdersResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "orders" : {
+      "type" : "object",
+      "properties" : {
+        "orderId" : {
+          "type" : "string"
+        },
+        "countryCode" : {
+          "type" : "string"
+        },
+        "currency" : {
+          "type" : "string"
+        },
+        "requestedDeliveryDate" : {
+          "type" : "string"
+        },
+        "items" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/items",
+            "uniqueItems" : false
+          }
+        }
+      }
+    },
+    "OrdersResponse" : {
+      "type" : "object",
+      "required" : [ "totalAmount", "fxRate", "deliveryShiftReason", "orderId", "requestedDeliveryDate", "totalEUR", "currency", "effectiveDeliveryDate" ],
+      "properties" : {
+        "orderId" : {
+          "type" : "string"
+        },
+        "currency" : {
+          "type" : "string"
+        },
+        "totalAmount" : {
+          "type" : "integer"
+        },
+        "fxRate" : {
+          "type" : "integer"
+        },
+        "totalEUR" : {
+          "type" : "integer"
+        },
+        "requestedDeliveryDate" : {
+          "type" : "string",
+          "format" : "date"
+        },
+        "effectiveDeliveryDate" : {
+          "type" : "string",
+          "format" : "date"
+        },
+        "deliveryShiftReason" : {
+          "type" : "string",
+          "enum" : [ "HOLIDAY", "WEEKEND", "NONE" ]
+        }
+      }
+    },
+    "details" : {
+      "type" : "object",
+      "required" : [ "field", "issue" ],
+      "properties" : {
+        "field" : {
+          "type" : "string"
+        },
+        "issue" : {
+          "type" : "string"
+        }
+      }
+    },
+    "items" : {
+      "type" : "object",
+      "properties" : {
+        "sku" : {
+          "type" : "string"
+        },
+        "qty" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "unitPrice" : {
+          "type" : "integer"
+        }
+      }
+    },
+    "ErrorResponse" : {
+      "type" : "object",
+      "required" : [ "code", "message" ],
+      "properties" : {
+        "code" : {
+          "type" : "string",
+          "enum" : [ "VALIDATION_ERROR", "INVALID_CURRENCY", "UPSTREAM_FX_UNAVAILABLE" ]
+        },
+        "message" : {
+          "type" : "string"
+        },
+        "details" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/details",
+            "uniqueItems" : false
+          }
+        }
+      }
+    }
+  }
+}

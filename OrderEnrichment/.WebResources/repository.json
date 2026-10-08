@@ -1,0 +1,7 @@
+{
+    "records": [],
+    "resources": [{
+        "location": "Service Descriptors/orderenrichment.Main_Orders-Main_Orders.json",
+        "type": "generated"
+    }]
+}

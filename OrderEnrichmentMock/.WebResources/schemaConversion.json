@@ -1,0 +1,17 @@
+{"records": [
+    {
+        "jsonSchemaLocation": "/OrderEnrichmentMock/Service Descriptors/orderenrichmentmock.MockFxRate-MockFxRate.json",
+        "conversionType": "linked",
+        "xsdSchemaTargetNamespace": "http://www.example.org/FxResponse"
+    },
+    {
+        "jsonSchemaLocation": "/OrderEnrichmentMock/Service Descriptors/orderenrichmentmock.MockHoliday-MockHoliday.json",
+        "conversionType": "linked",
+        "xsdSchemaTargetNamespace": "http://www.example.org/HolidaysResponse"
+    },
+    {
+        "jsonSchemaLocation": "/OrderEnrichmentMock/Service Descriptors/orderenrichmentmock.MockHoliday-MockHoliday.json",
+        "conversionType": "linked",
+        "xsdSchemaTargetNamespace": "http://xmlns.example.com/MockHoliday/parameters"
+    }
+]}

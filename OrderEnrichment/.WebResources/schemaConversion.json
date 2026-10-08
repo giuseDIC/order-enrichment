@@ -1,0 +1,17 @@
+{"records": [
+    {
+        "jsonSchemaLocation": "/OrderEnrichment/Service Descriptors/orderenrichment.Main_Orders-Main_Orders.json",
+        "conversionType": "linked",
+        "xsdSchemaTargetNamespace": "http://www.example.org/orders"
+    },
+    {
+        "jsonSchemaLocation": "/OrderEnrichment/Service Descriptors/orderenrichment.Main_Orders-Main_Orders.json",
+        "conversionType": "linked",
+        "xsdSchemaTargetNamespace": "http://www.example.org/OrdersResponse"
+    },
+    {
+        "jsonSchemaLocation": "/OrderEnrichment/Service Descriptors/orderenrichment.Main_Orders-Main_Orders.json",
+        "conversionType": "linked",
+        "xsdSchemaTargetNamespace": "http://www.example.org/ErrorResponse"
+    }
+]}

@@ -1,0 +1,61 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "MockFxRate",
+    "description" : "MockFxRate service"
+  },
+  "host" : "localhost:8081",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/v1/latest" : {
+      "get" : {
+        "summary" : "getMockFxRate",
+        "description" : "getMockFxRate",
+        "operationId" : "get-v1-latest",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "a FxResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/FxResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "rates" : {
+      "type" : "object",
+      "required" : [ "EUR" ],
+      "properties" : {
+        "EUR" : {
+          "type" : "integer"
+        }
+      }
+    },
+    "FxResponse" : {
+      "type" : "object",
+      "required" : [ "date", "amount", "rates", "base" ],
+      "properties" : {
+        "amount" : {
+          "type" : "integer"
+        },
+        "base" : {
+          "type" : "string"
+        },
+        "date" : {
+          "type" : "string",
+          "format" : "date"
+        },
+        "rates" : {
+          "$ref" : "#/definitions/rates"
+        }
+      }
+    }
+  }
+}

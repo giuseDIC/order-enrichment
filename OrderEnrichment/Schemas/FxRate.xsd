@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.example.org/FxRate"
+           xmlns:tns="http://www.example.org/FxRate"
+           elementFormDefault="qualified">
+
+  <!-- input di At_FxRate: la valuta dell'ordine -->
+  <xs:element name="FxRateRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="currency" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- output di At_FxRate: il tasso verso EUR -->
+  <xs:element name="FxRateResult">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="fxRate" type="xs:decimal"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.example.org/HolidaysResponse"
+           xmlns:tns="http://www.example.org/HolidaysResponse"
+           elementFormDefault="qualified">
+
+  <xs:element name="Holidays">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="holiday" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="date" type="xs:date"/>
+              <xs:element name="localName" type="xs:string"/>
+              <xs:element name="name" type="xs:string"/>
+              <xs:element name="countryCode" type="xs:string"/>
+              <xs:element name="fixed" type="xs:boolean" minOccurs="0"/>
+              <xs:element name="global" type="xs:boolean"/>
+              <xs:element name="counties" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+              <xs:element name="launchYear" type="xs:integer" minOccurs="0"/>
+              <xs:element name="types" type="xs:string" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

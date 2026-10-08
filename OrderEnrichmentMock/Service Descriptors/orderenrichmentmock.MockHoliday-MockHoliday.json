@@ -1,0 +1,105 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "MockHoliday",
+    "description" : "MockHoliday service"
+  },
+  "host" : "localhost:8081",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/api/v3/PublicHolidays/{year}/{countryCode}" : {
+      "get" : {
+        "summary" : "getMockHoliday",
+        "description" : "getMockHoliday",
+        "operationId" : "get-api-v3-PublicHolidays",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "year",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "countryCode",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a Holidays to be returned",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Holidays",
+                "uniqueItems" : false
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Holidays" : {
+      "type" : "object",
+      "required" : [ "holiday" ],
+      "properties" : {
+        "holiday" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/holiday",
+            "uniqueItems" : false
+          }
+        }
+      }
+    },
+    "holiday" : {
+      "type" : "object",
+      "required" : [ "date", "localName", "types", "countryCode", "name", "global" ],
+      "properties" : {
+        "date" : {
+          "type" : "string",
+          "format" : "date"
+        },
+        "localName" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "countryCode" : {
+          "type" : "string"
+        },
+        "fixed" : {
+          "type" : "boolean"
+        },
+        "global" : {
+          "type" : "boolean"
+        },
+        "counties" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "uniqueItems" : false
+          }
+        },
+        "launchYear" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "types" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "uniqueItems" : false
+          }
+        }
+      }
+    }
+  }
+}

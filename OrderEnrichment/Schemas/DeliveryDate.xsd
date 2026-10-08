@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.example.org/DeliveryDate"
+           xmlns:tns="http://www.example.org/DeliveryDate"
+           elementFormDefault="qualified">
+
+  <xs:element name="DeliveryDateRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="countryCode" type="xs:string"/>
+        <xs:element name="requestedDeliveryDate" type="xs:date"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="DeliveryDateResult">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="effectiveDeliveryDate" type="xs:date"/>
+        <xs:element name="deliveryShiftReason">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="HOLIDAY"/>
+              <xs:enumeration value="WEEKEND"/>
+              <xs:enumeration value="NONE"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
