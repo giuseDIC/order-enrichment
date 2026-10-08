@@ -354,6 +354,299 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Giorno2",
+			"item": [
+				{
+					"name": "G2-T1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"const body = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Importi\", function () {\r",
+									"    pm.expect(body.totalAmount).to.eql(21);\r",
+									"    const atteso = Math.round(body.totalAmount * body.fxRate * 100) / 100;\r",
+									"    pm.expect(body.totalEUR).to.be.closeTo(atteso, 0.01);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Data di consegna\", function () {\r",
+									"    pm.expect(body.effectiveDeliveryDate).to.eql(\"2026-12-28\");\r",
+									"    pm.expect(body.deliveryShiftReason).to.eql(\"HOLIDAY\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"orderId\": \"ORD-1\",\r\n  \"countryCode\": \"IT\",\r\n  \"currency\": \"USD\",\r\n  \"requestedDeliveryDate\": \"2026-12-25\",\r\n  \"items\": [\r\n    { \"sku\": \"A1\", \"qty\": 2, \"unitPrice\": 10.50 }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "G2-T2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"const body = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Immacolata: consegna il giorno dopo\", function () {\r",
+									"    pm.expect(body.requestedDeliveryDate).to.eql(\"2026-12-08\");\r",
+									"    pm.expect(body.effectiveDeliveryDate).to.eql(\"2026-12-09\");\r",
+									"    pm.expect(body.deliveryShiftReason).to.eql(\"HOLIDAY\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"orderId\": \"ORD-1\",\r\n  \"countryCode\": \"IT\",\r\n  \"currency\": \"USD\",\r\n  \"requestedDeliveryDate\": \"2026-12-08\",\r\n  \"items\": [\r\n    { \"sku\": \"A1\", \"qty\": 2, \"unitPrice\": 10.50 }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "G2-T3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"const body = pm.response.json();\r",
+									"\r",
+									"pm.test(\"In Germania l'8 dicembre non è festa\", function () {\r",
+									"    pm.expect(body.requestedDeliveryDate).to.eql(\"2026-12-08\");\r",
+									"    pm.expect(body.effectiveDeliveryDate).to.eql(\"2026-12-08\");\r",
+									"    pm.expect(body.deliveryShiftReason).to.eql(\"NONE\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"orderId\": \"ORD-1\",\r\n  \"countryCode\": \"DE\",\r\n  \"currency\": \"USD\",\r\n  \"requestedDeliveryDate\": \"2026-12-08\",\r\n  \"items\": [\r\n    { \"sku\": \"A1\", \"qty\": 2, \"unitPrice\": 10.50 }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "G2-T4",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"const body = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Cambio d'anno: dal sabato 31/12 al lunedì 02/01\", function () {\r",
+									"    pm.expect(body.requestedDeliveryDate).to.eql(\"2022-12-31\");\r",
+									"    pm.expect(body.effectiveDeliveryDate).to.eql(\"2023-01-02\");\r",
+									"    pm.expect(body.deliveryShiftReason).to.eql(\"WEEKEND\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"orderId\": \"ORD-1\",\r\n  \"countryCode\": \"IT\",\r\n  \"currency\": \"USD\",\r\n  \"requestedDeliveryDate\": \"2022-12-31\",\r\n  \"items\": [\r\n    { \"sku\": \"A1\", \"qty\": 2, \"unitPrice\": 10.50 }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "G2-T5",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"const body = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Stessa risposta anche dalla cache\", function () {\r",
+									"    pm.expect(body.effectiveDeliveryDate).to.eql(\"2026-10-12\");\r",
+									"    pm.expect(body.deliveryShiftReason).to.eql(\"WEEKEND\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"orderId\": \"ORD-1\",\r\n  \"countryCode\": \"IT\",\r\n  \"currency\": \"USD\",\r\n  \"requestedDeliveryDate\": \"2026-10-10\",\r\n  \"items\": [\r\n    { \"sku\": \"A1\", \"qty\": 2, \"unitPrice\": 10.50 }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "G2-T6",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"const body = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Valuta sconosciuta\", function () {\r",
+									"    pm.expect(body.code).to.eql(\"INVALID_CURRENCY\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"orderId\": \"ORD-1\",\r\n  \"countryCode\": \"IT\",\r\n  \"currency\": \"ZZZ\",\r\n  \"requestedDeliveryDate\": \"2026-12-08\",\r\n  \"items\": [\r\n    { \"sku\": \"A1\", \"qty\": 2, \"unitPrice\": 10.50 }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [
