@@ -37,6 +37,12 @@
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
+          },
+          "502" : {
+            "description" : "Bad Gateway",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
           }
         }
       }
@@ -97,6 +103,13 @@
         "deliveryShiftReason" : {
           "type" : "string",
           "enum" : [ "HOLIDAY", "WEEKEND", "NONE" ]
+        },
+        "warnings" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "uniqueItems" : false
+          }
         }
       }
     },
@@ -144,6 +157,9 @@
             "$ref" : "#/definitions/details",
             "uniqueItems" : false
           }
+        },
+        "correlationId" : {
+          "type" : "string"
         }
       }
     }

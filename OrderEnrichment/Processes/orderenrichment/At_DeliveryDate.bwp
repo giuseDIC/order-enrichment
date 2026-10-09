@@ -22,10 +22,6 @@
         <task name="End">
             <endingVariables>
                 <variable>Start</variable>
-            </endingVariables>
-        </task>
-        <task name="Repeat">
-            <endingVariables>
                 <variable>CallHolidays</variable>
                 <variable>CallHolidayNextYear</variable>
             </endingVariables>
@@ -844,7 +840,7 @@
                     </bpws:targets>
                     <tibex:inputBindings>
                         <tibex:inputBinding
-                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://www.example.org/DeliveryDate&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;i&quot;/>&lt;xsl:param name=&quot;Start&quot;/>&lt;xsl:template name=&quot;End-input&quot; match=&quot;/&quot;>&lt;tns1:DeliveryDateResult>&lt;tns1:effectiveDeliveryDate>&lt;xsl:value-of select=&quot;$Start/tns1:requestedDeliveryDate + xsd:dayTimeDuration(concat('P', string($i - 1), 'D'))&quot;/>&lt;/tns1:effectiveDeliveryDate>&lt;tns1:deliveryShiftReason>&lt;xsl:value-of select=&quot;if ($i = 1) then 'NONE' else if (days-from-duration($Start/tns1:requestedDeliveryDate - xsd:date('1900-01-01')) mod 7 &amp;lt; 5) then 'HOLIDAY' else 'WEEKEND'&quot;/>&lt;/tns1:deliveryShiftReason>&lt;/tns1:DeliveryDateResult>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://www.example.org/DeliveryDate&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:ns7=&quot;http://www.example.org/HolidaysResponse&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;i&quot;/>&lt;xsl:param name=&quot;Start&quot;/>&lt;xsl:param name=&quot;CallHolidays&quot;/>&lt;xsl:param name=&quot;CallHolidayNextYear&quot;/>&lt;xsl:template name=&quot;End-input&quot; match=&quot;/&quot;>&lt;tns1:DeliveryDateResult>&lt;tns1:effectiveDeliveryDate>&lt;xsl:value-of select=&quot;$Start/tns1:requestedDeliveryDate + xsd:dayTimeDuration(concat('P', string($i - 1), 'D'))&quot;/>&lt;/tns1:effectiveDeliveryDate>&lt;tns1:deliveryShiftReason>&lt;xsl:value-of select=&quot;if ($i = 1) then 'NONE' else if (days-from-duration($Start/tns1:requestedDeliveryDate - xsd:date('1900-01-01')) mod 7 &amp;lt; 5) then 'HOLIDAY' else 'WEEKEND'&quot;/>&lt;/tns1:deliveryShiftReason>&lt;xsl:if test=&quot;if ($CallHolidays/ns7:skipped = true()) then 'HOLIDAY_CHECK_SKIPPED' else if (month-from-date($Start/tns1:requestedDeliveryDate) = 12) then (if ($CallHolidayNextYear/ns7:skipped = true()) then 'HOLIDAY_CHECK_SKIPPED' else ()) else ()&quot;>&lt;tns1:warnings>&lt;xsl:value-of select=&quot;if ($CallHolidays/ns7:skipped = true()) then 'HOLIDAY_CHECK_SKIPPED' else if (month-from-date($Start/tns1:requestedDeliveryDate) = 12) then (if ($CallHolidayNextYear/ns7:skipped = true()) then 'HOLIDAY_CHECK_SKIPPED' else ()) else ()&quot;/>&lt;/tns1:warnings>&lt;/xsl:if>&lt;/tns1:DeliveryDateResult>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                     </tibex:inputBindings>
                     <tibex:config>
                         <bwext:BWActivity

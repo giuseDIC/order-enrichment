@@ -4,6 +4,9 @@
     <sca:interface.wsdl xmi:id="_SmTEkML1EfGKzekG0wbg4w" interface="http://xmlns.example.com/20261008105019PLT#wsdl.interface(v1-latest)" scaext:wsdlLocation="../Processes/orderenrichmentmock/MockFxRate.bwp"/>
     <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_SmhHAML1EfGKzekG0wbg4w" name="RestService" path="/v1/latest" docBasePath="http://localhost:7777/OrderEnrichmentMock" docResourcePath="MockFxRate" basePath="/" connector="orderenrichmentmock.MockFxRate" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/orderenrichmentmock.MockFxRate-MockFxRate.json">
       <operation xmi:id="_SmobwML1EfGKzekG0wbg4w" operationName="get" nickname="get-v1-latest" httpMethod="GET" notes="getMockFxRate" responseStyle="element" outputPartName="item">
+        <parameters xmi:id="_NCgSgMO-EfGR4Ya7gqRaXw">
+          <parameterMapping xmi:id="_NCgSgcO-EfGR4Ya7gqRaXw" parameterName="base" parameterType="Query" dataType="string"/>
+        </parameters>
         <clientFormat>json</clientFormat>
         <clientRequestFormat>json</clientRequestFormat>
       </operation>

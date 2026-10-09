@@ -25,6 +25,7 @@
                 </xs:sequence>
             </xs:complexType>
         </xs:element>
+        <xs:element name="correlationId" type="xs:string" minOccurs="0"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>

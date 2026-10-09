@@ -16,7 +16,13 @@
         "operationId" : "get-v1-latest",
         "consumes" : [ "application/json" ],
         "produces" : [ "application/json" ],
-        "parameters" : [ ],
+        "parameters" : [ {
+          "name" : "base",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : false
+        } ],
         "responses" : {
           "200" : {
             "description" : "a FxResponse to be returned",

@@ -84,7 +84,7 @@
 		</globalVariable>
 		<globalVariable>
 			<name>fx.baseUrl</name>
-			<value>https://api.frankfurter.dev:443</value>
+			<value>http://localhost:8081</value>
 			<deploymentSettable>false</deploymentSettable>
 			<serviceSettable>false</serviceSettable>
 			<type>String</type>
@@ -93,7 +93,7 @@
 		</globalVariable>
 		<globalVariable>
 			<name>nager.baseUrl</name>
-			<value>https://date.nager.at:443</value>
+			<value>http://localhost:8081</value>
 			<deploymentSettable>false</deploymentSettable>
 			<serviceSettable>false</serviceSettable>
 			<type>String</type>
@@ -120,7 +120,7 @@
 		</globalVariable>
 		<globalVariable>
 			<name>fx.ssl</name>
-			<value>true</value>
+			<value>false</value>
 			<deploymentSettable>false</deploymentSettable>
 			<serviceSettable>false</serviceSettable>
 			<type>Boolean</type>
@@ -129,10 +129,37 @@
 		</globalVariable>
 		<globalVariable>
 			<name>nager.ssl</name>
-			<value>true</value>
+			<value>false</value>
 			<deploymentSettable>false</deploymentSettable>
 			<serviceSettable>false</serviceSettable>
 			<type>Boolean</type>
+			<isOverride>false</isOverride>
+			<useLookupValue>false</useLookupValue>
+		</globalVariable>
+		<globalVariable>
+			<name>http.timeoutMs</name>
+			<value>3000</value>
+			<deploymentSettable>false</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>Integer</type>
+			<isOverride>false</isOverride>
+			<useLookupValue>false</useLookupValue>
+		</globalVariable>
+		<globalVariable>
+			<name>http.retryDelayMs</name>
+			<value>1000</value>
+			<deploymentSettable>false</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>Integer</type>
+			<isOverride>false</isOverride>
+			<useLookupValue>false</useLookupValue>
+		</globalVariable>
+		<globalVariable>
+			<name>http.maxRetries</name>
+			<value>1</value>
+			<deploymentSettable>false</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>Integer</type>
 			<isOverride>false</isOverride>
 			<useLookupValue>false</useLookupValue>
 		</globalVariable>

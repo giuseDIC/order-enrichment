@@ -23,6 +23,7 @@
                 </xs:restriction>
             </xs:simpleType>
         </xs:element>
+        <xs:element name="warnings" type="xs:string" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>

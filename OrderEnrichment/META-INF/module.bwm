@@ -3,8 +3,9 @@
   <sca:service xmi:id="_NLCqIMJjEfGXGc6o7LKevA" name="orders" promote="ComponentMain_Orders/orders">
     <sca:interface.wsdl xmi:id="_NLL0EMJjEfGXGc6o7LKevA" interface="http://xmlns.example.com/20261007172436PLT#wsdl.interface(orders)" scaext:wsdlLocation="../Processes/orderenrichment/Main_Orders.bwp"/>
     <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_NLR6sMJjEfGXGc6o7LKevA" name="RestService" path="/orders" docBasePath="http://localhost:7777/OrderEnrichment" docResourcePath="Main_Orders" basePath="/" connector="orderenrichment.Main_Orders" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/orderenrichment.Main_Orders-Main_Orders.json">
-      <operation xmi:id="_NLf9IMJjEfGXGc6o7LKevA" operationName="post" nickname="post-orders" httpMethod="POST" notes="postMain_Orders" responseStyle="element" requestStyle="element" outputPartName="item">
+      <operation xmi:id="_NLf9IMJjEfGXGc6o7LKevA" operationName="post" nickname="post-orders" httpMethod="POST" notes="postMain_Orders" responseStyle="element" requestStyle="element" useEmptyValuesForNullResponse="true" outputPartName="item">
         <responseStatus xmi:id="_HJ9xIMJmEfGXGc6o7LKevA" statusCode="400" reasonPhrase="Bad Request" elementQName="ErrorResponse:ErrorResponse"/>
+        <responseStatus xmi:id="_IRcWQMPJEfGR4Ya7gqRaXw" statusCode="502" reasonPhrase="Bad Gateway" elementQName="ErrorResponse:ErrorResponse"/>
         <clientFormat>json</clientFormat>
         <clientRequestFormat>json</clientRequestFormat>
       </operation>
@@ -29,6 +30,9 @@
   <sca:property xmi:id="_BpaEoMMAEfGKzekG0wbg4w" name="Property1" type="XMLSchema:string" scaext:simpleValue="" publicAccess="true" scalable="true"/>
   <sca:property xmi:id="_tTPb8MMvEfGhcpgzKuosig" name="fx.ssl" type="XMLSchema:boolean" scaext:simpleValue="false" publicAccess="true" scalable="true"/>
   <sca:property xmi:id="_tma2oMMvEfGhcpgzKuosig" name="nager.ssl" type="XMLSchema:boolean" scaext:simpleValue="false" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_AQ2dkMPBEfGR4Ya7gqRaXw" name="http.timeoutMs" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_AmNpkMPBEfGR4Ya7gqRaXw" name="http.retryDelayMs" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_AsdbgMPBEfGR4Ya7gqRaXw" name="http.maxRetries" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
   <sca:component xmi:id="_NKt6AMJjEfGXGc6o7LKevA" name="ComponentMain_Orders" compositeext:version="1.0.0.qualifier">
     <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_NKt6AcJjEfGXGc6o7LKevA" processName="orderenrichment.Main_Orders"/>
     <sca:service xmi:id="_NK78cMJjEfGXGc6o7LKevA" name="orders">
