@@ -689,8 +689,8 @@
                                     gradientEndColor="50431"
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.1"/>
-                                    <layoutConstraint x="1238"
-                                    xsi:type="notation:Bounds" y="73"/>
+                                    <layoutConstraint x="1270"
+                                    xsi:type="notation:Bounds" y="111"/>
                                     </children>
                                     <children type="4002">
                                     <children type="4017">
@@ -1347,7 +1347,7 @@
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity"/>
                                     <layoutConstraint height="339"
-                                    width="1380" xsi:type="notation:Bounds"/>
+                                    width="1431" xsi:type="notation:Bounds"/>
                                 </children>
                                 <styles xsi:type="notation:SortingStyle"/>
                                 <styles xsi:type="notation:FilteringStyle"/>
@@ -1356,7 +1356,7 @@
                             <styles xsi:type="bwnotation:BackgroundStyle"/>
                             <styles xsi:type="bwnotation:ResizingStyle"/>
                             <element href="//0/@process/@activity"/>
-                            <layoutConstraint height="465" width="1383" xsi:type="notation:Bounds"/>
+                            <layoutConstraint height="339" width="1434" xsi:type="notation:Bounds"/>
                         </children>
                         <styles xsi:type="notation:SortingStyle"/>
                         <styles xsi:type="notation:FilteringStyle"/>
@@ -1366,7 +1366,7 @@
                     <styles xsi:type="bwnotation:BackgroundStyle"/>
                     <styles xsi:type="bwnotation:ResizingStyle"/>
                     <element href="//0/@process/@activity"/>
-                    <layoutConstraint height="489" width="1383" x="1"
+                    <layoutConstraint height="363" width="1434" x="1"
                         xsi:type="notation:Bounds" y="1"/>
                 </children>
                 <styles xsi:type="notation:SortingStyle"/>
@@ -1375,7 +1375,7 @@
             </children>
             <styles fontName="Segoe UI" lineColor="0" xsi:type="notation:ShapeStyle"/>
             <element href="//0/@process"/>
-            <layoutConstraint height="415" width="1725" xsi:type="notation:Bounds"/>
+            <layoutConstraint height="588" width="1776" xsi:type="notation:Bounds"/>
         </children>
         <styles xsi:type="notation:DiagramStyle"/>
         <element href="//0"/>
@@ -1503,18 +1503,6 @@
             <element href="//0/@process/@activity/@activity/@activities.6/@activity/@activity/@activity/@links/@children.2"/>
             <bendpoints points="[25, 0, -77, 0]$[78, 0, -24, 0]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
-        <edges
-            source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.8"
-            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1" type="4006">
-            <children type="6002">
-                <layoutConstraint xsi:type="notation:Location" y="40"/>
-            </children>
-            <styles lineColor="255" xsi:type="notation:ConnectorStyle"/>
-            <styles fontColor="255" fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@links/@children.6"/>
-            <bendpoints
-                points="[7, -93, -886, -60]$[7, -132, -886, -99]$[893, -132, 0, -99]$[893, -57, 0, -24]" xsi:type="notation:RelativeBendpoints"/>
-        </edges>
     </notation:Diagram>
     <tibex:NamespaceRegistry enabled="true">
         <tibex:namespaceItem
@@ -1595,7 +1583,6 @@
                 <bpws:link name="CriticalSectionToEnd" tibex:linkType="SUCCESS"/>
                 <bpws:link name="GetCacheToRepeatOnError" tibex:linkType="SUCCESSWITHNOCONDITION"/>
                 <bpws:link name="RepeatOnErrorToParseHoliday" tibex:linkType="SUCCESS"/>
-                <bpws:link name="RetryNagerToEnd" tibex:linkType="ERROR"/>
             </bpws:links>
             <bpws:extensionActivity>
                 <tibex:receiveEvent createInstance="yes"
@@ -1617,11 +1604,10 @@
                     <bpws:targets>
                         <bpws:target linkName="GetCacheToEnd"/>
                         <bpws:target linkName="CriticalSectionToEnd"/>
-                        <bpws:target linkName="RetryNagerToEnd"/>
                     </bpws:targets>
                     <tibex:inputBindings>
                         <tibex:inputBinding
-                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns4=&quot;http://www.example.org/HolidaysResponse&quot; xmlns:tns5=&quot;http://www.example.org/HolidaysCache&quot; xmlns:tns1=&quot;http://www.example.org/HolidaysRequest&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;GetCache&quot;/>&lt;xsl:param name=&quot;ParseHoliday&quot;/>&lt;xsl:param name=&quot;Start&quot;/>&lt;xsl:template name=&quot;End-input&quot; match=&quot;/&quot;>&lt;tns4:Holidays>&lt;xsl:copy-of select=&quot;for $c in $Start/tns1:countryCode, $y in $Start/tns1:year return (if (exists($GetCache/tns5:entry[tns5:countryCode = $c and tns5:year = $y])) then $GetCache/tns5:entry[tns5:countryCode = $c and tns5:year = $y][1]/tns4:Holidays/tns4:holiday else $ParseHoliday/tns4:holiday)&quot;/>&lt;tns4:skipped>&lt;xsl:value-of select=&quot;not(exists(for $c in $Start/tns1:countryCode, $y in $Start/tns1:year return $GetCache/tns5:entry[tns5:countryCode = $c and tns5:year = $y])) and not(exists($ParseHoliday))&quot;/>&lt;/tns4:skipped>&lt;/tns4:Holidays>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns4=&quot;http://www.example.org/HolidaysResponse&quot; xmlns:tns1=&quot;http://www.example.org/HolidaysRequest&quot; xmlns:tns5=&quot;http://www.example.org/HolidaysCache&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;GetCache&quot;/>&lt;xsl:param name=&quot;ParseHoliday&quot;/>&lt;xsl:param name=&quot;Start&quot;/>&lt;xsl:template name=&quot;End-input&quot; match=&quot;/&quot;>&lt;tns4:Holidays>&lt;xsl:copy-of select=&quot;for $c in $Start/tns1:countryCode, $y in $Start/tns1:year return (if (exists($GetCache/tns5:entry[tns5:countryCode = $c and tns5:year = $y])) then $GetCache/tns5:entry[tns5:countryCode = $c and tns5:year = $y][1]/tns4:Holidays/tns4:holiday else $ParseHoliday/tns4:holiday)&quot;/>&lt;/tns4:Holidays>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                     </tibex:inputBindings>
                     <tibex:config>
                         <bwext:BWActivity
@@ -1759,20 +1745,12 @@
                     </bpws:extensionActivity>
                 </bpws:flow>
             </bpws:scope>
-            <bpws:scope name="RetryNager" tibex:group="repeatOnError"
-                tibex:indexOriginalName="i" tibex:indexToGlobal="false" tibex:xpdlId="de97d651-5fa4-4dc1-9fe1-fb7a309090d8">
+            <bpws:scope name="RetryNager" tibex:group="repeatOnError" tibex:xpdlId="de97d651-5fa4-4dc1-9fe1-fb7a309090d8">
                 <bpws:targets>
                     <bpws:target linkName="GetCacheToRepeatOnError"/>
                 </bpws:targets>
                 <bpws:sources>
                     <bpws:source linkName="RepeatOnErrorToParseHoliday"/>
-                    <bpws:source linkName="RetryNagerToEnd"
-                        tibex:faultDetailsVar="_error" tibex:faultNameVar="FaultName">
-                        <tibex:DesignExpression>
-                            <tibex:expression expression="##error##" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
-                        </tibex:DesignExpression>
-                        <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[##error##]]></bpws:transitionCondition>
-                    </bpws:source>
                 </bpws:sources>
                 <bpws:variables>
                     <bpws:variable name="i" sca-bpel:internal="true" type="xsd:int">
