@@ -1,0 +1,129 @@
+{
+	"id": "f43cd00e-ff2b-45e1-abd3-a8d43f661dde",
+	"name": "Order Enrichment",
+	"timestamp": "2026-10-10T13:41:50.088Z",
+	"collection_id": "58281950-72e91881-5265-4cbf-b32e-a5ff47b7f047",
+	"folder_id": "58281950-5625c443-a2eb-4279-a8bf-9a6aa8c308fc",
+	"environment_id": "58281950-5ed820fb-94f1-4281-9021-dbbe23d8d304",
+	"totalPass": 20,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2026-10-10T13:41:47.117Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "df010238-f188-472e-8faa-39746cd562ad",
+			"name": "E2E-4",
+			"url": "http://localhost:8080/orders",
+			"time": 63,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"200 con correlationId nell'header": true
+			},
+			"testPassFailCounts": {
+				"200 con correlationId nell'header": {
+					"pass": 20,
+					"fail": 0
+				}
+			},
+			"times": [
+				82,
+				74,
+				107,
+				85,
+				72,
+				63,
+				84,
+				66,
+				80,
+				75,
+				40,
+				46,
+				45,
+				63,
+				70,
+				42,
+				64,
+				60,
+				51,
+				63
+			],
+			"allTests": [
+				{
+					"200 con correlationId nell'header": true
+				},
+				{
+					"200 con correlationId nell'header": true
+				},
+				{
+					"200 con correlationId nell'header": true
+				},
+				{
+					"200 con correlationId nell'header": true
+				},
+				{
+					"200 con correlationId nell'header": true
+				},
+				{
+					"200 con correlationId nell'header": true
+				},
+				{
+					"200 con correlationId nell'header": true
+				},
+				{
+					"200 con correlationId nell'header": true
+				},
+				{
+					"200 con correlationId nell'header": true
+				},
+				{
+					"200 con correlationId nell'header": true
+				},
+				{
+					"200 con correlationId nell'header": true
+				},
+				{
+					"200 con correlationId nell'header": true
+				},
+				{
+					"200 con correlationId nell'header": true
+				},
+				{
+					"200 con correlationId nell'header": true
+				},
+				{
+					"200 con correlationId nell'header": true
+				},
+				{
+					"200 con correlationId nell'header": true
+				},
+				{
+					"200 con correlationId nell'header": true
+				},
+				{
+					"200 con correlationId nell'header": true
+				},
+				{
+					"200 con correlationId nell'header": true
+				},
+				{
+					"200 con correlationId nell'header": true
+				}
+			]
+		}
+	],
+	"count": 20,
+	"totalTime": 1332,
+	"collection": {
+		"requests": [
+			{
+				"id": "df010238-f188-472e-8faa-39746cd562ad",
+				"method": "POST"
+			}
+		]
+	}
+}

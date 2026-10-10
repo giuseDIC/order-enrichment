@@ -1,0 +1,65 @@
+{
+	"id": "777b6d97-c38c-445b-884c-f12b5def5e7f",
+	"name": "Order Enrichment",
+	"timestamp": "2026-10-10T13:46:10.854Z",
+	"collection_id": "58281950-72e91881-5265-4cbf-b32e-a5ff47b7f047",
+	"folder_id": "58281950-5625c443-a2eb-4279-a8bf-9a6aa8c308fc",
+	"environment_id": "58281950-088bf7a6-2632-4aca-807b-a2c611a2de1a",
+	"totalPass": 3,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2026-10-10T13:46:08.450Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "26345347-baad-41ff-a87d-ac603f373bcd",
+			"name": "E2E-1",
+			"url": "http://localhost:8080/orders",
+			"time": 2001,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status 200": true,
+				"Importi": true,
+				"Data di consegna": true
+			},
+			"testPassFailCounts": {
+				"Status 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Importi": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Data di consegna": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				2001
+			],
+			"allTests": [
+				{
+					"Status 200": true,
+					"Importi": true,
+					"Data di consegna": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 2001,
+	"collection": {
+		"requests": [
+			{
+				"id": "26345347-baad-41ff-a87d-ac603f373bcd",
+				"method": "POST"
+			}
+		]
+	}
+}

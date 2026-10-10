@@ -1,0 +1,84 @@
+{
+	"id": "4643960a-befe-42a0-b54b-5ddff7de3f4d",
+	"name": "Order Enrichment",
+	"timestamp": "2026-10-10T13:40:19.952Z",
+	"collection_id": "58281950-72e91881-5265-4cbf-b32e-a5ff47b7f047",
+	"folder_id": "58281950-5625c443-a2eb-4279-a8bf-9a6aa8c308fc",
+	"environment_id": "58281950-5ed820fb-94f1-4281-9021-dbbe23d8d304",
+	"totalPass": 2,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2026-10-10T13:40:11.145Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "1c963dfa-95b5-4d9b-b48d-e6f07a97a4cd",
+			"name": "E2E-2",
+			"url": "http://localhost:8080/orders",
+			"time": 1210,
+			"responseCode": {
+				"code": 502,
+				"name": "Bad Gateway"
+			},
+			"tests": {
+				"502 UPSTREAM_FX_UNAVAILABLE con correlationId": true
+			},
+			"testPassFailCounts": {
+				"502 UPSTREAM_FX_UNAVAILABLE con correlationId": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1210
+			],
+			"allTests": [
+				{
+					"502 UPSTREAM_FX_UNAVAILABLE con correlationId": true
+				}
+			]
+		},
+		{
+			"id": "fdf9833e-7080-4fe7-9f36-c8d4b5dac93a",
+			"name": "E2E-3",
+			"url": "http://localhost:8080/orders",
+			"time": 1107,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"200, consegna al 12/10 per il weekend, festività non controllate": true
+			},
+			"testPassFailCounts": {
+				"200, consegna al 12/10 per il weekend, festività non controllate": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1107
+			],
+			"allTests": [
+				{
+					"200, consegna al 12/10 per il weekend, festività non controllate": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 2317,
+	"collection": {
+		"requests": [
+			{
+				"id": "1c963dfa-95b5-4d9b-b48d-e6f07a97a4cd",
+				"method": "POST"
+			},
+			{
+				"id": "fdf9833e-7080-4fe7-9f36-c8d4b5dac93a",
+				"method": "POST"
+			}
+		]
+	}
+}

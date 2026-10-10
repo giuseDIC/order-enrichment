@@ -913,6 +913,193 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "E2E",
+			"item": [
+				{
+					"name": "E2E-1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"const body = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Importi\", function () {\r",
+									"    pm.expect(body.totalAmount).to.eql(21);\r",
+									"    const atteso = Math.round(body.totalAmount * body.fxRate * 100) / 100;\r",
+									"    pm.expect(body.totalEUR).to.be.closeTo(atteso, 0.01);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Data di consegna\", function () {\r",
+									"    pm.expect(body.effectiveDeliveryDate).to.eql(\"2026-12-28\");\r",
+									"    pm.expect(body.deliveryShiftReason).to.eql(\"HOLIDAY\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"orderId\": \"ORD-1\",\r\n  \"countryCode\": \"IT\",\r\n  \"currency\": \"USD\",\r\n  \"requestedDeliveryDate\": \"2026-12-25\",\r\n  \"items\": [\r\n    { \"sku\": \"A1\", \"qty\": 2, \"unitPrice\": 10.50 }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "E2E-2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"502 UPSTREAM_FX_UNAVAILABLE con correlationId\", () => {\r",
+									"  pm.response.to.have.status(502);\r",
+									"  const j = pm.response.json();\r",
+									"  pm.expect(j.code).to.eql(\"UPSTREAM_FX_UNAVAILABLE\");\r",
+									"  pm.expect(j.correlationId).to.be.a(\"string\").and.not.empty;\r",
+									"  pm.expect(pm.response.headers.get(\"X-Correlation-Id\")).to.eql(j.correlationId);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"orderId\": \"ORD-1\",\r\n  \"countryCode\": \"IT\",\r\n  \"currency\": \"JPY\",\r\n  \"requestedDeliveryDate\": \"2026-12-25\",\r\n  \"items\": [\r\n    { \"sku\": \"A1\", \"qty\": 2, \"unitPrice\": 10.50 }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "E2E-3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"200, consegna al 12/10 per il weekend, festività non controllate\", () => {\r",
+									"  pm.response.to.have.status(200);\r",
+									"  const j = pm.response.json();\r",
+									"  pm.expect(j.effectiveDeliveryDate).to.eql(\"2026-10-12\");\r",
+									"  pm.expect(j.deliveryShiftReason).to.eql(\"WEEKEND\");\r",
+									"  pm.expect(j.warnings).to.eql([\"HOLIDAY_CHECK_SKIPPED\"]);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"orderId\": \"ORD-1\",\r\n  \"countryCode\": \"FR\",\r\n  \"currency\": \"EUR\",\r\n  \"requestedDeliveryDate\": \"2026-10-10\",\r\n  \"items\": [\r\n    { \"sku\": \"A1\", \"qty\": 2, \"unitPrice\": 10.50 }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "E2E-4",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"200 con correlationId nell'header\", () => {\r",
+									"  pm.response.to.have.status(200);\r",
+									"  pm.expect(pm.response.headers.get(\"X-Correlation-Id\")).to.be.a(\"string\").and.not.empty;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"orderId\": \"ORD-1\",\r\n  \"countryCode\": \"IT\",\r\n  \"currency\": \"USD\",\r\n  \"requestedDeliveryDate\": \"2026-12-25\",\r\n  \"items\": [\r\n    { \"sku\": \"A1\", \"qty\": 2, \"unitPrice\": 10.50 }\r\n  ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [
