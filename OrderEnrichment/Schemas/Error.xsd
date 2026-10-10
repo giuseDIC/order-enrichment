@@ -13,6 +13,7 @@
                     <xs:enumeration value="VALIDATION_ERROR"></xs:enumeration>
                     <xs:enumeration value="INVALID_CURRENCY"></xs:enumeration>
                     <xs:enumeration value="UPSTREAM_FX_UNAVAILABLE"></xs:enumeration>
+                    <xs:enumeration value="INTERNAL_ERROR"/>
                 </xs:restriction>
             </xs:simpleType>
         </xs:element>

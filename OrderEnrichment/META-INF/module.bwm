@@ -10,6 +10,7 @@
         </parameters>
         <responseStatus xmi:id="_HJ9xIMJmEfGXGc6o7LKevA" statusCode="400" reasonPhrase="Bad Request" elementQName="ErrorResponse:ErrorResponse"/>
         <responseStatus xmi:id="_IRcWQMPJEfGR4Ya7gqRaXw" statusCode="502" reasonPhrase="Bad Gateway" elementQName="ErrorResponse:ErrorResponse"/>
+        <responseStatus xmi:id="_gb80kMScEfGc-tkyESgteQ" statusCode="500" reasonPhrase="Internal Server Error" elementQName="ErrorResponse:ErrorResponse"/>
         <clientFormat>json</clientFormat>
         <clientRequestFormat>json</clientRequestFormat>
       </operation>

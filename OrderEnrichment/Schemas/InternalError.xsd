@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.keypartner.com/orderenrichment/InternalError"
+           xmlns:tns="http://www.keypartner.com/orderenrichment/InternalError"
+           elementFormDefault="qualified">
+
+  <xs:element name="InternalError">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="internalCode" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
+
