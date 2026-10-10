@@ -52,6 +52,7 @@
         <task name="Log">
             <endingVariables>
                 <variable>Log-input</variable>
+                <variable>GetCorrelationId</variable>
             </endingVariables>
         </task>
         <task name="SleepFx">
@@ -808,8 +809,8 @@
                                     <element href="//0/@process/@activity/@activity/@activities.3/@activity/@activity/@activity/@activities.2"/>
 
                                     <layoutConstraint
-                                    x="221"
-                                    xsi:type="notation:Bounds" y="43"/>
+                                    x="472"
+                                    xsi:type="notation:Bounds" y="37"/>
                                     </children>
 
                                     <children type="4002">
@@ -862,8 +863,8 @@
                                     <element href="//0/@process/@activity/@activity/@activities.3/@activity/@activity/@activity/@activities.3"/>
 
                                     <layoutConstraint
-                                    x="124"
-                                    xsi:type="notation:Bounds" y="43"/>
+                                    x="375"
+                                    xsi:type="notation:Bounds" y="37"/>
                                     </children>
 
                                     <children type="4002 bw.generalactivities.sleep">
@@ -919,6 +920,62 @@
                                     height="53"
                                     width="53"
                                     x="34"
+                                    xsi:type="notation:Bounds" y="43"/>
+                                    </children>
+
+                                    <children type="4002 bw.internal.getSharedVariable">
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.3/@activity/@activity/@activity/@activities.5"/>
+
+                                    <layoutConstraint
+                                    height="40"
+                                    width="40"
+                                    x="120"
                                     xsi:type="notation:Bounds" y="43"/>
                                     </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
@@ -1135,7 +1192,7 @@
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
             <element href="//0/@process/@activity/@activity/@links/@children.0"/>
             <bendpoints
-                points="[25, -8, 150, -512]$[895, -8, 1020, -512]$[895, 536, 1020, 32]$[-100, 536, 25, 32]" xsi:type="notation:RelativeBendpoints"/>
+                points="[25, -42, 139, -445]$[692, -42, 806, -445]$[692, 404, 806, 1]$[-89, 404, 25, 1]" xsi:type="notation:RelativeBendpoints"/>
             <sourceAnchor id="(0.4897959183673469,1.0)" xsi:type="notation:IdentityAnchor"/>
             <targetAnchor id="(0.4897959183673469,0.0)" xsi:type="notation:IdentityAnchor"/>
         </edges>
@@ -1185,17 +1242,6 @@
             <bendpoints points="[9, -2, -69, 10]$[60, -9, -18, 3]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
-            source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3/@children.0/@children.1/@children.0/@children.0/@children.0/@children.2"
-            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3/@children.0/@children.1/@children.0/@children.0/@children.0/@children.1" type="4006">
-            <children type="6002">
-                <layoutConstraint xsi:type="notation:Location" y="40"/>
-            </children>
-            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
-            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@activities.3/@activity/@activity/@activity/@links/@children.1"/>
-            <bendpoints points="[18, 0, -49, 0]$[49, 0, -18, 0]" xsi:type="notation:RelativeBendpoints"/>
-        </edges>
-        <edges
             source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3/@children.0/@children.1/@children.0/@children.0/@children.0/@children.1"
             target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0" type="4006">
             <children type="6002">
@@ -1203,7 +1249,7 @@
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@activities.3/@activity/@activity/@activity/@links/@children.2"/>
+            <element href="//0/@process/@activity/@activity/@activities.3/@activity/@activity/@activity/@links/@children.1"/>
             <bendpoints points="[19, 0, -54, 0]$[55, 0, -18, 0]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
@@ -1216,6 +1262,28 @@
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
             <element href="//0/@process/@activity/@activity/@links/@children.4"/>
             <bendpoints points="[9, 19, -53, -111]$[29, 60, -33, -70]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3/@children.0/@children.1/@children.0/@children.0/@children.0/@children.2"
+            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3/@children.0/@children.1/@children.0/@children.0/@children.0/@children.3" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.3/@activity/@activity/@activity/@links/@children.2"/>
+            <bendpoints points="[25, 0, -61, 0]$[62, 0, -24, 0]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3/@children.0/@children.1/@children.0/@children.0/@children.0/@children.3"
+            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3/@children.0/@children.1/@children.0/@children.0/@children.0/@children.1" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.3/@activity/@activity/@activity/@links/@children.3"/>
+            <bendpoints points="[25, -6, -230, 0]$[231, 0, -24, 6]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
     </notation:Diagram>
     <tibex:NamespaceRegistry enabled="true">
@@ -1273,6 +1341,7 @@
             name="_errorOptional" sca-bpel:internal="true"/>
         <bpws:variable element="ns10:SleepInputSchema"
             name="SleepFx-input" sca-bpel:internal="true"/>
+        <bpws:variable name="GetCorrelationId" sca-bpel:internal="true" type="xsd:string"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -1380,8 +1449,7 @@
                     </tibex:config>
                 </tibex:activityExtension>
             </bpws:extensionActivity>
-            <bpws:scope name="RetryFx" tibex:group="repeatOnError"
-                tibex:indexOriginalName="i" tibex:indexToGlobal="false" tibex:xpdlId="3e5998b4-e528-45c6-8177-e5470075c83f">
+            <bpws:scope name="RetryFx" tibex:group="repeatOnError" tibex:xpdlId="3e5998b4-e528-45c6-8177-e5470075c83f">
                 <bpws:targets>
                     <bpws:target linkName="StartToRetryFx"/>
                 </bpws:targets>
@@ -1438,8 +1506,10 @@
                         <bpws:flow name="flow1">
                             <bpws:links>
                                 <bpws:link name="GroupStartToSleepFx" tibex:linkType="SUCCESS"/>
-                                <bpws:link name="SleepFxToLog" tibex:linkType="SUCCESS"/>
                                 <bpws:link name="LogToGetFxRate" tibex:linkType="SUCCESS"/>
+                                <bpws:link
+                                    name="SleepFxToGetCorrelationId" tibex:linkType="SUCCESS"/>
+                                <bpws:link name="GetCorrelationIdToLog" tibex:linkType="SUCCESS"/>
                             </bpws:links>
                             <bpws:empty name="GroupStart"
                                 tibex:group="groupStart" tibex:xpdlId="e722e8f4-d66c-4af0-aede-2745e4c53e26">
@@ -1498,14 +1568,14 @@
                                     inputVariable="Log-input" name="Log"
                                     tibex:xpdlId="33b599fa-3a1f-4e7d-b3e8-b964ab2253e1" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                                     <bpws:targets>
-                                    <bpws:target linkName="SleepFxToLog"/>
+                                    <bpws:target linkName="GetCorrelationIdToLog"/>
                                     </bpws:targets>
                                     <bpws:sources>
                                     <bpws:source linkName="LogToGetFxRate"/>
                                     </bpws:sources>
                                     <tibex:inputBindings>
                                     <tibex:inputBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns2=&quot;http://www.tibco.com/pe/WriteToLogActivitySchema&quot; xmlns:tns1=&quot;http://www.example.org/FxRate&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;Start&quot;/>&lt;xsl:param name=&quot;i&quot;/>&lt;xsl:template name=&quot;Log-input&quot; match=&quot;/&quot;>&lt;tns2:ActivityInput>&lt;message>&lt;xsl:value-of select=&quot;concat('Frankfurter: tentativo ', string($i), ' base=', $Start/tns1:currency)&quot;/>&lt;/message>&lt;/tns2:ActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns2=&quot;http://www.tibco.com/pe/WriteToLogActivitySchema&quot; xmlns:tns1=&quot;http://www.example.org/FxRate&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;Start&quot;/>&lt;xsl:param name=&quot;i&quot;/>&lt;xsl:param name=&quot;GetCorrelationId&quot;/>&lt;xsl:template name=&quot;Log-input&quot; match=&quot;/&quot;>&lt;tns2:ActivityInput>&lt;message>&lt;xsl:value-of select=&quot;concat('[', $GetCorrelationId, '] Frankfurter: tentativo ', string($i), ' base=', $Start/tns1:currency)&quot;/>&lt;/message>&lt;/tns2:ActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                     </tibex:inputBindings>
                                     <tibex:config>
                                     <bwext:BWActivity
@@ -1537,7 +1607,7 @@
                                     <bpws:target linkName="GroupStartToSleepFx"/>
                                     </bpws:targets>
                                     <bpws:sources>
-                                    <bpws:source linkName="SleepFxToLog"/>
+                                    <bpws:source linkName="SleepFxToGetCorrelationId"/>
                                     </bpws:sources>
                                     <tibex:inputBindings>
                                     <tibex:inputBinding
@@ -1559,6 +1629,23 @@
                                     </bwext:BWActivity>
                                     </tibex:config>
                                 </tibex:activityExtension>
+                            </bpws:extensionActivity>
+                            <bpws:extensionActivity>
+                                <tibex:extActivity
+                                    name="GetCorrelationId"
+                                    outputVariable="GetCorrelationId"
+                                    tibex:xpdlId="65aec98e-023e-4387-884f-4ff034149cf8"
+                                    type="bw.internal.getSharedVariable" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                                    <bpws:targets>
+                                    <bpws:target linkName="SleepFxToGetCorrelationId"/>
+                                    </bpws:targets>
+                                    <bpws:sources>
+                                    <bpws:source linkName="GetCorrelationIdToLog"/>
+                                    </bpws:sources>
+                                    <tibex:GetSharedVariable
+                                    inline="true"
+                                    variableName="correlationId" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"/>
+                                </tibex:extActivity>
                             </bpws:extensionActivity>
                         </bpws:flow>
                     </bpws:scope>

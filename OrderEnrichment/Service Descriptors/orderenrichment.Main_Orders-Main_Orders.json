@@ -24,12 +24,24 @@
             "$ref" : "#/definitions/orders"
           },
           "required" : true
+        }, {
+          "name" : "X-Correlation-Id",
+          "in" : "header",
+          "description" : "",
+          "type" : "string",
+          "required" : false
         } ],
         "responses" : {
           "200" : {
             "description" : "a OrdersResponse to be returned",
             "schema" : {
               "$ref" : "#/definitions/OrdersResponse"
+            },
+            "headers" : {
+              "X-Correlation-Id" : {
+                "description" : "",
+                "type" : "string"
+              }
             }
           },
           "400" : {

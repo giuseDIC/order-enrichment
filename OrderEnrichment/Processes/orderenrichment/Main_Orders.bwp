@@ -15,8 +15,14 @@
     xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca/200912"
     xmlns:sca-bpel="http://docs.oasis-open.org/ns/opencsa/sca-bpel/200801"
     xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"
-    xmlns:tibprop="http://ns.tibco.com/bw/property" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    xmlns:tibprop="http://ns.tibco.com/bw/property"
+    xmlns:tns="http://xmlns.example.com/Main_Orders/headerParameters" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <tibex:VariableDescriptor type="MemorySaving">
+        <task name="pick">
+            <endingVariables>
+                <variable>SetCorrelationId</variable>
+            </endingVariables>
+        </task>
         <task name="postOut">
             <endingVariables>
                 <variable>postOut-input</variable>
@@ -49,6 +55,11 @@
         <task name="Throw">
             <endingVariables>
                 <variable>Throw-input</variable>
+            </endingVariables>
+        </task>
+        <task name="SetCorrelationId">
+            <endingVariables>
+                <variable>SetCorrelationId-input</variable>
             </endingVariables>
         </task>
         <task name="flow2">
@@ -267,6 +278,8 @@
             xmlns:extns1="http://tns.tibco.com/bw/REST"
             xmlns:extns2="http://www.example.org/orders"
             xmlns:extns3="http://www.example.org/ErrorResponse"
+            xmlns:extns4="http://xmlns.example.com/Main_Orders/parameters"
+            xmlns:extns5="http://xmlns.example.com/Main_Orders/headerParameters"
             xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
             xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"
             xmlns:tns="http://xmlns.example.com/20261007172436PLT"
@@ -279,29 +292,41 @@
             <wsdl:import namespace="http://tns.tibco.com/bw/REST"/>
             <wsdl:import namespace="http://www.example.org/orders"/>
             <wsdl:import namespace="http://www.example.org/ErrorResponse"/>
+            <wsdl:import namespace="http://xmlns.example.com/Main_Orders/parameters"/>
+            <wsdl:import namespace="http://xmlns.example.com/Main_Orders/headerParameters"/>
             <wsdl:message name="postRequest">
                 <wsdl:part element="extns2:orders" name="item" tibex:hasMultipleNamespaces="false"/>
-                <wsdl:part element="extns1:httpHeaders"
+                <wsdl:part element="extns5:ordersPostHeader"
                     name="httpHeaders" tibex:source="bw.rest"/>
             </wsdl:message>
             <wsdl:message name="postResponse">
                 <wsdl:part element="extns:OrdersResponse" name="item" tibex:hasMultipleNamespaces="false"/>
+                <wsdl:part element="extns5:ordersPostResponseHeader"
+                    name="httpResponseHeaders" tibex:source="bw.rest"/>
             </wsdl:message>
             <wsdl:message name="post4XXFaultMessage">
                 <wsdl:part element="extns1:client4XXError" name="clientError"/>
+                <wsdl:part element="extns5:ordersPostResponseHeader"
+                    name="httpFaultHeaders" tibex:source="bw.rest"/>
             </wsdl:message>
             <wsdl:message name="post5XXFaultMessage">
                 <wsdl:part element="extns1:server5XXError" name="serverError"/>
+                <wsdl:part element="extns5:ordersPostResponseHeader"
+                    name="httpFaultHeaders" tibex:source="bw.rest"/>
             </wsdl:message>
             <wsdl:message name="post400FaultMessage">
                 <wsdl:part element="extns3:ErrorResponse"
                     name="client-400-BadRequest"
                     tibex:reasonPhrase="Bad Request" tibex:statusCode="400"/>
+                <wsdl:part element="extns5:ordersPostResponseHeader"
+                    name="httpFaultHeaders" tibex:source="bw.rest"/>
             </wsdl:message>
             <wsdl:message name="post502FaultMessage">
                 <wsdl:part element="extns3:ErrorResponse"
                     name="server-502-BadGateway"
                     tibex:reasonPhrase="Bad Gateway" tibex:statusCode="502"/>
+                <wsdl:part element="extns5:ordersPostResponseHeader"
+                    name="httpFaultHeaders" tibex:source="bw.rest"/>
             </wsdl:message>
             <wsdl:portType name="orders" tibex:bw.rest.apipath="/orders"
                 tibex:bw.rest.basepath="Main_Orders"
@@ -838,6 +863,62 @@
                                     xsi:type="notation:Bounds" y="90"/>
                                     </children>
 
+                                    <children type="4002 bw.internal.setSharedVariable">
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.9"/>
+
+                                    <layoutConstraint
+                                    height="40"
+                                    width="40"
+                                    x="-26"
+                                    xsi:type="notation:Bounds" y="90"/>
+                                    </children>
+
                                     <styles xsi:type="notation:DrawerStyle"/>
 
                                     <styles xsi:type="notation:SortingStyle"/>
@@ -1283,17 +1364,6 @@
         <styles xsi:type="notation:DiagramStyle"/>
         <element href="//0"/>
         <edges
-            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.0/@children.0"
-            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1" type="4006">
-            <children type="6002">
-                <layoutConstraint xsi:type="notation:Location" y="40"/>
-            </children>
-            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
-            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.0"/>
-            <bendpoints points="[12, -3, -90, 15]$[78, -14, -24, 4]" xsi:type="notation:RelativeBendpoints"/>
-        </edges>
-        <edges
             source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1"
             target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2" type="4006">
             <children type="6002">
@@ -1301,7 +1371,7 @@
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.1"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.0"/>
             <bendpoints points="[-3, 25, 9, -78]$[-9, 79, 3, -24]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
@@ -1312,7 +1382,7 @@
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.2"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.1"/>
             <bendpoints points="[25, -2, -108, 9]$[109, -9, -24, 2]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
@@ -1334,7 +1404,7 @@
             </children>
             <styles lineColor="255" xsi:type="notation:ConnectorStyle"/>
             <styles fontColor="255" fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.3"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.2"/>
             <bendpoints points="[1, 25, 0, -86]$[0, 87, -1, -24]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
@@ -1356,7 +1426,7 @@
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.4"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.3"/>
             <bendpoints points="[25, -13, -113, 63]$[114, -63, -24, 13]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
@@ -1367,7 +1437,7 @@
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.5"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.4"/>
             <bendpoints points="[25, 14, -75, -43]$[76, 43, -24, -14]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
@@ -1378,7 +1448,7 @@
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.6"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.5"/>
             <bendpoints points="[25, -16, -65, 41]$[66, -41, -24, 16]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
@@ -1389,8 +1459,30 @@
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.7"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.6"/>
             <bendpoints points="[25, -1, -145, 0]$[146, 0, -24, 1]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.0/@children.0"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.7" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.7"/>
+            <bendpoints points="[12, 7, -72, 0]$[60, 0, -24, -7]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.7"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.8"/>
+            <bendpoints points="[25, 15, -62, -40]$[63, 40, -24, -15]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
     </notation:Diagram>
     <tibex:NamespaceRegistry enabled="true">
@@ -1406,6 +1498,8 @@
         <tibex:namespaceItem
             namespace="http://www.example.org/DeliveryDate" prefix="tns4"/>
         <tibex:namespaceItem namespace="http://www.example.org/FxRate" prefix="tns5"/>
+        <tibex:namespaceItem
+            namespace="http://xmlns.example.com/Main_Orders/headerParameters" prefix="tns6"/>
     </tibex:NamespaceRegistry>
     <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://www.example.org/OrdersResponse"/>
     <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://tns.tibco.com/bw/REST"/>
@@ -1413,6 +1507,8 @@
     <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://www.example.org/ErrorResponse"/>
     <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://www.example.org/DeliveryDate"/>
     <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://www.example.org/FxRate"/>
+    <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://xmlns.example.com/Main_Orders/parameters"/>
+    <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://xmlns.example.com/Main_Orders/headerParameters"/>
     <bpws:partnerLinks>
         <bpws:partnerLink myRole="use" name="orders"
             partnerLinkType="ns:partnerLinkType" sca-bpel:ignore="false" sca-bpel:service="orders"/>
@@ -1453,6 +1549,9 @@
         <bpws:variable name="FaultName" sca-bpel:internal="true" type="xsd:string"/>
         <bpws:variable element="ns0:OptionalErrorReport"
             name="_errorOptional" sca-bpel:internal="true"/>
+        <bpws:variable name="SetCorrelationId-input"
+            sca-bpel:internal="true" type="xsd:string"/>
+        <bpws:variable name="SetCorrelationId" sca-bpel:internal="true" type="xsd:string"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -1512,7 +1611,7 @@
                                     </bpws:sources>
                                     <tibex:inputBindings>
                                     <tibex:inputBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/ErrorResponse&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;_error_callFxRate&quot;/>&lt;xsl:template name=&quot;BuildFxError-input&quot; match=&quot;/&quot;>&lt;tns:ErrorResponse>&lt;tns:code>&lt;xsl:value-of select=&quot;$_error_callFxRate/tns:ErrorResponse/tns:code&quot;/>&lt;/tns:code>&lt;tns:message>&lt;xsl:value-of select=&quot;$_error_callFxRate/tns:ErrorResponse/tns:message&quot;/>&lt;/tns:message>&lt;/tns:ErrorResponse>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/ErrorResponse&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;_error_callFxRate&quot;/>&lt;xsl:param name=&quot;SetCorrelationId&quot;/>&lt;xsl:template name=&quot;BuildFxError-input&quot; match=&quot;/&quot;>&lt;tns:ErrorResponse>&lt;tns:code>&lt;xsl:value-of select=&quot;$_error_callFxRate/tns:ErrorResponse/tns:code&quot;/>&lt;/tns:code>&lt;tns:message>&lt;xsl:value-of select=&quot;$_error_callFxRate/tns:ErrorResponse/tns:message&quot;/>&lt;/tns:message>&lt;tns:correlationId>&lt;xsl:value-of select=&quot;$SetCorrelationId&quot;/>&lt;/tns:correlationId>&lt;/tns:ErrorResponse>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                     </tibex:inputBindings>
                                     <tibex:config>
                                     <bwext:BWActivity
@@ -1542,10 +1641,12 @@
                                     portType="ns:orders"
                                     tibex:xpdlId="a316bc15-5f4b-4ac6-b01c-8a9b5be760cf" variable="postFxError-input">
                                     <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns="http://www.example.org/ErrorResponse" xmlns:tns1="http://xmlns.example.com/20261007172436PLT" version="2.0"&gt;&lt;xsl:param name="BuildFxError"/&gt;&lt;xsl:template name="postFxError-input" match="/"&gt;&lt;tns1:post400FaultMessage&gt;&lt;client-400-BadRequest&gt;&lt;tns:ErrorResponse&gt;&lt;tns:code&gt;&lt;xsl:value-of select="$BuildFxError/tns:code"/&gt;&lt;/tns:code&gt;&lt;tns:message&gt;&lt;xsl:value-of select="$BuildFxError/tns:message"/&gt;&lt;/tns:message&gt;&lt;/tns:ErrorResponse&gt;&lt;/client-400-BadRequest&gt;&lt;/tns1:post400FaultMessage&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns="http://www.example.org/ErrorResponse" xmlns:tns1="http://xmlns.example.com/20261007172436PLT" xmlns:tns6="http://xmlns.example.com/Main_Orders/headerParameters" version="2.0"&gt;&lt;xsl:param name="BuildFxError"/&gt;&lt;xsl:param name="SetCorrelationId"/&gt;&lt;xsl:template name="postFxError-input" match="/"&gt;&lt;tns1:post400FaultMessage&gt;&lt;client-400-BadRequest&gt;&lt;tns:ErrorResponse&gt;&lt;tns:code&gt;&lt;xsl:value-of select="$BuildFxError/tns:code"/&gt;&lt;/tns:code&gt;&lt;tns:message&gt;&lt;xsl:value-of select="$BuildFxError/tns:message"/&gt;&lt;/tns:message&gt;&lt;tns:correlationId&gt;&lt;xsl:value-of select="$SetCorrelationId"/&gt;&lt;/tns:correlationId&gt;&lt;/tns:ErrorResponse&gt;&lt;/client-400-BadRequest&gt;&lt;httpFaultHeaders&gt;&lt;tns6:ordersPostResponseHeader&gt;&lt;X-Correlation-Id&gt;&lt;xsl:value-of select="$SetCorrelationId"/&gt;&lt;/X-Correlation-Id&gt;&lt;/tns6:ordersPostResponseHeader&gt;&lt;/httpFaultHeaders&gt;&lt;/tns1:post400FaultMessage&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
                                     <tibex:inputBindings>
                                     <tibex:partBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/ErrorResponse&quot; xmlns:tns1=&quot;http://xmlns.example.com/20261007172436PLT&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;BuildFxError&quot;/>&#xa;    &lt;xsl:template name=&quot;postFxError-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns:ErrorResponse>&#xa;            &lt;tns:code>&#xa;                &lt;xsl:value-of select=&quot;$BuildFxError/tns:code&quot;/>&#xa;            &lt;/tns:code>&#xa;            &lt;tns:message>&#xa;                &lt;xsl:value-of select=&quot;$BuildFxError/tns:message&quot;/>&#xa;            &lt;/tns:message>&#xa;        &lt;/tns:ErrorResponse>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/ErrorResponse&quot; xmlns:tns1=&quot;http://xmlns.example.com/20261007172436PLT&quot; xmlns:tns6=&quot;http://xmlns.example.com/Main_Orders/headerParameters&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;BuildFxError&quot;/>&#xa;    &lt;xsl:param name=&quot;SetCorrelationId&quot;/>&#xa;    &lt;xsl:template name=&quot;postFxError-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns:ErrorResponse>&#xa;            &lt;tns:code>&#xa;                &lt;xsl:value-of select=&quot;$BuildFxError/tns:code&quot;/>&#xa;            &lt;/tns:code>&#xa;            &lt;tns:message>&#xa;                &lt;xsl:value-of select=&quot;$BuildFxError/tns:message&quot;/>&#xa;            &lt;/tns:message>&#xa;            &lt;tns:correlationId>&#xa;                &lt;xsl:value-of select=&quot;$SetCorrelationId&quot;/>&#xa;            &lt;/tns:correlationId>&#xa;        &lt;/tns:ErrorResponse>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    <tibex:partBinding
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/ErrorResponse&quot; xmlns:tns1=&quot;http://xmlns.example.com/20261007172436PLT&quot; xmlns:tns6=&quot;http://xmlns.example.com/Main_Orders/headerParameters&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;SetCorrelationId&quot;/>&#xa;    &lt;xsl:template name=&quot;postFxError-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns6:ordersPostResponseHeader>&#xa;            &lt;X-Correlation-Id>&#xa;                &lt;xsl:value-of select=&quot;$SetCorrelationId&quot;/>&#xa;            &lt;/X-Correlation-Id>&#xa;        &lt;/tns6:ordersPostResponseHeader>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                     </tibex:inputBindings>
                                     <bpws:targets>
                                     <bpws:target linkName="BuildFxErrorTopostFxError"/>
@@ -1559,10 +1660,12 @@
                                     portType="ns:orders"
                                     tibex:xpdlId="6cfe6eca-6c63-4c48-a27b-107c6971a6e7" variable="PostFxError502-input">
                                     <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns="http://www.example.org/ErrorResponse" xmlns:tns1="http://xmlns.example.com/20261007172436PLT" version="2.0"&gt;&lt;xsl:param name="BuildFxError"/&gt;&lt;xsl:template name="PostFxError502-input" match="/"&gt;&lt;tns1:post502FaultMessage&gt;&lt;server-502-BadGateway&gt;&lt;tns:ErrorResponse&gt;&lt;tns:code&gt;&lt;xsl:value-of select="$BuildFxError/tns:code"/&gt;&lt;/tns:code&gt;&lt;tns:message&gt;&lt;xsl:value-of select="$BuildFxError/tns:message"/&gt;&lt;/tns:message&gt;&lt;/tns:ErrorResponse&gt;&lt;/server-502-BadGateway&gt;&lt;/tns1:post502FaultMessage&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns="http://www.example.org/ErrorResponse" xmlns:tns1="http://xmlns.example.com/20261007172436PLT" xmlns:tns6="http://xmlns.example.com/Main_Orders/headerParameters" version="2.0"&gt;&lt;xsl:param name="BuildFxError"/&gt;&lt;xsl:param name="SetCorrelationId"/&gt;&lt;xsl:template name="PostFxError502-input" match="/"&gt;&lt;tns1:post502FaultMessage&gt;&lt;server-502-BadGateway&gt;&lt;tns:ErrorResponse&gt;&lt;tns:code&gt;&lt;xsl:value-of select="$BuildFxError/tns:code"/&gt;&lt;/tns:code&gt;&lt;tns:message&gt;&lt;xsl:value-of select="$BuildFxError/tns:message"/&gt;&lt;/tns:message&gt;&lt;tns:correlationId&gt;&lt;xsl:value-of select="$SetCorrelationId"/&gt;&lt;/tns:correlationId&gt;&lt;/tns:ErrorResponse&gt;&lt;/server-502-BadGateway&gt;&lt;httpFaultHeaders&gt;&lt;tns6:ordersPostResponseHeader&gt;&lt;X-Correlation-Id&gt;&lt;xsl:value-of select="$SetCorrelationId"/&gt;&lt;/X-Correlation-Id&gt;&lt;/tns6:ordersPostResponseHeader&gt;&lt;/httpFaultHeaders&gt;&lt;/tns1:post502FaultMessage&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
                                     <tibex:inputBindings>
                                     <tibex:partBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/ErrorResponse&quot; xmlns:tns1=&quot;http://xmlns.example.com/20261007172436PLT&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;BuildFxError&quot;/>&#xa;    &lt;xsl:template name=&quot;PostFxError502-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns:ErrorResponse>&#xa;            &lt;tns:code>&#xa;                &lt;xsl:value-of select=&quot;$BuildFxError/tns:code&quot;/>&#xa;            &lt;/tns:code>&#xa;            &lt;tns:message>&#xa;                &lt;xsl:value-of select=&quot;$BuildFxError/tns:message&quot;/>&#xa;            &lt;/tns:message>&#xa;        &lt;/tns:ErrorResponse>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/ErrorResponse&quot; xmlns:tns1=&quot;http://xmlns.example.com/20261007172436PLT&quot; xmlns:tns6=&quot;http://xmlns.example.com/Main_Orders/headerParameters&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;BuildFxError&quot;/>&#xa;    &lt;xsl:param name=&quot;SetCorrelationId&quot;/>&#xa;    &lt;xsl:template name=&quot;PostFxError502-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns:ErrorResponse>&#xa;            &lt;tns:code>&#xa;                &lt;xsl:value-of select=&quot;$BuildFxError/tns:code&quot;/>&#xa;            &lt;/tns:code>&#xa;            &lt;tns:message>&#xa;                &lt;xsl:value-of select=&quot;$BuildFxError/tns:message&quot;/>&#xa;            &lt;/tns:message>&#xa;            &lt;tns:correlationId>&#xa;                &lt;xsl:value-of select=&quot;$SetCorrelationId&quot;/>&#xa;            &lt;/tns:correlationId>&#xa;        &lt;/tns:ErrorResponse>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    <tibex:partBinding
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/ErrorResponse&quot; xmlns:tns1=&quot;http://xmlns.example.com/20261007172436PLT&quot; xmlns:tns6=&quot;http://xmlns.example.com/Main_Orders/headerParameters&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;SetCorrelationId&quot;/>&#xa;    &lt;xsl:template name=&quot;PostFxError502-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns6:ordersPostResponseHeader>&#xa;            &lt;X-Correlation-Id>&#xa;                &lt;xsl:value-of select=&quot;$SetCorrelationId&quot;/>&#xa;            &lt;/X-Correlation-Id>&#xa;        &lt;/tns6:ordersPostResponseHeader>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                     </tibex:inputBindings>
                                     <bpws:targets>
                                     <bpws:target linkName="BuildFxErrorToPostFxError502"/>
@@ -1575,8 +1678,6 @@
                         <bpws:flow name="flow1">
                             <bpws:links>
                                 <bpws:link
-                                    name="OnMessageStartToCallProcess" tibex:linkType="SUCCESS"/>
-                                <bpws:link
                                     name="CallValidateOrderToPostError" tibex:linkType="SUCCESSWITHCONDITION"/>
                                 <bpws:link name="CallValidateOrderToc" tibex:linkType="SUCCESS"/>
                                 <bpws:link name="callFxRateToThrow" tibex:linkType="ERROR"/>
@@ -1586,11 +1687,15 @@
                                     name="CallDeliveryDateToEmpty" tibex:linkType="SUCCESS"/>
                                 <bpws:link name="callFxRateToEmpty" tibex:linkType="SUCCESS"/>
                                 <bpws:link name="EmptyTopostOut" tibex:linkType="SUCCESS"/>
+                                <bpws:link
+                                    name="OnMessageStartToSetSharedVariable" tibex:linkType="SUCCESS"/>
+                                <bpws:link
+                                    name="SetSharedVariableToCallValidateOrder" tibex:linkType="SUCCESS"/>
                             </bpws:links>
                             <bpws:empty name="OnMessageStart"
                                 tibex:constructor="onMessageStart" tibex:xpdlId="58079a8d-4c4f-4ff8-bae6-e7d81ba8fb26">
                                 <bpws:sources>
-                                    <bpws:source linkName="OnMessageStartToCallProcess"/>
+                                    <bpws:source linkName="OnMessageStartToSetSharedVariable"/>
                                 </bpws:sources>
                             </bpws:empty>
                             <bpws:empty name="OnMessageEnd"
@@ -1601,10 +1706,61 @@
                                 tibex:xpdlId="8b98d5e6-053e-4565-b077-a3626cca7b6d" variable="postOut-input">
                                 <tibex:inputBindings>
                                     <tibex:partBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://xmlns.example.com/20261007172436PLT&quot; xmlns:tns3=&quot;http://www.example.org/orders&quot; xmlns:tns2=&quot;http://www.example.org/OrdersResponse&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:tns5=&quot;http://www.example.org/FxRate&quot; xmlns:tns4=&quot;http://www.example.org/DeliveryDate&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;post.item&quot;/>&#xa;    &lt;xsl:param name=&quot;callFxRate&quot;/>&#xa;    &lt;xsl:param name=&quot;CallDeliveryDate&quot;/>&#xa;    &lt;xsl:template name=&quot;postOut-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns2:OrdersResponse>&#xa;            &lt;tns2:orderId>&#xa;                &lt;xsl:value-of select=&quot;$post.item/tns3:orderId&quot;/>&#xa;            &lt;/tns2:orderId>&#xa;            &lt;tns2:currency>&#xa;                &lt;xsl:value-of select=&quot;$post.item/tns3:currency&quot;/>&#xa;            &lt;/tns2:currency>&#xa;            &lt;tns2:totalAmount>&#xa;                &lt;xsl:value-of select=&quot;round(sum(for $x in $post.item/tns3:items return $x/tns3:qty * $x/tns3:unitPrice) * 100) div 100&quot;/>&#xa;            &lt;/tns2:totalAmount>&#xa;            &lt;tns2:fxRate>&#xa;                &lt;xsl:value-of select=&quot;$callFxRate/tns5:fxRate&quot;/>&#xa;            &lt;/tns2:fxRate>&#xa;            &lt;tns2:totalEUR>&#xa;                &lt;xsl:value-of select=&quot;round(round(sum(for $x in $post.item/tns3:items return $x/tns3:qty * $x/tns3:unitPrice) * 100) div 100 * $callFxRate/tns5:fxRate * 100) div 100&quot;/>&#xa;            &lt;/tns2:totalEUR>&#xa;            &lt;tns2:requestedDeliveryDate>&#xa;                &lt;xsl:value-of select=&quot;xsd:date($post.item/tns3:requestedDeliveryDate)&quot;/>&#xa;            &lt;/tns2:requestedDeliveryDate>&#xa;            &lt;tns2:effectiveDeliveryDate>&#xa;                &lt;xsl:value-of select=&quot;$CallDeliveryDate/tns4:effectiveDeliveryDate&quot;/>&#xa;            &lt;/tns2:effectiveDeliveryDate>&#xa;            &lt;tns2:deliveryShiftReason>&#xa;                &lt;xsl:value-of select=&quot;$CallDeliveryDate/tns4:deliveryShiftReason&quot;/>&#xa;            &lt;/tns2:deliveryShiftReason>&#xa;            &lt;xsl:for-each select=&quot;$CallDeliveryDate/tns4:warnings&quot;>&#xa;                &lt;tns2:warnings>&#xa;                    &lt;xsl:value-of select=&quot;.&quot;/>&#xa;                &lt;/tns2:warnings>&#xa;            &lt;/xsl:for-each>&#xa;        &lt;/tns2:OrdersResponse>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://xmlns.example.com/20261007172436PLT&quot; xmlns:tns3=&quot;http://www.example.org/orders&quot; xmlns:tns2=&quot;http://www.example.org/OrdersResponse&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:tns5=&quot;http://www.example.org/FxRate&quot; xmlns:tns4=&quot;http://www.example.org/DeliveryDate&quot; xmlns:tns6=&quot;http://xmlns.example.com/Main_Orders/headerParameters&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;post.item&quot;/>&#xa;    &lt;xsl:param name=&quot;callFxRate&quot;/>&#xa;    &lt;xsl:param name=&quot;CallDeliveryDate&quot;/>&#xa;    &lt;xsl:template name=&quot;postOut-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns2:OrdersResponse>&#xa;            &lt;tns2:orderId>&#xa;                &lt;xsl:value-of select=&quot;$post.item/tns3:orderId&quot;/>&#xa;            &lt;/tns2:orderId>&#xa;            &lt;tns2:currency>&#xa;                &lt;xsl:value-of select=&quot;$post.item/tns3:currency&quot;/>&#xa;            &lt;/tns2:currency>&#xa;            &lt;tns2:totalAmount>&#xa;                &lt;xsl:value-of select=&quot;round(sum(for $x in $post.item/tns3:items return $x/tns3:qty * $x/tns3:unitPrice) * 100) div 100&quot;/>&#xa;            &lt;/tns2:totalAmount>&#xa;            &lt;tns2:fxRate>&#xa;                &lt;xsl:value-of select=&quot;$callFxRate/tns5:fxRate&quot;/>&#xa;            &lt;/tns2:fxRate>&#xa;            &lt;tns2:totalEUR>&#xa;                &lt;xsl:value-of select=&quot;round(round(sum(for $x in $post.item/tns3:items return $x/tns3:qty * $x/tns3:unitPrice) * 100) div 100 * $callFxRate/tns5:fxRate * 100) div 100&quot;/>&#xa;            &lt;/tns2:totalEUR>&#xa;            &lt;tns2:requestedDeliveryDate>&#xa;                &lt;xsl:value-of select=&quot;xsd:date($post.item/tns3:requestedDeliveryDate)&quot;/>&#xa;            &lt;/tns2:requestedDeliveryDate>&#xa;            &lt;tns2:effectiveDeliveryDate>&#xa;                &lt;xsl:value-of select=&quot;$CallDeliveryDate/tns4:effectiveDeliveryDate&quot;/>&#xa;            &lt;/tns2:effectiveDeliveryDate>&#xa;            &lt;tns2:deliveryShiftReason>&#xa;                &lt;xsl:value-of select=&quot;$CallDeliveryDate/tns4:deliveryShiftReason&quot;/>&#xa;            &lt;/tns2:deliveryShiftReason>&#xa;            &lt;xsl:for-each select=&quot;$CallDeliveryDate/tns4:warnings&quot;>&#xa;                &lt;tns2:warnings>&#xa;                    &lt;xsl:value-of select=&quot;.&quot;/>&#xa;                &lt;/tns2:warnings>&#xa;            &lt;/xsl:for-each>&#xa;        &lt;/tns2:OrdersResponse>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    <tibex:partBinding
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://xmlns.example.com/20261007172436PLT&quot; xmlns:tns3=&quot;http://www.example.org/orders&quot; xmlns:tns2=&quot;http://www.example.org/OrdersResponse&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:tns5=&quot;http://www.example.org/FxRate&quot; xmlns:tns4=&quot;http://www.example.org/DeliveryDate&quot; xmlns:tns6=&quot;http://xmlns.example.com/Main_Orders/headerParameters&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;SetCorrelationId&quot;/>&#xa;    &lt;xsl:template name=&quot;postOut-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns6:ordersPostResponseHeader>&#xa;            &lt;X-Correlation-Id>&#xa;                &lt;xsl:value-of select=&quot;$SetCorrelationId&quot;/>&#xa;            &lt;/X-Correlation-Id>&#xa;        &lt;/tns6:ordersPostResponseHeader>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                 </tibex:inputBindings>
                                 <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns1="http://xmlns.example.com/20261007172436PLT" xmlns:tns3="http://www.example.org/orders" xmlns:tns2="http://www.example.org/OrdersResponse" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns5="http://www.example.org/FxRate" xmlns:tns4="http://www.example.org/DeliveryDate" version="2.0"&gt;&lt;xsl:param name="post"/&gt;&lt;xsl:param name="callFxRate"/&gt;&lt;xsl:param name="CallDeliveryDate"/&gt;&lt;xsl:template name="postOut-input" match="/"&gt;&lt;tns1:postResponse&gt;&lt;item&gt;&lt;tns2:OrdersResponse&gt;&lt;tns2:orderId&gt;&lt;xsl:value-of select="$post/item/tns3:orders/tns3:orderId"/&gt;&lt;/tns2:orderId&gt;&lt;tns2:currency&gt;&lt;xsl:value-of select="$post/item/tns3:orders/tns3:currency"/&gt;&lt;/tns2:currency&gt;&lt;tns2:totalAmount&gt;&lt;xsl:value-of select="round(sum(for $x in $post/item/tns3:orders/tns3:items return $x/tns3:qty * $x/tns3:unitPrice) * 100) div 100"/&gt;&lt;/tns2:totalAmount&gt;&lt;tns2:fxRate&gt;&lt;xsl:value-of select="$callFxRate/tns5:fxRate"/&gt;&lt;/tns2:fxRate&gt;&lt;tns2:totalEUR&gt;&lt;xsl:value-of select="round(round(sum(for $x in $post/item/tns3:orders/tns3:items return $x/tns3:qty * $x/tns3:unitPrice) * 100) div 100 * $callFxRate/tns5:fxRate * 100) div 100"/&gt;&lt;/tns2:totalEUR&gt;&lt;tns2:requestedDeliveryDate&gt;&lt;xsl:value-of select="xsd:date($post/item/tns3:orders/tns3:requestedDeliveryDate)"/&gt;&lt;/tns2:requestedDeliveryDate&gt;&lt;tns2:effectiveDeliveryDate&gt;&lt;xsl:value-of select="$CallDeliveryDate/tns4:effectiveDeliveryDate"/&gt;&lt;/tns2:effectiveDeliveryDate&gt;&lt;tns2:deliveryShiftReason&gt;&lt;xsl:value-of select="$CallDeliveryDate/tns4:deliveryShiftReason"/&gt;&lt;/tns2:deliveryShiftReason&gt;&lt;xsl:for-each select="$CallDeliveryDate/tns4:warnings"&gt;&lt;tns2:warnings&gt;&lt;xsl:value-of select="."/&gt;&lt;/tns2:warnings&gt;&lt;/xsl:for-each&gt;&lt;/tns2:OrdersResponse&gt;&lt;/item&gt;&lt;/tns1:postResponse&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns1="http://xmlns.example.com/20261007172436PLT" xmlns:tns3="http://www.example.org/orders" xmlns:tns2="http://www.example.org/OrdersResponse" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns5="http://www.example.org/FxRate" xmlns:tns4="http://www.example.org/DeliveryDate" xmlns:tns6="http://xmlns.example.com/Main_Orders/headerParameters" version="2.0"&gt;
+    &lt;xsl:param name="post"/&gt;
+    &lt;xsl:param name="callFxRate"/&gt;
+    &lt;xsl:param name="CallDeliveryDate"/&gt;
+    &lt;xsl:param name="SetCorrelationId"/&gt;
+    &lt;xsl:template name="postOut-input" match="/"&gt;
+        &lt;tns1:postResponse&gt;
+            &lt;item&gt;
+                &lt;tns2:OrdersResponse&gt;
+                    &lt;tns2:orderId&gt;
+                        &lt;xsl:value-of select="$post/item/tns3:orders/tns3:orderId"/&gt;
+                    &lt;/tns2:orderId&gt;
+                    &lt;tns2:currency&gt;
+                        &lt;xsl:value-of select="$post/item/tns3:orders/tns3:currency"/&gt;
+                    &lt;/tns2:currency&gt;
+                    &lt;tns2:totalAmount&gt;
+                        &lt;xsl:value-of select="round(sum(for $x in $post/item/tns3:orders/tns3:items return $x/tns3:qty * $x/tns3:unitPrice) * 100) div 100"/&gt;
+                    &lt;/tns2:totalAmount&gt;
+                    &lt;tns2:fxRate&gt;
+                        &lt;xsl:value-of select="$callFxRate/tns5:fxRate"/&gt;
+                    &lt;/tns2:fxRate&gt;
+                    &lt;tns2:totalEUR&gt;
+                        &lt;xsl:value-of select="round(round(sum(for $x in $post/item/tns3:orders/tns3:items return $x/tns3:qty * $x/tns3:unitPrice) * 100) div 100 * $callFxRate/tns5:fxRate * 100) div 100"/&gt;
+                    &lt;/tns2:totalEUR&gt;
+                    &lt;tns2:requestedDeliveryDate&gt;
+                        &lt;xsl:value-of select="xsd:date($post/item/tns3:orders/tns3:requestedDeliveryDate)"/&gt;
+                    &lt;/tns2:requestedDeliveryDate&gt;
+                    &lt;tns2:effectiveDeliveryDate&gt;
+                        &lt;xsl:value-of select="$CallDeliveryDate/tns4:effectiveDeliveryDate"/&gt;
+                    &lt;/tns2:effectiveDeliveryDate&gt;
+                    &lt;tns2:deliveryShiftReason&gt;
+                        &lt;xsl:value-of select="$CallDeliveryDate/tns4:deliveryShiftReason"/&gt;
+                    &lt;/tns2:deliveryShiftReason&gt;
+                    &lt;xsl:for-each select="$CallDeliveryDate/tns4:warnings"&gt;
+                        &lt;tns2:warnings&gt;
+                            &lt;xsl:value-of select="."/&gt;
+                        &lt;/tns2:warnings&gt;
+                    &lt;/xsl:for-each&gt;
+                &lt;/tns2:OrdersResponse&gt;
+            &lt;/item&gt;
+            &lt;httpResponseHeaders&gt;
+                &lt;tns6:ordersPostResponseHeader&gt;
+                    &lt;X-Correlation-Id&gt;
+                        &lt;xsl:value-of select="$SetCorrelationId"/&gt;
+                    &lt;/X-Correlation-Id&gt;
+                &lt;/tns6:ordersPostResponseHeader&gt;
+            &lt;/httpResponseHeaders&gt;
+        &lt;/tns1:postResponse&gt;
+    &lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
                                 <bpws:targets>
                                     <bpws:target linkName="EmptyTopostOut"/>
                                 </bpws:targets>
@@ -1619,7 +1775,7 @@
                                     tibex:xpdlId="2b327cd2-c8cd-4924-845b-4cfb981c7389"
                                     type="bw.generalactivities.callprocess" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                                     <bpws:targets>
-                                    <bpws:target linkName="OnMessageStartToCallProcess"/>
+                                    <bpws:target linkName="SetSharedVariableToCallValidateOrder"/>
                                     </bpws:targets>
                                     <bpws:sources>
                                     <bpws:source linkName="CallValidateOrderToPostError">
@@ -1648,10 +1804,12 @@
                                 portType="ns:orders"
                                 tibex:xpdlId="deab20c2-35e6-4fec-9d5f-6c60e71c83da" variable="postError-input">
                                 <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns="http://www.example.org/ErrorResponse" xmlns:tns1="http://xmlns.example.com/20261007172436PLT" version="2.0"&gt;&lt;xsl:param name="CallValidateOrder"/&gt;&lt;xsl:template name="postError-input" match="/"&gt;&lt;tns1:post400FaultMessage&gt;&lt;client-400-BadRequest&gt;&lt;tns:ErrorResponse&gt;&lt;tns:code&gt;&lt;xsl:value-of select="$CallValidateOrder/tns:code"/&gt;&lt;/tns:code&gt;&lt;tns:message&gt;&lt;xsl:value-of select="$CallValidateOrder/tns:message"/&gt;&lt;/tns:message&gt;&lt;xsl:copy-of select="$CallValidateOrder/tns:details"/&gt;&lt;/tns:ErrorResponse&gt;&lt;/client-400-BadRequest&gt;&lt;/tns1:post400FaultMessage&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns="http://www.example.org/ErrorResponse" xmlns:tns1="http://xmlns.example.com/20261007172436PLT" xmlns:tns6="http://xmlns.example.com/Main_Orders/headerParameters" version="2.0"&gt;&lt;xsl:param name="CallValidateOrder"/&gt;&lt;xsl:param name="SetCorrelationId"/&gt;&lt;xsl:template name="postError-input" match="/"&gt;&lt;tns1:post400FaultMessage&gt;&lt;client-400-BadRequest&gt;&lt;tns:ErrorResponse&gt;&lt;tns:code&gt;&lt;xsl:value-of select="$CallValidateOrder/tns:code"/&gt;&lt;/tns:code&gt;&lt;tns:message&gt;&lt;xsl:value-of select="$CallValidateOrder/tns:message"/&gt;&lt;/tns:message&gt;&lt;xsl:copy-of select="$CallValidateOrder/tns:details"/&gt;&lt;tns:correlationId&gt;&lt;xsl:value-of select="$SetCorrelationId"/&gt;&lt;/tns:correlationId&gt;&lt;/tns:ErrorResponse&gt;&lt;/client-400-BadRequest&gt;&lt;httpFaultHeaders&gt;&lt;tns6:ordersPostResponseHeader&gt;&lt;X-Correlation-Id&gt;&lt;xsl:value-of select="$SetCorrelationId"/&gt;&lt;/X-Correlation-Id&gt;&lt;/tns6:ordersPostResponseHeader&gt;&lt;/httpFaultHeaders&gt;&lt;/tns1:post400FaultMessage&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
                                 <tibex:inputBindings>
                                     <tibex:partBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/ErrorResponse&quot; xmlns:tns1=&quot;http://xmlns.example.com/20261007172436PLT&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;CallValidateOrder&quot;/>&#xa;    &lt;xsl:template name=&quot;postError-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns:ErrorResponse>&#xa;            &lt;tns:code>&#xa;                &lt;xsl:value-of select=&quot;$CallValidateOrder/tns:code&quot;/>&#xa;            &lt;/tns:code>&#xa;            &lt;tns:message>&#xa;                &lt;xsl:value-of select=&quot;$CallValidateOrder/tns:message&quot;/>&#xa;            &lt;/tns:message>&#xa;            &lt;xsl:copy-of select=&quot;$CallValidateOrder/tns:details&quot;/>&#xa;        &lt;/tns:ErrorResponse>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/ErrorResponse&quot; xmlns:tns1=&quot;http://xmlns.example.com/20261007172436PLT&quot; xmlns:tns6=&quot;http://xmlns.example.com/Main_Orders/headerParameters&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;CallValidateOrder&quot;/>&#xa;    &lt;xsl:param name=&quot;SetCorrelationId&quot;/>&#xa;    &lt;xsl:template name=&quot;postError-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns:ErrorResponse>&#xa;            &lt;tns:code>&#xa;                &lt;xsl:value-of select=&quot;$CallValidateOrder/tns:code&quot;/>&#xa;            &lt;/tns:code>&#xa;            &lt;tns:message>&#xa;                &lt;xsl:value-of select=&quot;$CallValidateOrder/tns:message&quot;/>&#xa;            &lt;/tns:message>&#xa;            &lt;xsl:copy-of select=&quot;$CallValidateOrder/tns:details&quot;/>&#xa;            &lt;tns:correlationId>&#xa;                &lt;xsl:value-of select=&quot;$SetCorrelationId&quot;/>&#xa;            &lt;/tns:correlationId>&#xa;        &lt;/tns:ErrorResponse>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    <tibex:partBinding
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/ErrorResponse&quot; xmlns:tns1=&quot;http://xmlns.example.com/20261007172436PLT&quot; xmlns:tns6=&quot;http://xmlns.example.com/Main_Orders/headerParameters&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;SetCorrelationId&quot;/>&#xa;    &lt;xsl:template name=&quot;postError-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns6:ordersPostResponseHeader>&#xa;            &lt;X-Correlation-Id>&#xa;                &lt;xsl:value-of select=&quot;$SetCorrelationId&quot;/>&#xa;            &lt;/X-Correlation-Id>&#xa;        &lt;/tns6:ordersPostResponseHeader>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                 </tibex:inputBindings>
                                 <bpws:targets>
                                     <bpws:target linkName="CallValidateOrderToPostError"/>
@@ -1716,7 +1874,7 @@
                                 faultVariable="Throw-input" name="Throw" tibex:xpdlId="9835e670-8175-4000-b85d-84516bed715f">
                                 <tibex:inputBindings>
                                     <tibex:partBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns6=&quot;http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:template name=&quot;Throw-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns6:DefaultFault/>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns7=&quot;http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:template name=&quot;Throw-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns7:DefaultFault/>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                 </tibex:inputBindings>
                                 <bpws:targets>
                                     <bpws:target linkName="callFxRateToThrow"/>
@@ -1731,6 +1889,30 @@
                                     <bpws:source linkName="EmptyTopostOut"/>
                                 </bpws:sources>
                             </bpws:empty>
+                            <bpws:extensionActivity>
+                                <tibex:extActivity
+                                    expression="if (string-length($post/httpHeaders/tns:ordersPostHeader/X-Correlation-Id) > 0) then $post/httpHeaders/tns:ordersPostHeader/X-Correlation-Id else concat('OE-', translate(string(current-dateTime()), '-:.T+', ''), '-', $_processContext/JobId)"
+                                    expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"
+                                    inputVariable="SetCorrelationId-input"
+                                    name="SetCorrelationId"
+                                    outputVariable="SetCorrelationId"
+                                    tibex:xpdlId="45e56b70-584a-465e-845a-14fc468c4494"
+                                    type="bw.internal.setSharedVariable" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                                    <bpws:targets>
+                                    <bpws:target linkName="OnMessageStartToSetSharedVariable"/>
+                                    </bpws:targets>
+                                    <bpws:sources>
+                                    <bpws:source linkName="SetSharedVariableToCallValidateOrder"/>
+                                    </bpws:sources>
+                                    <tibex:inputBindings>
+                                    <tibex:inputBinding coercion=""
+                                    expression="if (string-length($post.httpHeaders/X-Correlation-Id) > 0) then $post.httpHeaders/X-Correlation-Id else concat('OE-', translate(string(current-dateTime()), '-:.T+', ''), '-', $_processContext/JobId)" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
+                                    </tibex:inputBindings>
+                                    <tibex:SetSharedVariable
+                                    inline="true"
+                                    variableName="correlationId" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"/>
+                                </tibex:extActivity>
+                            </bpws:extensionActivity>
                         </bpws:flow>
                     </bpws:scope>
                 </bpws:onMessage>

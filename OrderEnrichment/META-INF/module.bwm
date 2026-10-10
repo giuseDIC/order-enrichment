@@ -3,7 +3,11 @@
   <sca:service xmi:id="_NLCqIMJjEfGXGc6o7LKevA" name="orders" promote="ComponentMain_Orders/orders">
     <sca:interface.wsdl xmi:id="_NLL0EMJjEfGXGc6o7LKevA" interface="http://xmlns.example.com/20261007172436PLT#wsdl.interface(orders)" scaext:wsdlLocation="../Processes/orderenrichment/Main_Orders.bwp"/>
     <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_NLR6sMJjEfGXGc6o7LKevA" name="RestService" path="/orders" docBasePath="http://localhost:7777/OrderEnrichment" docResourcePath="Main_Orders" basePath="/" connector="orderenrichment.Main_Orders" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/orderenrichment.Main_Orders-Main_Orders.json">
-      <operation xmi:id="_NLf9IMJjEfGXGc6o7LKevA" operationName="post" nickname="post-orders" httpMethod="POST" notes="postMain_Orders" responseStyle="element" requestStyle="element" useEmptyValuesForNullResponse="true" outputPartName="item">
+      <operation xmi:id="_NLf9IMJjEfGXGc6o7LKevA" operationName="post" nickname="post-orders" httpMethod="POST" notes="postMain_Orders" responseStyle="element" requestStyle="element" outputPartName="item">
+        <parameters xmi:id="_6OqCEMP2EfGOIuUm8Yt7yg">
+          <parameterMapping xmi:id="_TULVAMP3EfGOIuUm8Yt7yg" parameterName="X-Correlation-Id" parameterType="Header" dataType="string"/>
+          <parameterMapping xmi:id="_Z3WHEMP3EfGOIuUm8Yt7yg" parameterName="X-Correlation-Id" parameterType="ResponseHeader" dataType="string"/>
+        </parameters>
         <responseStatus xmi:id="_HJ9xIMJmEfGXGc6o7LKevA" statusCode="400" reasonPhrase="Bad Request" elementQName="ErrorResponse:ErrorResponse"/>
         <responseStatus xmi:id="_IRcWQMPJEfGR4Ya7gqRaXw" statusCode="502" reasonPhrase="Bad Gateway" elementQName="ErrorResponse:ErrorResponse"/>
         <clientFormat>json</clientFormat>
