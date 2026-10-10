@@ -1,0 +1,250 @@
+{
+	"id": "0943fbf0-06a1-45b0-a19e-c3ce1f9d9767",
+	"name": "Order Enrichment",
+	"timestamp": "2026-10-10T13:03:20.848Z",
+	"collection_id": "58281950-72e91881-5265-4cbf-b32e-a5ff47b7f047",
+	"folder_id": "58281950-abdc9d05-1cd8-4255-baf8-395b6a1a2d15",
+	"environment_id": "58281950-088bf7a6-2632-4aca-807b-a2c611a2de1a",
+	"totalPass": 13,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2026-10-10T13:03:10.212Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "f34472b4-3a21-4f01-8a45-6b930dbe8377",
+			"name": "G2-T1",
+			"url": "http://localhost:8080/orders",
+			"time": 1859,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status 200": true,
+				"Importi": true,
+				"Data di consegna": true
+			},
+			"testPassFailCounts": {
+				"Status 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Importi": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Data di consegna": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1859
+			],
+			"allTests": [
+				{
+					"Status 200": true,
+					"Importi": true,
+					"Data di consegna": true
+				}
+			]
+		},
+		{
+			"id": "08732411-38b5-4f5c-aaef-b4c3d9ff3b7a",
+			"name": "G2-T2",
+			"url": "http://localhost:8080/orders",
+			"time": 133,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status 200": true,
+				"Immacolata: consegna il giorno dopo": true
+			},
+			"testPassFailCounts": {
+				"Status 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Immacolata: consegna il giorno dopo": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				133
+			],
+			"allTests": [
+				{
+					"Status 200": true,
+					"Immacolata: consegna il giorno dopo": true
+				}
+			]
+		},
+		{
+			"id": "9cd6cfc0-84b7-40e7-a533-bb97659b6634",
+			"name": "G2-T3",
+			"url": "http://localhost:8080/orders",
+			"time": 5746,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status 200": true,
+				"In Germania l'8 dicembre non è festa": true
+			},
+			"testPassFailCounts": {
+				"Status 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"In Germania l'8 dicembre non è festa": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5746
+			],
+			"allTests": [
+				{
+					"Status 200": true,
+					"In Germania l'8 dicembre non è festa": true
+				}
+			]
+		},
+		{
+			"id": "912fe8e6-2c79-406c-8d3b-93b431eba428",
+			"name": "G2-T4",
+			"url": "http://localhost:8080/orders",
+			"time": 382,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status 200": true,
+				"Cambio d'anno: dal sabato 31/12 al lunedì 02/01": true
+			},
+			"testPassFailCounts": {
+				"Status 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Cambio d'anno: dal sabato 31/12 al lunedì 02/01": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				382
+			],
+			"allTests": [
+				{
+					"Status 200": true,
+					"Cambio d'anno: dal sabato 31/12 al lunedì 02/01": true
+				}
+			]
+		},
+		{
+			"id": "e5ff2bc5-6bbf-47e7-8d94-3ca0b8a47487",
+			"name": "G2-T5",
+			"url": "http://localhost:8080/orders",
+			"time": 125,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status 200": true,
+				"Stessa risposta anche dalla cache": true
+			},
+			"testPassFailCounts": {
+				"Status 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Stessa risposta anche dalla cache": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				125
+			],
+			"allTests": [
+				{
+					"Status 200": true,
+					"Stessa risposta anche dalla cache": true
+				}
+			]
+		},
+		{
+			"id": "e5457ee4-da9d-4a6c-860b-207254d9d3bc",
+			"name": "G2-T6",
+			"url": "http://localhost:8080/orders",
+			"time": 192,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status 400": true,
+				"Valuta sconosciuta": true
+			},
+			"testPassFailCounts": {
+				"Status 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Valuta sconosciuta": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				192
+			],
+			"allTests": [
+				{
+					"Status 400": true,
+					"Valuta sconosciuta": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 8437,
+	"collection": {
+		"requests": [
+			{
+				"id": "f34472b4-3a21-4f01-8a45-6b930dbe8377",
+				"method": "POST"
+			},
+			{
+				"id": "08732411-38b5-4f5c-aaef-b4c3d9ff3b7a",
+				"method": "POST"
+			},
+			{
+				"id": "9cd6cfc0-84b7-40e7-a533-bb97659b6634",
+				"method": "POST"
+			},
+			{
+				"id": "912fe8e6-2c79-406c-8d3b-93b431eba428",
+				"method": "POST"
+			},
+			{
+				"id": "e5ff2bc5-6bbf-47e7-8d94-3ca0b8a47487",
+				"method": "POST"
+			},
+			{
+				"id": "e5457ee4-da9d-4a6c-860b-207254d9d3bc",
+				"method": "POST"
+			}
+		]
+	}
+}

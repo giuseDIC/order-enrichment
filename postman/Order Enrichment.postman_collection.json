@@ -647,6 +647,272 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Giorno3",
+			"item": [
+				{
+					"name": "G3-T1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"502 UPSTREAM_FX_UNAVAILABLE con correlationId\", () => {\r",
+									"  pm.response.to.have.status(502);\r",
+									"  const j = pm.response.json();\r",
+									"  pm.expect(j.code).to.eql(\"UPSTREAM_FX_UNAVAILABLE\");\r",
+									"  pm.expect(j.correlationId).to.be.a(\"string\").and.not.empty;\r",
+									"  pm.expect(pm.response.headers.get(\"X-Correlation-Id\")).to.eql(j.correlationId);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"orderId\": \"ORD-1\",\r\n  \"countryCode\": \"IT\",\r\n  \"currency\": \"JPY\",\r\n  \"requestedDeliveryDate\": \"2026-12-25\",\r\n  \"items\": [\r\n    { \"sku\": \"A1\", \"qty\": 2, \"unitPrice\": 10.50 }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "G3-T2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"200, consegna al 12/10 per il weekend, festività non controllate\", () => {\r",
+									"  pm.response.to.have.status(200);\r",
+									"  const j = pm.response.json();\r",
+									"  pm.expect(j.effectiveDeliveryDate).to.eql(\"2026-10-12\");\r",
+									"  pm.expect(j.deliveryShiftReason).to.eql(\"WEEKEND\");\r",
+									"  pm.expect(j.warnings).to.eql([\"HOLIDAY_CHECK_SKIPPED\"]);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"orderId\": \"ORD-1\",\r\n  \"countryCode\": \"FR\",\r\n  \"currency\": \"EUR\",\r\n  \"requestedDeliveryDate\": \"2026-10-10\",\r\n  \"items\": [\r\n    { \"sku\": \"A1\", \"qty\": 2, \"unitPrice\": 10.50 }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "G3-T3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"200, weekend e avviso, sotto gli 8 s\", () => {\r",
+									"  pm.response.to.have.status(200);\r",
+									"  const j = pm.response.json();\r",
+									"  pm.expect(j.effectiveDeliveryDate).to.eql(\"2026-10-12\");\r",
+									"  pm.expect(j.deliveryShiftReason).to.eql(\"WEEKEND\");\r",
+									"  pm.expect(j.warnings).to.eql([\"HOLIDAY_CHECK_SKIPPED\"]);\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(8000);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"orderId\": \"ORD-1\",\r\n  \"countryCode\": \"ES\",\r\n  \"currency\": \"EUR\",\r\n  \"requestedDeliveryDate\": \"2026-10-10\",\r\n  \"items\": [\r\n    { \"sku\": \"A1\", \"qty\": 2, \"unitPrice\": 10.50 }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "G3-T4",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"200 con correlationId nell'header\", () => {\r",
+									"  pm.response.to.have.status(200);\r",
+									"  pm.expect(pm.response.headers.get(\"X-Correlation-Id\")).to.be.a(\"string\").and.not.empty;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"orderId\": \"ORD-1\",\r\n  \"countryCode\": \"IT\",\r\n  \"currency\": \"USD\",\r\n  \"requestedDeliveryDate\": \"2026-12-25\",\r\n  \"items\": [\r\n    { \"sku\": \"A1\", \"qty\": 2, \"unitPrice\": 10.50 }\r\n  ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "G3-T5",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"X-Correlation-Id restituito uguale\", () => {\r",
+									"  pm.response.to.have.status(200);\r",
+									"  pm.expect(pm.response.headers.get(\"X-Correlation-Id\")).to.eql(\"TEST-1\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Correlation-Id",
+								"value": "TEST-1",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"orderId\": \"ORD-1\",\r\n  \"countryCode\": \"IT\",\r\n  \"currency\": \"USD\",\r\n  \"requestedDeliveryDate\": \"2026-12-25\",\r\n  \"items\": [\r\n    { \"sku\": \"A1\", \"qty\": 2, \"unitPrice\": 10.50 }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "G3-T6",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"nessun avviso\", () => {\r",
+									"  pm.response.to.have.status(200);\r",
+									"  const w = pm.response.json().warnings;\r",
+									"  pm.expect(w === undefined || w.length === 0).to.be.true;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"orderId\": \"ORD-1\",\r\n  \"countryCode\": \"IT\",\r\n  \"currency\": \"USD\",\r\n  \"requestedDeliveryDate\": \"2026-12-25\",\r\n  \"items\": [\r\n    { \"sku\": \"A1\", \"qty\": 2, \"unitPrice\": 10.50 }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [

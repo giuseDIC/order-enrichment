@@ -1,0 +1,479 @@
+{
+	"id": "cc463d40-d0b4-4e53-98de-133fb34403cc",
+	"name": "Order Enrichment",
+	"timestamp": "2026-10-10T13:08:25.149Z",
+	"collection_id": "58281950-72e91881-5265-4cbf-b32e-a5ff47b7f047",
+	"folder_id": 0,
+	"environment_id": "58281950-5ed820fb-94f1-4281-9021-dbbe23d8d304",
+	"totalPass": 22,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2026-10-10T13:08:33.231Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "5d0bf24a-577c-4f53-99e7-164153620f07",
+			"name": "G1-T1",
+			"url": "http://localhost:8080/orders",
+			"time": 1421,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status 200": true,
+				"Importi": true,
+				"Data di consegna": true
+			},
+			"testPassFailCounts": {
+				"Status 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Importi": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Data di consegna": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1421
+			],
+			"allTests": [
+				{
+					"Status 200": true,
+					"Importi": true,
+					"Data di consegna": true
+				}
+			]
+		},
+		{
+			"id": "fa589262-607a-48d8-ab9a-e74c0df84fa4",
+			"name": "G1-T2",
+			"url": "http://localhost:8080/orders",
+			"time": 65,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status 200": true,
+				"Importi in EUR": true,
+				"Data di consegna": true
+			},
+			"testPassFailCounts": {
+				"Status 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Importi in EUR": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Data di consegna": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				65
+			],
+			"allTests": [
+				{
+					"Status 200": true,
+					"Importi in EUR": true,
+					"Data di consegna": true
+				}
+			]
+		},
+		{
+			"id": "0d05e66c-f112-4f9e-b190-7684207d2671",
+			"name": "G1-T3",
+			"url": "http://localhost:8080/orders",
+			"time": 65,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status 200": true,
+				"Consegna spostata per il weekend": true
+			},
+			"testPassFailCounts": {
+				"Status 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Consegna spostata per il weekend": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				65
+			],
+			"allTests": [
+				{
+					"Status 200": true,
+					"Consegna spostata per il weekend": true
+				}
+			]
+		},
+		{
+			"id": "ca433faa-9f81-497d-8dd7-e5e4688c854d",
+			"name": "G1-T4",
+			"url": "http://localhost:8080/orders",
+			"time": 72,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status 200": true,
+				"Consegna invariata": true
+			},
+			"testPassFailCounts": {
+				"Status 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Consegna invariata": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				72
+			],
+			"allTests": [
+				{
+					"Status 200": true,
+					"Consegna invariata": true
+				}
+			]
+		},
+		{
+			"id": "4d87a8ae-7496-4627-a068-2d65c80f5181",
+			"name": "G1-T5",
+			"url": "http://localhost:8080/orders",
+			"time": 65,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status 200": true,
+				"Totale con due item": true
+			},
+			"testPassFailCounts": {
+				"Status 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Totale con due item": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				65
+			],
+			"allTests": [
+				{
+					"Status 200": true,
+					"Totale con due item": true
+				}
+			]
+		},
+		{
+			"id": "ec9638a3-7e86-498b-a177-d4bf456852b4",
+			"name": "G1-T6",
+			"url": "http://localhost:8080/orders",
+			"time": 49,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status 400": true,
+				"Errore di validazione su orderId": true
+			},
+			"testPassFailCounts": {
+				"Status 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Errore di validazione su orderId": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				49
+			],
+			"allTests": [
+				{
+					"Status 400": true,
+					"Errore di validazione su orderId": true
+				}
+			]
+		},
+		{
+			"id": "b51a3d47-8901-4123-870a-71ada11a37e6",
+			"name": "G1-T7",
+			"url": "http://localhost:8080/orders",
+			"time": 30,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status 400": true,
+				"Errore di validazione su items[0].qty": true
+			},
+			"testPassFailCounts": {
+				"Status 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Errore di validazione su items[0].qty": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				30
+			],
+			"allTests": [
+				{
+					"Status 400": true,
+					"Errore di validazione su items[0].qty": true
+				}
+			]
+		},
+		{
+			"id": "f8b23526-a98e-43c5-904e-dd362ad4ec8b",
+			"name": "G3-T1",
+			"url": "http://localhost:8080/orders",
+			"time": 1215,
+			"responseCode": {
+				"code": 502,
+				"name": "Bad Gateway"
+			},
+			"tests": {
+				"502 UPSTREAM_FX_UNAVAILABLE con correlationId": true
+			},
+			"testPassFailCounts": {
+				"502 UPSTREAM_FX_UNAVAILABLE con correlationId": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1215
+			],
+			"allTests": [
+				{
+					"502 UPSTREAM_FX_UNAVAILABLE con correlationId": true
+				}
+			]
+		},
+		{
+			"id": "88d6a27a-67be-4f82-9bcc-98f3a1344dc9",
+			"name": "G3-T2",
+			"url": "http://localhost:8080/orders",
+			"time": 1116,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"200, consegna al 12/10 per il weekend, festività non controllate": true
+			},
+			"testPassFailCounts": {
+				"200, consegna al 12/10 per il weekend, festività non controllate": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1116
+			],
+			"allTests": [
+				{
+					"200, consegna al 12/10 per il weekend, festività non controllate": true
+				}
+			]
+		},
+		{
+			"id": "6cc30fed-9345-49be-a4bf-a828396f741c",
+			"name": "G3-T3",
+			"url": "http://localhost:8080/orders",
+			"time": 7126,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"200, weekend e avviso, sotto gli 8 s": true
+			},
+			"testPassFailCounts": {
+				"200, weekend e avviso, sotto gli 8 s": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7126
+			],
+			"allTests": [
+				{
+					"200, weekend e avviso, sotto gli 8 s": true
+				}
+			]
+		},
+		{
+			"id": "d6ca9251-3341-4cf3-a175-8260ce3f06bd",
+			"name": "G3-T4",
+			"url": "http://localhost:8080/orders",
+			"time": 67,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"200 con correlationId nell'header": true
+			},
+			"testPassFailCounts": {
+				"200 con correlationId nell'header": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				67
+			],
+			"allTests": [
+				{
+					"200 con correlationId nell'header": true
+				}
+			]
+		},
+		{
+			"id": "f5bd300e-d6a9-46b9-af7f-d72b4a0b8b32",
+			"name": "G3-T5",
+			"url": "http://localhost:8080/orders",
+			"time": 64,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"X-Correlation-Id restituito uguale": true
+			},
+			"testPassFailCounts": {
+				"X-Correlation-Id restituito uguale": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				64
+			],
+			"allTests": [
+				{
+					"X-Correlation-Id restituito uguale": true
+				}
+			]
+		},
+		{
+			"id": "1bd09e98-5508-45d5-afb2-f93f0a6017ba",
+			"name": "G3-T6",
+			"url": "http://localhost:8080/orders",
+			"time": 64,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"nessun avviso": true
+			},
+			"testPassFailCounts": {
+				"nessun avviso": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				64
+			],
+			"allTests": [
+				{
+					"nessun avviso": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 11419,
+	"collection": {
+		"requests": [
+			{
+				"id": "5d0bf24a-577c-4f53-99e7-164153620f07",
+				"method": "POST"
+			},
+			{
+				"id": "fa589262-607a-48d8-ab9a-e74c0df84fa4",
+				"method": "POST"
+			},
+			{
+				"id": "0d05e66c-f112-4f9e-b190-7684207d2671",
+				"method": "POST"
+			},
+			{
+				"id": "ca433faa-9f81-497d-8dd7-e5e4688c854d",
+				"method": "POST"
+			},
+			{
+				"id": "4d87a8ae-7496-4627-a068-2d65c80f5181",
+				"method": "POST"
+			},
+			{
+				"id": "ec9638a3-7e86-498b-a177-d4bf456852b4",
+				"method": "POST"
+			},
+			{
+				"id": "b51a3d47-8901-4123-870a-71ada11a37e6",
+				"method": "POST"
+			},
+			{
+				"id": "f8b23526-a98e-43c5-904e-dd362ad4ec8b",
+				"method": "POST"
+			},
+			{
+				"id": "88d6a27a-67be-4f82-9bcc-98f3a1344dc9",
+				"method": "POST"
+			},
+			{
+				"id": "6cc30fed-9345-49be-a4bf-a828396f741c",
+				"method": "POST"
+			},
+			{
+				"id": "d6ca9251-3341-4cf3-a175-8260ce3f06bd",
+				"method": "POST"
+			},
+			{
+				"id": "f5bd300e-d6a9-46b9-af7f-d72b4a0b8b32",
+				"method": "POST"
+			},
+			{
+				"id": "1bd09e98-5508-45d5-afb2-f93f0a6017ba",
+				"method": "POST"
+			}
+		]
+	}
+}
