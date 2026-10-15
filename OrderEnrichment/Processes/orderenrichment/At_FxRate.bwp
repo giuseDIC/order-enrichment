@@ -1178,7 +1178,7 @@
             </children>
             <styles fontName="Segoe UI" lineColor="0" xsi:type="notation:ShapeStyle"/>
             <element href="//0/@process"/>
-            <layoutConstraint height="720" width="1600" xsi:type="notation:Bounds"/>
+            <layoutConstraint height="687" width="1600" xsi:type="notation:Bounds"/>
         </children>
         <styles xsi:type="notation:DiagramStyle"/>
         <element href="//0"/>
@@ -1284,6 +1284,17 @@
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
             <element href="//0/@process/@activity/@activity/@activities.3/@activity/@activity/@activity/@links/@children.3"/>
             <bendpoints points="[25, -6, -230, 0]$[231, 0, -24, 6]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0"
+            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3/@children.0/@children.3" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.3/@activity/@activity/@activity/@links/@children.4"/>
+            <bendpoints points="[25, 4, -98, -18]$[111, 19, -12, -3]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
     </notation:Diagram>
     <tibex:NamespaceRegistry enabled="true">
@@ -1510,6 +1521,7 @@
                                 <bpws:link
                                     name="SleepFxToGetCorrelationId" tibex:linkType="SUCCESS"/>
                                 <bpws:link name="GetCorrelationIdToLog" tibex:linkType="SUCCESS"/>
+                                <bpws:link name="GetFxRateToGroupEnd" tibex:linkType="SUCCESS"/>
                             </bpws:links>
                             <bpws:empty name="GroupStart"
                                 tibex:group="groupStart" tibex:xpdlId="e722e8f4-d66c-4af0-aede-2745e4c53e26">
@@ -1520,6 +1532,9 @@
                             <bpws:assign name="GroupEnd"
                                 tibex:group="groupEnd"
                                 tibex:xpdlId="29aa8c05-d9ab-46ac-b98e-53e3741b6af3" validate="no">
+                                <bpws:targets>
+                                    <bpws:target linkName="GetFxRateToGroupEnd"/>
+                                </bpws:targets>
                                 <bpws:copy>
                                     <bpws:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[true()]]></bpws:from>
                                     <bpws:to variable="repeatOnError_success_flag"/>
@@ -1535,6 +1550,9 @@
                                     <bpws:targets>
                                     <bpws:target linkName="LogToGetFxRate"/>
                                     </bpws:targets>
+                                    <bpws:sources>
+                                    <bpws:source linkName="GetFxRateToGroupEnd"/>
+                                    </bpws:sources>
                                     <tibex:inputBindings>
                                     <tibex:inputBinding
                                     expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://tns.tibco.com/bw/activity/sendhttprequest/input+04e0ff7e-1087-4d28-bc46-226cb296300c+RequestActivityInput&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:tns1=&quot;http://www.example.org/FxRate&quot; xmlns:bw=&quot;http://www.tibco.com/bw/xpath/bw-custom-functions&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;Start&quot;/>&lt;xsl:template name=&quot;GetFxRate-input&quot; match=&quot;/&quot;>&lt;tns:RequestActivityInput>&lt;Host>&lt;xsl:value-of select=&quot;substring-before(substring-after(bw:getModuleProperty('fx.baseUrl'), '://'), ':')&quot;/>&lt;/Host>&lt;Port>&lt;xsl:value-of select=&quot;xsd:int(substring-after(substring-after(bw:getModuleProperty('fx.baseUrl'), '://'), ':'))&quot;/>&lt;/Port>&lt;Method>&lt;xsl:value-of select=&quot;&amp;quot;GET&amp;quot;&quot;/>&lt;/Method>&lt;RequestURI>&lt;xsl:value-of select=&quot;&amp;quot;/v1/latest&amp;quot;&quot;/>&lt;/RequestURI>&lt;QueryString>&lt;xsl:value-of select=&quot;concat('base=', $Start/tns1:currency, '&amp;amp;symbols=EUR')&quot;/>&lt;/QueryString>&lt;Timeout>&lt;xsl:value-of select=&quot;xsd:int(bw:getModuleProperty('http.timeoutMs'))&quot;/>&lt;/Timeout>&lt;/tns:RequestActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>

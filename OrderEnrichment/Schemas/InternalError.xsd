@@ -8,6 +8,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element name="internalCode" type="xs:string"/>
+        <xs:element name="httpStatus" type="xs:int"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
