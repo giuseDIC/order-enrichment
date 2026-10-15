@@ -21,9 +21,7 @@
     <tibex:VariableDescriptor type="MemorySaving">
         <task name="End">
             <endingVariables>
-                <variable>Start</variable>
-                <variable>CallHolidays</variable>
-                <variable>CallHolidayNextYear</variable>
+                <variable>BuildDeliveryDate</variable>
             </endingVariables>
         </task>
         <task name="LogDay">
@@ -40,6 +38,14 @@
         <task name="CallHolidayNextYear">
             <endingVariables>
                 <variable>CallHolidayNextYear-input</variable>
+            </endingVariables>
+        </task>
+        <task name="BuildDeliveryDate">
+            <endingVariables>
+                <variable>BuildDeliveryDate-input</variable>
+                <variable>Start</variable>
+                <variable>CallHolidays</variable>
+                <variable>CallHolidayNextYear</variable>
             </endingVariables>
         </task>
     </tibex:VariableDescriptor>
@@ -282,7 +288,7 @@
                                     gradientEndColor="50431"
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.0"/>
-                                    <layoutConstraint x="-42"
+                                    <layoutConstraint x="-72"
                                     xsi:type="notation:Bounds" y="132"/>
                                     </children>
                                     <children type="4002">
@@ -325,8 +331,8 @@
                                     gradientEndColor="50431"
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.1"/>
-                                    <layoutConstraint x="868"
-                                    xsi:type="notation:Bounds" y="123"/>
+                                    <layoutConstraint x="1105"
+                                    xsi:type="notation:Bounds" y="131"/>
                                     </children>
                                     <children type="4018">
                                     <children type="3018">
@@ -604,7 +610,7 @@
                                     gradientEndColor="50431"
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.3"/>
-                                    <layoutConstraint x="129"
+                                    <layoutConstraint x="51"
                                     xsi:type="notation:Bounds" y="132"/>
                                     </children>
                                     <children type="4002">
@@ -639,8 +645,8 @@
                                     gradientEndColor="50431"
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.4"/>
-                                    <layoutConstraint x="230"
-                                    xsi:type="notation:Bounds" y="248"/>
+                                    <layoutConstraint x="183"
+                                    xsi:type="notation:Bounds" y="180"/>
                                     </children>
                                     <children type="4002">
                                     <children type="4017">
@@ -711,8 +717,45 @@
                                     <element href="//0/@process/@activity/@activity/@activities.6"/>
                                     <layoutConstraint
                                     height="40" width="40"
-                                    x="224"
-                                    xsi:type="notation:Bounds" y="367"/>
+                                    x="183"
+                                    xsi:type="notation:Bounds" y="292"/>
+                                    </children>
+                                    <children type="4002 bw.generalactivities.mapper">
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.7"/>
+                                    <layoutConstraint
+                                    height="40" width="40"
+                                    x="944"
+                                    xsi:type="notation:Bounds" y="131"/>
                                     </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
                                     <styles xsi:type="notation:SortingStyle"/>
@@ -727,7 +770,7 @@
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity"/>
                                     <layoutConstraint height="476"
-                                    width="1093" xsi:type="notation:Bounds"/>
+                                    width="1241" xsi:type="notation:Bounds"/>
                                 </children>
                                 <styles xsi:type="notation:SortingStyle"/>
                                 <styles xsi:type="notation:FilteringStyle"/>
@@ -736,7 +779,7 @@
                             <styles xsi:type="bwnotation:BackgroundStyle"/>
                             <styles xsi:type="bwnotation:ResizingStyle"/>
                             <element href="//0/@process/@activity"/>
-                            <layoutConstraint height="476" width="1096" xsi:type="notation:Bounds"/>
+                            <layoutConstraint height="476" width="1244" xsi:type="notation:Bounds"/>
                         </children>
                         <styles xsi:type="notation:SortingStyle"/>
                         <styles xsi:type="notation:FilteringStyle"/>
@@ -746,7 +789,7 @@
                     <styles xsi:type="bwnotation:BackgroundStyle"/>
                     <styles xsi:type="bwnotation:ResizingStyle"/>
                     <element href="//0/@process/@activity"/>
-                    <layoutConstraint height="500" width="1096" x="1"
+                    <layoutConstraint height="500" width="1244" x="1"
                         xsi:type="notation:Bounds" y="1"/>
                 </children>
                 <styles xsi:type="notation:SortingStyle"/>
@@ -755,7 +798,7 @@
             </children>
             <styles fontName="Segoe UI" lineColor="0" xsi:type="notation:ShapeStyle"/>
             <element href="//0/@process"/>
-            <layoutConstraint height="552" width="1438" xsi:type="notation:Bounds"/>
+            <layoutConstraint height="552" width="1586" xsi:type="notation:Bounds"/>
         </children>
         <styles xsi:type="notation:DiagramStyle"/>
         <element href="//0"/>
@@ -771,17 +814,6 @@
             <bendpoints points="[25, 0, -104, 0]$[105, 0, -24, 0]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
-            source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2"
-            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1" type="4006">
-            <children type="6002">
-                <layoutConstraint xsi:type="notation:Location" y="40"/>
-            </children>
-            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
-            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@links/@children.1"/>
-            <bendpoints points="[94, -1, -139, 0]$[209, 0, -24, 1]" xsi:type="notation:RelativeBendpoints"/>
-        </edges>
-        <edges
             source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3"
             target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.4" type="4006">
             <children type="6002">
@@ -789,7 +821,7 @@
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@links/@children.2"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.1"/>
             <bendpoints points="[0, 25, 0, -80]$[0, 81, 0, -24]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
@@ -800,7 +832,7 @@
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@links/@children.3"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.2"/>
             <bendpoints
                 points="[0, -24, -186, -23]$[0, -51, -186, -50]$[186, -51, 0, -50]$[186, -25, 0, -24]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
@@ -812,7 +844,7 @@
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@links/@children.4"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.3"/>
             <bendpoints
                 points="[25, -16, -161, 102]$[162, -102, -24, 16]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
@@ -824,7 +856,7 @@
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@links/@children.5"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.4"/>
             <bendpoints points="[25, 1, -210, 9]$[141, 1, -94, 9]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
@@ -835,7 +867,7 @@
             </children>
             <styles lineColor="255" xsi:type="notation:ConnectorStyle"/>
             <styles fontColor="255" fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@links/@children.6"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.5"/>
             <bendpoints
                 points="[0, 25, -95, -210]$[0, 235, -95, 0]$[71, 235, -24, 0]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
@@ -847,7 +879,7 @@
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@links/@children.7"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.6"/>
             <bendpoints
                 points="[25, 0, -66, 236]$[91, 0, 0, 236]$[91, -211, 0, 25]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
@@ -859,7 +891,7 @@
             </children>
             <styles lineColor="255" xsi:type="notation:ConnectorStyle"/>
             <styles fontColor="255" fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@links/@children.8"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.7"/>
             <bendpoints points="[1, 25, 0, -90]$[0, 91, -1, -24]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
@@ -883,6 +915,39 @@
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
             <element href="//0/@process/@activity/@activity/@activities.2/@activity/@activities.1/@activity/@links/@children.1"/>
             <bendpoints points="[25, -1, -94, 0]$[95, 0, -24, 1]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2"
+            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.7" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.8"/>
+            <bendpoints points="[174, -5, -144, 0]$[294, 0, -24, 5]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.7"
+            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.9"/>
+            <bendpoints points="[25, -1, -136, 0]$[137, 0, -24, 1]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0"
+            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.2" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.2/@activity/@activities.1/@activity/@links/@children.2"/>
+            <bendpoints points="[25, -3, -111, 0]$[124, 0, -12, 3]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
     </notation:Diagram>
     <tibex:NamespaceRegistry enabled="true">
@@ -938,6 +1003,10 @@
         <bpws:variable element="ns:OptionalErrorReport"
             name="_errorOptional" sca-bpel:internal="true"/>
         <bpws:variable name="GetCorrelationId" sca-bpel:internal="true" type="xsd:string"/>
+        <bpws:variable element="ns0:DeliveryDateResult"
+            name="BuildDeliveryDate-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns0:DeliveryDateResult"
+            name="BuildDeliveryDate" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -951,7 +1020,6 @@
         <bpws:flow name="flow">
             <bpws:links>
                 <bpws:link name="StartToCallHolidays" tibex:linkType="SUCCESS"/>
-                <bpws:link name="RepeatToEnd" tibex:linkType="SUCCESS"/>
                 <bpws:link name="CallHolidaysToCallHolidayNextYear" tibex:linkType="SUCCESSWITHCONDITION"/>
                 <bpws:link name="CallHolidaysToEmpty" tibex:linkType="SUCCESSWITHNOCONDITION"/>
                 <bpws:link name="CallHolidayNextYearToEmpty" tibex:linkType="SUCCESS"/>
@@ -959,6 +1027,8 @@
                 <bpws:link name="CallHolidaysToEmpty1" tibex:linkType="ERROR"/>
                 <bpws:link name="Empty1ToEmpty" tibex:linkType="SUCCESS"/>
                 <bpws:link name="CallHolidayNextYearToEmpty1" tibex:linkType="ERROR"/>
+                <bpws:link name="RepeatToMapper" tibex:linkType="SUCCESS"/>
+                <bpws:link name="MapperToEnd" tibex:linkType="SUCCESS"/>
             </bpws:links>
             <bpws:extensionActivity>
                 <tibex:receiveEvent createInstance="yes"
@@ -975,14 +1045,14 @@
             </bpws:extensionActivity>
             <bpws:extensionActivity>
                 <tibex:activityExtension inputVariable="End-input"
-                    name="End"
+                    name="End" tibex:copyOf="BuildDeliveryDate"
                     tibex:xpdlId="13039819-2496-454d-8275-4bbcf0a704f9" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                     <bpws:targets>
-                        <bpws:target linkName="RepeatToEnd"/>
+                        <bpws:target linkName="MapperToEnd"/>
                     </bpws:targets>
                     <tibex:inputBindings>
                         <tibex:inputBinding
-                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://www.example.org/DeliveryDate&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;i&quot;/>&lt;xsl:param name=&quot;Start&quot;/>&lt;xsl:param name=&quot;CallHolidayNextYear&quot;/>&lt;xsl:param name=&quot;CallHolidays&quot;/>&lt;xsl:template name=&quot;End-input&quot; match=&quot;/&quot;>&lt;tns1:DeliveryDateResult>&lt;tns1:effectiveDeliveryDate>&lt;xsl:value-of select=&quot;$Start/tns1:requestedDeliveryDate + xsd:dayTimeDuration(concat('P', string($i - 1), 'D'))&quot;/>&lt;/tns1:effectiveDeliveryDate>&lt;tns1:deliveryShiftReason>&lt;xsl:value-of select=&quot;if ($i = 1) then 'NONE' else if (days-from-duration($Start/tns1:requestedDeliveryDate - xsd:date('1900-01-01')) mod 7 &amp;lt; 5) then 'HOLIDAY' else 'WEEKEND'&quot;/>&lt;/tns1:deliveryShiftReason>&lt;xsl:if test=&quot;if (not(exists($CallHolidays)) or (month-from-date($Start/tns1:requestedDeliveryDate) = 12 and not(exists($CallHolidayNextYear)))) then 'HOLIDAY_CHECK_SKIPPED' else ()&quot;>&lt;tns1:warnings>&lt;xsl:value-of select=&quot;if (not(exists($CallHolidays)) or (month-from-date($Start/tns1:requestedDeliveryDate) = 12 and not(exists($CallHolidayNextYear)))) then 'HOLIDAY_CHECK_SKIPPED' else ()&quot;/>&lt;/tns1:warnings>&lt;/xsl:if>&lt;/tns1:DeliveryDateResult>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://www.example.org/DeliveryDate&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;BuildDeliveryDate&quot;/>&lt;xsl:template name=&quot;End-input&quot; match=&quot;/&quot;>&lt;xsl:copy-of select=&quot;$BuildDeliveryDate&quot;/>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                     </tibex:inputBindings>
                     <tibex:config>
                         <bwext:BWActivity
@@ -1000,13 +1070,12 @@
                     </tibex:config>
                 </tibex:activityExtension>
             </bpws:extensionActivity>
-            <bpws:scope name="Repeat" tibex:group="repeatUntil"
-                tibex:indexToGlobal="false" tibex:xpdlId="b5556ac6-273c-408b-9748-79c0ea8c4fa7">
+            <bpws:scope name="Repeat" tibex:group="repeatUntil" tibex:xpdlId="b5556ac6-273c-408b-9748-79c0ea8c4fa7">
                 <bpws:targets>
                     <bpws:target linkName="EmptyToRepeat"/>
                 </bpws:targets>
                 <bpws:sources>
-                    <bpws:source linkName="RepeatToEnd"/>
+                    <bpws:source linkName="RepeatToMapper"/>
                 </bpws:sources>
                 <bpws:sequence name="sequence" tibex:group="repeatUntil">
                     <bpws:empty name="GroupInit" tibex:group="groupInit"/>
@@ -1021,6 +1090,7 @@
                                     name="GroupStartToGetSharedVariable" tibex:linkType="SUCCESS"/>
                                 <bpws:link
                                     name="GetSharedVariableToLogDay" tibex:linkType="SUCCESS"/>
+                                <bpws:link name="LogDayToGroupEnd" tibex:linkType="SUCCESS"/>
                             </bpws:links>
                             <bpws:empty name="GroupStart"
                                 tibex:group="groupStart" tibex:xpdlId="2d77dcdf-51f3-4c5c-9c27-28b0c2185fea">
@@ -1029,7 +1099,11 @@
                                 </bpws:sources>
                             </bpws:empty>
                             <bpws:empty name="GroupEnd"
-                                tibex:group="groupEnd" tibex:xpdlId="796f7997-557d-4f57-aae7-47ac3d9bee42"/>
+                                tibex:group="groupEnd" tibex:xpdlId="796f7997-557d-4f57-aae7-47ac3d9bee42">
+                                <bpws:targets>
+                                    <bpws:target linkName="LogDayToGroupEnd"/>
+                                </bpws:targets>
+                            </bpws:empty>
                             <bpws:extensionActivity>
                                 <tibex:activityExtension
                                     inputVariable="LogDay-input"
@@ -1038,6 +1112,9 @@
                                     <bpws:targets>
                                     <bpws:target linkName="GetSharedVariableToLogDay"/>
                                     </bpws:targets>
+                                    <bpws:sources>
+                                    <bpws:source linkName="LogDayToGroupEnd"/>
+                                    </bpws:sources>
                                     <tibex:inputBindings>
                                     <tibex:inputBinding
                                     expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns2=&quot;http://www.tibco.com/pe/WriteToLogActivitySchema&quot; xmlns:tns1=&quot;http://www.example.org/DeliveryDate&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;i&quot;/>&lt;xsl:param name=&quot;Start&quot;/>&lt;xsl:param name=&quot;GetCorrelationId&quot;/>&lt;xsl:template name=&quot;LogDay-input&quot; match=&quot;/&quot;>&lt;tns2:ActivityInput>&lt;message>&lt;xsl:value-of select=&quot;concat('[', $GetCorrelationId, '] Controllo giorno: ', string($Start/tns1:requestedDeliveryDate + xsd:dayTimeDuration(concat('P', string($i - 1), 'D'))))&quot;/>&lt;/message>&lt;/tns2:ActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
@@ -1172,6 +1249,41 @@
                     <bpws:source linkName="Empty1ToEmpty"/>
                 </bpws:sources>
             </bpws:empty>
+            <bpws:extensionActivity>
+                <tibex:activityExtension
+                    inputVariable="BuildDeliveryDate-input"
+                    name="BuildDeliveryDate"
+                    outputVariable="BuildDeliveryDate"
+                    tibex:xpdlId="1d1d777f-6a74-4b43-ac27-3b8d4faa3f06" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                    <bpws:targets>
+                        <bpws:target linkName="RepeatToMapper"/>
+                    </bpws:targets>
+                    <bpws:sources>
+                        <bpws:source linkName="MapperToEnd"/>
+                    </bpws:sources>
+                    <tibex:inputBindings>
+                        <tibex:inputBinding
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://www.example.org/DeliveryDate&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;i&quot;/>&lt;xsl:param name=&quot;Start&quot;/>&lt;xsl:param name=&quot;CallHolidayNextYear&quot;/>&lt;xsl:param name=&quot;CallHolidays&quot;/>&lt;xsl:template name=&quot;BuildDeliveryDate-input&quot; match=&quot;/&quot;>&lt;tns1:DeliveryDateResult>&lt;tns1:effectiveDeliveryDate>&lt;xsl:value-of select=&quot;$Start/tns1:requestedDeliveryDate + xsd:dayTimeDuration(concat('P', string($i - 1), 'D'))&quot;/>&lt;/tns1:effectiveDeliveryDate>&lt;tns1:deliveryShiftReason>&lt;xsl:value-of select=&quot;if ($i = 1) then 'NONE' else if (days-from-duration($Start/tns1:requestedDeliveryDate - xsd:date('1900-01-01')) mod 7 &amp;lt; 5) then 'HOLIDAY' else 'WEEKEND'&quot;/>&lt;/tns1:deliveryShiftReason>&lt;xsl:if test=&quot;if (not(exists($CallHolidays)) or (month-from-date($Start/tns1:requestedDeliveryDate) = 12 and not(exists($CallHolidayNextYear)))) then 'HOLIDAY_CHECK_SKIPPED' else ()&quot;>&lt;tns1:warnings>&lt;xsl:value-of select=&quot;if (not(exists($CallHolidays)) or (month-from-date($Start/tns1:requestedDeliveryDate) = 12 and not(exists($CallHolidayNextYear)))) then 'HOLIDAY_CHECK_SKIPPED' else ()&quot;/>&lt;/tns1:warnings>&lt;/xsl:if>&lt;/tns1:DeliveryDateResult>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                    </tibex:inputBindings>
+                    <tibex:config>
+                        <bwext:BWActivity
+                            activityTypeID="bw.generalactivities.mapper"
+                            version="6.0.0.001"
+                            xmlns:DeliveryDate="http://www.example.org/DeliveryDate"
+                            xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
+                            xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
+                            xmlns:generalactivities="http://ns.tibco.com/bw/palette/generalactivities" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <activityConfig>
+                                <properties name="config" xsi:type="activityconfig:EMFProperty">
+                                    <type href="http://ns.tibco.com/bw/palette/generalactivities#//Mapper"/>
+                                    <value
+                                    inputQName="DeliveryDate:DeliveryDateResult" xsi:type="generalactivities:Mapper"/>
+                                </properties>
+                            </activityConfig>
+                        </bwext:BWActivity>
+                    </tibex:config>
+                </tibex:activityExtension>
+            </bpws:extensionActivity>
         </bpws:flow>
     </bpws:scope>
 </bpws:process>

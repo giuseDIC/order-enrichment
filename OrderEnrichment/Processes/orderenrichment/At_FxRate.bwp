@@ -29,7 +29,7 @@
         </task>
         <task name="End">
             <endingVariables>
-                <variable>ParseFxResponse</variable>
+                <variable>BuildFxRate</variable>
             </endingVariables>
         </task>
         <task name="ParseFxResponse">
@@ -64,6 +64,12 @@
             <endingVariables>
                 <variable>ThrowFxError-input</variable>
                 <variable>_error_GetFxRate</variable>
+            </endingVariables>
+        </task>
+        <task name="BuildFxRate">
+            <endingVariables>
+                <variable>BuildFxRate-input</variable>
+                <variable>ParseFxResponse</variable>
             </endingVariables>
         </task>
     </tibex:VariableDescriptor>
@@ -663,8 +669,8 @@
                                     gradientEndColor="50431"
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.0"/>
-                                    <layoutConstraint x="137"
-                                    xsi:type="notation:Bounds" y="30"/>
+                                    <layoutConstraint x="267"
+                                    xsi:type="notation:Bounds" y="-2"/>
                                     </children>
                                     <children type="4002">
                                     <children type="4017">
@@ -698,8 +704,8 @@
                                     gradientEndColor="50431"
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.1"/>
-                                    <layoutConstraint x="23"
-                                    xsi:type="notation:Bounds" y="482"/>
+                                    <layoutConstraint x="882"
+                                    xsi:type="notation:Bounds" y="344"/>
                                     </children>
                                     <children type="4002">
                                     <children type="4017">
@@ -733,8 +739,8 @@
                                     gradientEndColor="50431"
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.2"/>
-                                    <layoutConstraint x="31"
-                                    xsi:type="notation:Bounds" y="379"/>
+                                    <layoutConstraint x="219"
+                                    xsi:type="notation:Bounds" y="344"/>
                                     </children>
                                     <children type="4018">
                                     <children type="3018">
@@ -863,7 +869,7 @@
                                     <element href="//0/@process/@activity/@activity/@activities.3/@activity/@activity/@activity/@activities.3"/>
 
                                     <layoutConstraint
-                                    x="375"
+                                    x="335"
                                     xsi:type="notation:Bounds" y="37"/>
                                     </children>
 
@@ -919,8 +925,8 @@
                                     <layoutConstraint
                                     height="53"
                                     width="53"
-                                    x="34"
-                                    xsi:type="notation:Bounds" y="43"/>
+                                    x="80"
+                                    xsi:type="notation:Bounds" y="37"/>
                                     </children>
 
                                     <children type="4002 bw.internal.getSharedVariable">
@@ -975,8 +981,8 @@
                                     <layoutConstraint
                                     height="40"
                                     width="40"
-                                    x="120"
-                                    xsi:type="notation:Bounds" y="43"/>
+                                    x="205"
+                                    xsi:type="notation:Bounds" y="37"/>
                                     </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
                                     <styles xsi:type="notation:SortingStyle"/>
@@ -1006,8 +1012,8 @@
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.3"/>
                                     <layoutConstraint
-                                    height="176"
-                                    width="661"
+                                    height="137"
+                                    width="617"
                                     x="15"
                                     xsi:type="notation:Bounds" y="20"/>
                                     </children>
@@ -1098,8 +1104,8 @@
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.3"/>
                                     <layoutConstraint
-                                    height="220" width="701"
-                                    x="-63"
+                                    height="181" width="657"
+                                    x="6"
                                     xsi:type="notation:Bounds" y="124"/>
                                     </children>
                                     <children type="4002">
@@ -1134,8 +1140,43 @@
                                     gradientEndColor="50431"
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.4"/>
-                                    <layoutConstraint x="754"
+                                    <layoutConstraint x="653"
                                     xsi:type="notation:Bounds" y="202"/>
+                                    </children>
+                                    <children type="4002">
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.5"/>
+                                    <layoutConstraint x="738"
+                                    xsi:type="notation:Bounds" y="344"/>
                                     </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
                                     <styles xsi:type="notation:SortingStyle"/>
@@ -1149,7 +1190,7 @@
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity"/>
-                                    <layoutConstraint height="740"
+                                    <layoutConstraint height="466"
                                     width="1255" xsi:type="notation:Bounds"/>
                                 </children>
                                 <styles xsi:type="notation:SortingStyle"/>
@@ -1178,35 +1219,10 @@
             </children>
             <styles fontName="Segoe UI" lineColor="0" xsi:type="notation:ShapeStyle"/>
             <element href="//0/@process"/>
-            <layoutConstraint height="687" width="1600" xsi:type="notation:Bounds"/>
+            <layoutConstraint height="542" width="1600" xsi:type="notation:Bounds"/>
         </children>
         <styles xsi:type="notation:DiagramStyle"/>
         <element href="//0"/>
-        <edges
-            source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0"
-            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1" type="4006">
-            <children type="6002">
-                <layoutConstraint xsi:type="notation:Location" y="40"/>
-            </children>
-            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
-            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@links/@children.0"/>
-            <bendpoints
-                points="[25, -42, 139, -445]$[692, -42, 806, -445]$[692, 404, 806, 1]$[-89, 404, 25, 1]" xsi:type="notation:RelativeBendpoints"/>
-            <sourceAnchor id="(0.4897959183673469,1.0)" xsi:type="notation:IdentityAnchor"/>
-            <targetAnchor id="(0.4897959183673469,0.0)" xsi:type="notation:IdentityAnchor"/>
-        </edges>
-        <edges
-            source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2"
-            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1" type="4006">
-            <children type="6002">
-                <layoutConstraint xsi:type="notation:Location" y="40"/>
-            </children>
-            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
-            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@links/@children.1"/>
-            <bendpoints points="[-4, 25, 14, -79]$[-14, 80, 4, -24]" xsi:type="notation:RelativeBendpoints"/>
-        </edges>
         <edges
             source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3"
             target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.4" type="4006">
@@ -1215,20 +1231,8 @@
             </children>
             <styles lineColor="255" xsi:type="notation:ConnectorStyle"/>
             <styles fontColor="255" fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@links/@children.2"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.0"/>
             <bendpoints points="[173, -1, -93, 0]$[242, 0, -24, 1]" xsi:type="notation:RelativeBendpoints"/>
-        </edges>
-        <edges
-            source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3"
-            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2" type="4006">
-            <children type="6002">
-                <layoutConstraint xsi:type="notation:Location" y="40"/>
-            </children>
-            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
-            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@links/@children.3"/>
-            <bendpoints
-                points="[-58, 70, 94, -112]$[-136, 164, 16, -18]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
             source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3/@children.0/@children.2"
@@ -1239,7 +1243,8 @@
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
             <element href="//0/@process/@activity/@activity/@activities.3/@activity/@activity/@activity/@links/@children.0"/>
-            <bendpoints points="[9, -2, -69, 10]$[60, -9, -18, 3]" xsi:type="notation:RelativeBendpoints"/>
+            <bendpoints
+                points="[0, -12, -149, 10]$[0, -20, -149, 2]$[125, -20, -24, 2]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
             source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3/@children.0/@children.1/@children.0/@children.0/@children.0/@children.1"
@@ -1260,8 +1265,8 @@
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@links/@children.4"/>
-            <bendpoints points="[9, 19, -53, -111]$[29, 60, -33, -70]" xsi:type="notation:RelativeBendpoints"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.1"/>
+            <bendpoints points="[-1, 25, -10, -179]$[-1, 111, -10, -93]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
             source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3/@children.0/@children.1/@children.0/@children.0/@children.0/@children.2"
@@ -1294,7 +1299,53 @@
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
             <element href="//0/@process/@activity/@activity/@activities.3/@activity/@activity/@activity/@links/@children.4"/>
-            <bendpoints points="[25, 4, -98, -18]$[111, 19, -12, -3]" xsi:type="notation:RelativeBendpoints"/>
+            <bendpoints
+                points="[25, 0, -98, -22]$[123, 0, 0, -22]$[123, 10, 0, -12]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.5"
+            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.2"/>
+            <bendpoints points="[25, -2, -339, -9]$[340, -2, -24, -9]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2"
+            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.5" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.3"/>
+            <bendpoints points="[-4, 24, 8, -50]$[-8, 50, 4, -24]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3"
+            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.4"/>
+            <bendpoints points="[-1, 72, 0, -106]$[0, 154, 1, -24]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0"
+            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.5" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.5"/>
+            <bendpoints
+                points="[25, 0, -502, -345]$[527, 0, 0, -345]$[527, 321, 0, -24]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
     </notation:Diagram>
     <tibex:NamespaceRegistry enabled="true">
@@ -1313,6 +1364,8 @@
             namespace="http://www.example.org/ErrorResponse" prefix="tns4"/>
         <tibex:namespaceItem
             namespace="http://tns.tibco.com/bw/activity/sleep/xsd" prefix="tns5"/>
+        <tibex:namespaceItem
+            namespace="http://www.example.org/FxResponse" prefix="tns6"/>
     </tibex:NamespaceRegistry>
     <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://www.example.org/FxRate"/>
     <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://www.example.org/FxResponse"/>
@@ -1353,6 +1406,9 @@
         <bpws:variable element="ns10:SleepInputSchema"
             name="SleepFx-input" sca-bpel:internal="true"/>
         <bpws:variable name="GetCorrelationId" sca-bpel:internal="true" type="xsd:string"/>
+        <bpws:variable element="ns0:FxRateResult"
+            name="BuildFxRate-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns0:FxRateResult" name="BuildFxRate" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -1365,11 +1421,12 @@
     <bpws:scope name="scope">
         <bpws:flow name="flow">
             <bpws:links>
-                <bpws:link name="StartToEnd" tibex:linkType="SUCCESSWITHCONDITION"/>
-                <bpws:link name="ParseFxResponseToEnd" tibex:linkType="SUCCESS"/>
                 <bpws:link name="RetryFxToThrowFxError" tibex:linkType="ERROR"/>
-                <bpws:link name="RetryFxToParseFxResponse" tibex:linkType="SUCCESS"/>
                 <bpws:link name="StartToRetryFx" tibex:linkType="SUCCESSWITHNOCONDITION"/>
+                <bpws:link name="MapperToEnd" tibex:linkType="SUCCESS"/>
+                <bpws:link name="ParseFxResponseToMapper" tibex:linkType="SUCCESS"/>
+                <bpws:link name="RetryFxToParseFxResponse" tibex:linkType="SUCCESS"/>
+                <bpws:link name="StartToBuildFxRate" tibex:linkType="SUCCESSWITHCONDITION"/>
             </bpws:links>
             <bpws:extensionActivity>
                 <tibex:receiveEvent createInstance="yes"
@@ -1377,19 +1434,19 @@
                     tibex:xpdlId="89bf4444-1985-4b6b-9855-e98e8ba4d718"
                     variable="Start" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                     <bpws:sources>
-                        <bpws:source linkName="StartToEnd">
-                            <tibex:DesignExpression>
-                                <tibex:expression
-                                    expression="$Start/ns0:currency = 'EUR'" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
-                            </tibex:DesignExpression>
-                            <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[$Start/ns0:currency = 'EUR']]></bpws:transitionCondition>
-                        </bpws:source>
                         <bpws:source linkName="StartToRetryFx">
                             <tibex:DesignExpression>
                                 <tibex:expression
                                     expression="##otherwise##" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
                             </tibex:DesignExpression>
                             <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[##otherwise##]]></bpws:transitionCondition>
+                        </bpws:source>
+                        <bpws:source linkName="StartToBuildFxRate">
+                            <tibex:DesignExpression>
+                                <tibex:expression
+                                    expression="$Start/ns0:currency = 'EUR'" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
+                            </tibex:DesignExpression>
+                            <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[$Start/ns0:currency = 'EUR']]></bpws:transitionCondition>
                         </bpws:source>
                     </bpws:sources>
                     <tibex:eventSource>
@@ -1402,12 +1459,11 @@
                     name="End"
                     tibex:xpdlId="7b1110dd-8c30-45ac-b227-bb51c493ec8d" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                     <bpws:targets>
-                        <bpws:target linkName="StartToEnd"/>
-                        <bpws:target linkName="ParseFxResponseToEnd"/>
+                        <bpws:target linkName="MapperToEnd"/>
                     </bpws:targets>
                     <tibex:inputBindings>
                         <tibex:inputBinding
-                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://www.example.org/FxRate&quot; xmlns:tns6=&quot;http://www.example.org/FxResponse&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;Start&quot;/>&#xa;    &lt;xsl:param name=&quot;ParseFxResponse&quot;/>&#xa;    &lt;xsl:template name=&quot;End-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns1:FxRateResult>&#xa;            &lt;tns1:fxRate>&#xa;                &lt;xsl:value-of select=&quot;if ($Start/tns1:currency = 'EUR') then 1 else $ParseFxResponse/tns6:rates/tns6:EUR&quot;/>&#xa;            &lt;/tns1:fxRate>&#xa;        &lt;/tns1:FxRateResult>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://www.example.org/FxRate&quot; xmlns:tns6=&quot;http://www.example.org/FxResponse&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;BuildFxRate&quot;/>&lt;xsl:template name=&quot;End-input&quot; match=&quot;/&quot;>&lt;tns1:FxRateResult>&lt;tns1:fxRate>&lt;xsl:value-of select=&quot;$BuildFxRate/tns1:fxRate&quot;/>&lt;/tns1:fxRate>&lt;/tns1:FxRateResult>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                     </tibex:inputBindings>
                     <tibex:config>
                         <bwext:BWActivity
@@ -1435,7 +1491,7 @@
                         <bpws:target linkName="RetryFxToParseFxResponse"/>
                     </bpws:targets>
                     <bpws:sources>
-                        <bpws:source linkName="ParseFxResponseToEnd"/>
+                        <bpws:source linkName="ParseFxResponseToMapper"/>
                     </bpws:sources>
                     <tibex:inputBindings>
                         <tibex:inputBinding
@@ -1674,12 +1730,47 @@
                 faultVariable="ThrowFxError-input" name="ThrowFxError" tibex:xpdlId="c44884fa-16c8-4b18-a129-904f1ae077ad">
                 <tibex:inputBindings>
                     <tibex:partBinding
-                        expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns4=&quot;http://www.example.org/ErrorResponse&quot; xmlns:tns6=&quot;http://schemas.tibco.com/bw/plugins/http/5.0/httpExceptions&quot; xmlns:tns1=&quot;http://www.example.org/FxRate&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;Start&quot;/>&#xa;    &lt;xsl:param name=&quot;_error_GetFxRate&quot;/>&#xa;    &lt;xsl:template name=&quot;ThrowFxError-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns4:ErrorResponse>&#xa;            &lt;tns4:code>&#xa;                &lt;xsl:value-of select=&quot;if (exists($_error_GetFxRate/tns6:HttpClientException)) then 'INVALID_CURRENCY' else 'UPSTREAM_FX_UNAVAILABLE'&quot;/>&#xa;            &lt;/tns4:code>&#xa;            &lt;tns4:message>&#xa;                &lt;xsl:value-of select=&quot;if (exists($_error_GetFxRate/tns6:HttpClientException)) then concat('Valuta non riconosciuta: ', $Start/tns1:currency) else 'Servizio dei cambi non disponibile'&quot;/>&#xa;            &lt;/tns4:message>&#xa;        &lt;/tns4:ErrorResponse>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                        expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns4=&quot;http://www.example.org/ErrorResponse&quot; xmlns:tns7=&quot;http://schemas.tibco.com/bw/plugins/http/5.0/httpExceptions&quot; xmlns:tns1=&quot;http://www.example.org/FxRate&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;Start&quot;/>&#xa;    &lt;xsl:param name=&quot;_error_GetFxRate&quot;/>&#xa;    &lt;xsl:template name=&quot;ThrowFxError-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns4:ErrorResponse>&#xa;            &lt;tns4:code>&#xa;                &lt;xsl:value-of select=&quot;if (exists($_error_GetFxRate/tns7:HttpClientException)) then 'INVALID_CURRENCY' else 'UPSTREAM_FX_UNAVAILABLE'&quot;/>&#xa;            &lt;/tns4:code>&#xa;            &lt;tns4:message>&#xa;                &lt;xsl:value-of select=&quot;if (exists($_error_GetFxRate/tns7:HttpClientException)) then concat('Valuta non riconosciuta: ', $Start/tns1:currency) else 'Servizio dei cambi non disponibile'&quot;/>&#xa;            &lt;/tns4:message>&#xa;        &lt;/tns4:ErrorResponse>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                 </tibex:inputBindings>
                 <bpws:targets>
                     <bpws:target linkName="RetryFxToThrowFxError"/>
                 </bpws:targets>
             </bpws:throw>
+            <bpws:extensionActivity>
+                <tibex:activityExtension
+                    inputVariable="BuildFxRate-input" name="BuildFxRate"
+                    outputVariable="BuildFxRate"
+                    tibex:xpdlId="04488d57-7669-4780-b217-83600029de06" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                    <bpws:targets>
+                        <bpws:target linkName="ParseFxResponseToMapper"/>
+                        <bpws:target linkName="StartToBuildFxRate"/>
+                    </bpws:targets>
+                    <bpws:sources>
+                        <bpws:source linkName="MapperToEnd"/>
+                    </bpws:sources>
+                    <tibex:inputBindings>
+                        <tibex:inputBinding
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://www.example.org/FxRate&quot; xmlns:tns6=&quot;http://www.example.org/FxResponse&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;Start&quot;/>&lt;xsl:param name=&quot;ParseFxResponse&quot;/>&lt;xsl:template name=&quot;BuildFxRate-input&quot; match=&quot;/&quot;>&lt;tns1:FxRateResult>&lt;tns1:fxRate>&lt;xsl:value-of select=&quot;if ($Start/tns1:currency = 'EUR') then 1 else $ParseFxResponse/tns6:rates/tns6:EUR&quot;/>&lt;/tns1:fxRate>&lt;/tns1:FxRateResult>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                    </tibex:inputBindings>
+                    <tibex:config>
+                        <bwext:BWActivity
+                            activityTypeID="bw.generalactivities.mapper"
+                            version="6.0.0.001"
+                            xmlns:FxRate="http://www.example.org/FxRate"
+                            xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
+                            xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
+                            xmlns:generalactivities="http://ns.tibco.com/bw/palette/generalactivities" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <activityConfig>
+                                <properties name="config" xsi:type="activityconfig:EMFProperty">
+                                    <type href="http://ns.tibco.com/bw/palette/generalactivities#//Mapper"/>
+                                    <value
+                                    inputQName="FxRate:FxRateResult" xsi:type="generalactivities:Mapper"/>
+                                </properties>
+                            </activityConfig>
+                        </bwext:BWActivity>
+                    </tibex:config>
+                </tibex:activityExtension>
+            </bpws:extensionActivity>
         </bpws:flow>
     </bpws:scope>
 </bpws:process>
