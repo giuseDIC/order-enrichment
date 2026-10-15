@@ -14,6 +14,12 @@
     <tibex:VariableDescriptor type="MemorySaving">
         <task name="End">
             <endingVariables>
+                <variable>BuildValidateOrder</variable>
+            </endingVariables>
+        </task>
+        <task name="BuildValidateOrder">
+            <endingVariables>
+                <variable>BuildValidateOrder-input</variable>
                 <variable>Start</variable>
             </endingVariables>
         </task>
@@ -275,8 +281,45 @@
                                     gradientEndColor="50431"
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.1"/>
-                                    <layoutConstraint x="369"
+                                    <layoutConstraint x="346"
                                     xsi:type="notation:Bounds" y="2"/>
+                                    </children>
+                                    <children type="4002 bw.generalactivities.mapper">
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.2"/>
+                                    <layoutConstraint
+                                    height="40" width="40"
+                                    x="147"
+                                    xsi:type="notation:Bounds" y="-13"/>
                                     </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
                                     <styles xsi:type="notation:SortingStyle"/>
@@ -325,14 +368,25 @@
         <element href="//0"/>
         <edges
             source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0"
-            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1" type="4006">
+            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2" type="4006">
             <children type="6002">
                 <layoutConstraint xsi:type="notation:Location" y="40"/>
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
             <element href="//0/@process/@activity/@activity/@links/@children.0"/>
-            <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
+            <bendpoints points="[25, 5, -150, 0]$[151, 0, -24, -5]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2"
+            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.1"/>
+            <bendpoints points="[25, 2, -174, -13]$[175, 13, -24, -2]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
     </notation:Diagram>
     <tibex:NamespaceRegistry enabled="true">
@@ -351,6 +405,10 @@
             sca-bpel:internal="true" tibex:parameter="in"/>
         <bpws:variable element="ns1:ErrorResponse" name="End-input"
             sca-bpel:internal="true" tibex:parameter="out"/>
+        <bpws:variable element="ns1:ErrorResponse"
+            name="BuildValidateOrder-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns1:ErrorResponse"
+            name="BuildValidateOrder" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -363,7 +421,8 @@
     <bpws:scope name="scope">
         <bpws:flow name="flow">
             <bpws:links>
-                <bpws:link name="StartToEnd" tibex:linkType="SUCCESS"/>
+                <bpws:link name="StartToBuildValidateOrder" tibex:linkType="SUCCESS"/>
+                <bpws:link name="BuildValidateOrderToEnd" tibex:linkType="SUCCESS"/>
             </bpws:links>
             <bpws:extensionActivity>
                 <tibex:receiveEvent createInstance="yes"
@@ -371,7 +430,7 @@
                     tibex:xpdlId="e1b26e05-beea-4bf6-96be-703c9e578bdf"
                     variable="Start" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                     <bpws:sources>
-                        <bpws:source linkName="StartToEnd"/>
+                        <bpws:source linkName="StartToBuildValidateOrder"/>
                     </bpws:sources>
                     <tibex:eventSource>
                         <tibex:StartEvent xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"/>
@@ -380,14 +439,14 @@
             </bpws:extensionActivity>
             <bpws:extensionActivity>
                 <tibex:activityExtension inputVariable="End-input"
-                    name="End"
+                    name="End" tibex:copyOf="BuildValidateOrder"
                     tibex:xpdlId="8f43abb0-9402-4ee1-9a44-31d47a7edf22" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                     <bpws:targets>
-                        <bpws:target linkName="StartToEnd"/>
+                        <bpws:target linkName="BuildValidateOrderToEnd"/>
                     </bpws:targets>
                     <tibex:inputBindings>
                         <tibex:inputBinding
-                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/ErrorResponse&quot; xmlns:tns1=&quot;http://www.example.org/orders&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;Start&quot;/>&lt;xsl:template name=&quot;End-input&quot; match=&quot;/&quot;>&lt;tns:ErrorResponse>&lt;tns:code>&lt;xsl:value-of select=&quot;&amp;quot;VALIDATION_ERROR&amp;quot;&quot;/>&lt;/tns:code>&lt;tns:message>&lt;xsl:value-of select=&quot;&amp;quot;Request non valida&amp;quot;&quot;/>&lt;/tns:message>&lt;xsl:if test=&quot;string-length($Start/tns1:orderId) = 0&quot;>&lt;tns:details>&lt;tns:field>&lt;xsl:value-of select=&quot;&amp;quot;orderId&amp;quot;&quot;/>&lt;/tns:field>&lt;tns:issue>&lt;xsl:value-of select=&quot;&amp;quot;obbligatorio&amp;quot;&quot;/>&lt;/tns:issue>&lt;/tns:details>&lt;/xsl:if>&lt;xsl:if test=&quot;not(matches($Start/tns1:countryCode, '^[A-Z]{2}$'))&quot;>&lt;tns:details>&lt;tns:field>&lt;xsl:value-of select=&quot;&amp;quot;countryCode&amp;quot;&quot;/>&lt;/tns:field>&lt;tns:issue>&lt;xsl:value-of select=&quot;&amp;quot;2 lettere maiuscole&amp;quot;&quot;/>&lt;/tns:issue>&lt;/tns:details>&lt;/xsl:if>&lt;xsl:if test=&quot;not(matches($Start/tns1:currency, '^[A-Z]{3}$'))&quot;>&lt;tns:details>&lt;tns:field>&lt;xsl:value-of select=&quot;&amp;quot;currency&amp;quot;&quot;/>&lt;/tns:field>&lt;tns:issue>&lt;xsl:value-of select=&quot;&amp;quot;3 lettere maiuscole&amp;quot;&quot;/>&lt;/tns:issue>&lt;/tns:details>&lt;/xsl:if>&lt;xsl:if test=&quot;not(matches($Start/tns1:requestedDeliveryDate, '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'))&quot;>&lt;tns:details>&lt;tns:field>&lt;xsl:value-of select=&quot;&amp;quot;requestedDeliveryDate&amp;quot;&quot;/>&lt;/tns:field>&lt;tns:issue>&lt;xsl:value-of select=&quot;&amp;quot;formato AAAA-MM-GG&amp;quot;&quot;/>&lt;/tns:issue>&lt;/tns:details>&lt;/xsl:if>&lt;xsl:if test=&quot;count($Start/tns1:items) = 0&quot;>&lt;tns:details>&lt;tns:field>&lt;xsl:value-of select=&quot;&amp;quot;items&amp;quot;&quot;/>&lt;/tns:field>&lt;tns:issue>&lt;xsl:value-of select=&quot;&amp;quot;almeno 1 item&amp;quot;&quot;/>&lt;/tns:issue>&lt;/tns:details>&lt;/xsl:if>&lt;xsl:if test=&quot;count($Start/tns1:items) >= 1&quot;>&lt;xsl:for-each select=&quot;$Start/tns1:items&quot;>&lt;xsl:if test=&quot;not(tns1:qty > 0)&quot;>&lt;tns:details>&lt;tns:field>&lt;xsl:value-of select=&quot;concat('items[', string(position() - 1), '].qty')&quot;/>&lt;/tns:field>&lt;tns:issue>&lt;xsl:value-of select=&quot;&amp;quot;deve essere > 0&amp;quot;&quot;/>&lt;/tns:issue>&lt;/tns:details>&lt;/xsl:if>&lt;xsl:if test=&quot;not(tns1:unitPrice >= 0)&quot;>&lt;tns:details>&lt;tns:field>&lt;xsl:value-of select=&quot;concat('items[', string(position() - 1), '].unitPrice')&quot;/>&lt;/tns:field>&lt;tns:issue>&lt;xsl:value-of select=&quot;&amp;quot;deve essere >= 0&amp;quot;&quot;/>&lt;/tns:issue>&lt;/tns:details>&lt;/xsl:if>&lt;/xsl:for-each>&lt;/xsl:if>&lt;/tns:ErrorResponse>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/ErrorResponse&quot; xmlns:tns1=&quot;http://www.example.org/orders&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;BuildValidateOrder&quot;/>&lt;xsl:template name=&quot;End-input&quot; match=&quot;/&quot;>&lt;xsl:copy-of select=&quot;$BuildValidateOrder&quot;/>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                     </tibex:inputBindings>
                     <tibex:config>
                         <bwext:BWActivity
@@ -399,6 +458,41 @@
                                 <properties name="config" xsi:type="activityconfig:EMFProperty">
                                     <type href="http://ns.tibco.com/bw/core/internalactivity#//End"/>
                                     <value xsi:type="internalactivities:End"/>
+                                </properties>
+                            </activityConfig>
+                        </bwext:BWActivity>
+                    </tibex:config>
+                </tibex:activityExtension>
+            </bpws:extensionActivity>
+            <bpws:extensionActivity>
+                <tibex:activityExtension
+                    inputVariable="BuildValidateOrder-input"
+                    name="BuildValidateOrder"
+                    outputVariable="BuildValidateOrder"
+                    tibex:xpdlId="b84b3014-5734-4361-899f-f09429c107e5" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                    <bpws:targets>
+                        <bpws:target linkName="StartToBuildValidateOrder"/>
+                    </bpws:targets>
+                    <bpws:sources>
+                        <bpws:source linkName="BuildValidateOrderToEnd"/>
+                    </bpws:sources>
+                    <tibex:inputBindings>
+                        <tibex:inputBinding
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/ErrorResponse&quot; xmlns:tns1=&quot;http://www.example.org/orders&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;Start&quot;/>&lt;xsl:template name=&quot;BuildValidateOrder-input&quot; match=&quot;/&quot;>&lt;tns:ErrorResponse>&lt;tns:code>&lt;xsl:value-of select=&quot;&amp;quot;VALIDATION_ERROR&amp;quot;&quot;/>&lt;/tns:code>&lt;tns:message>&lt;xsl:value-of select=&quot;&amp;quot;Request non valida&amp;quot;&quot;/>&lt;/tns:message>&lt;xsl:if test=&quot;string-length($Start/tns1:orderId) = 0&quot;>&lt;tns:details>&lt;tns:field>&lt;xsl:value-of select=&quot;&amp;quot;orderId&amp;quot;&quot;/>&lt;/tns:field>&lt;tns:issue>&lt;xsl:value-of select=&quot;&amp;quot;obbligatorio&amp;quot;&quot;/>&lt;/tns:issue>&lt;/tns:details>&lt;/xsl:if>&lt;xsl:if test=&quot;not(matches($Start/tns1:countryCode, '^[A-Z]{2}$'))&quot;>&lt;tns:details>&lt;tns:field>&lt;xsl:value-of select=&quot;&amp;quot;countryCode&amp;quot;&quot;/>&lt;/tns:field>&lt;tns:issue>&lt;xsl:value-of select=&quot;&amp;quot;2 lettere maiuscole&amp;quot;&quot;/>&lt;/tns:issue>&lt;/tns:details>&lt;/xsl:if>&lt;xsl:if test=&quot;not(matches($Start/tns1:currency, '^[A-Z]{3}$'))&quot;>&lt;tns:details>&lt;tns:field>&lt;xsl:value-of select=&quot;&amp;quot;currency&amp;quot;&quot;/>&lt;/tns:field>&lt;tns:issue>&lt;xsl:value-of select=&quot;&amp;quot;3 lettere maiuscole&amp;quot;&quot;/>&lt;/tns:issue>&lt;/tns:details>&lt;/xsl:if>&lt;xsl:if test=&quot;not(matches($Start/tns1:requestedDeliveryDate, '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'))&quot;>&lt;tns:details>&lt;tns:field>&lt;xsl:value-of select=&quot;&amp;quot;requestedDeliveryDate&amp;quot;&quot;/>&lt;/tns:field>&lt;tns:issue>&lt;xsl:value-of select=&quot;&amp;quot;formato AAAA-MM-GG&amp;quot;&quot;/>&lt;/tns:issue>&lt;/tns:details>&lt;/xsl:if>&lt;xsl:if test=&quot;count($Start/tns1:items) = 0&quot;>&lt;tns:details>&lt;tns:field>&lt;xsl:value-of select=&quot;&amp;quot;items&amp;quot;&quot;/>&lt;/tns:field>&lt;tns:issue>&lt;xsl:value-of select=&quot;&amp;quot;almeno 1 item&amp;quot;&quot;/>&lt;/tns:issue>&lt;/tns:details>&lt;/xsl:if>&lt;xsl:if test=&quot;count($Start/tns1:items) >= 1&quot;>&lt;xsl:for-each select=&quot;$Start/tns1:items&quot;>&lt;xsl:if test=&quot;not(tns1:qty > 0)&quot;>&lt;tns:details>&lt;tns:field>&lt;xsl:value-of select=&quot;concat('items[', string(position() - 1), '].qty')&quot;/>&lt;/tns:field>&lt;tns:issue>&lt;xsl:value-of select=&quot;&amp;quot;deve essere > 0&amp;quot;&quot;/>&lt;/tns:issue>&lt;/tns:details>&lt;/xsl:if>&lt;xsl:if test=&quot;not(tns1:unitPrice >= 0)&quot;>&lt;tns:details>&lt;tns:field>&lt;xsl:value-of select=&quot;concat('items[', string(position() - 1), '].unitPrice')&quot;/>&lt;/tns:field>&lt;tns:issue>&lt;xsl:value-of select=&quot;&amp;quot;deve essere >= 0&amp;quot;&quot;/>&lt;/tns:issue>&lt;/tns:details>&lt;/xsl:if>&lt;/xsl:for-each>&lt;/xsl:if>&lt;/tns:ErrorResponse>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                    </tibex:inputBindings>
+                    <tibex:config>
+                        <bwext:BWActivity
+                            activityTypeID="bw.generalactivities.mapper"
+                            version="6.0.0.001"
+                            xmlns:ErrorResponse="http://www.example.org/ErrorResponse"
+                            xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
+                            xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
+                            xmlns:generalactivities="http://ns.tibco.com/bw/palette/generalactivities" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <activityConfig>
+                                <properties name="config" xsi:type="activityconfig:EMFProperty">
+                                    <type href="http://ns.tibco.com/bw/palette/generalactivities#//Mapper"/>
+                                    <value
+                                    inputQName="ErrorResponse:ErrorResponse" xsi:type="generalactivities:Mapper"/>
                                 </properties>
                             </activityConfig>
                         </bwext:BWActivity>
