@@ -11,6 +11,18 @@ API REST in TIBCO BusinessWorks 6.9. `POST /orders` riceve un ordine e restituis
 
 Si avviano insieme da Business Studio (Run → *BusinessWorks Application*, con le due applicazioni selezionate).
 
+## Struttura
+
+I processi sono divisi in tre layer.
+
+| Layer | Processo | Ruolo |
+|---|---|---|
+| Main | `Main_Orders` | riceve `POST /orders`, assegna il `correlationId`, chiama l'orchestrazione e risponde; contiene il Catch e il Catch All |
+| Orchestrazione | `Orc_Orders` | valida l'ordine, chiama cambio e data di consegna in parallelo, calcola i totali |
+| Sottoprocessi | `ValidateOrder`, `At_FxRate`, `At_DeliveryDate`, `At_Holidays`, `At_ResolveError` | un compito ciascuno |
+
+Nessuna logica sugli End: ogni valore calcolato sta in un Mapper prima dell'End, e l'End copia soltanto.
+
 ## Da mock a reale
 
 Si cambiano solo quattro module property di `OrderEnrichment`, poi si riavvia; i processi restano uguali. La porta va scritta esplicitamente.
@@ -34,7 +46,7 @@ Si parte dalla data richiesta e si avanza di un giorno finché non si trova un g
 
 ## Cache delle festività
 
-Una Module Shared Variable in memoria tiene l'elenco per coppia (paese, anno). La scrittura sta in una Critical Section, così due richieste contemporanee non si sovrascrivono. La cache non è persistente (si svuota al riavvio) e gli errori non vengono mai messi in cache.
+Una Module Shared Variable in memoria tiene l'elenco per coppia (paese, anno). La scrittura sta in una Critical Section, così due richieste contemporanee non si sovrascrivono.
 
 ## Resilienza
 
@@ -45,7 +57,13 @@ Una Module Shared Variable in memoria tiene l'elenco per coppia (paese, anno). L
 
 ## Errori
 
-Un unico error handler in `Main_Orders`: un **Catch** sul fault `ErrorResponse` per gli errori previsti e un **Catch All** per quelli imprevisti. L'handler traduce il codice in un codice interno, scrive nel log il codice interno con il `correlationId` e il messaggio originale di BW, e risponde al client con un `ErrorResponse` pulito.
+Gli errori previsti sono fault `ErrorResponse`, lanciati da `Orc_Orders` (ordine non valido) o da `At_FxRate` (cambio). Arrivano al **Catch** di `Main_Orders`, che chiama `At_ResolveError`:
+
+- un **catalogo** (un Choice sul `code`) dà il codice interno e lo status HTTP;
+- il log riporta il codice interno con il `correlationId` e il messaggio tecnico di BW;
+- il sottoprocesso restituisce la risposta pulita per il client, e il Catch sceglie la Reply in base allo status.
+
+Il **Catch All** prende gli errori imprevisti e resta autonomo (log `OE-999` e risposta 500 con valori fissi).
 
 | Codice interno | Status | `code` | Quando |
 |---|---|---|---|
