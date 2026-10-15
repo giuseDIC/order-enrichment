@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.keypartner.com/orderenrichment/ResolveError"
+        xmlns:tns="http://www.keypartner.com/orderenrichment/ResolveError"
+        xmlns:err="http://www.example.org/ErrorResponse"
+        elementFormDefault="qualified">
+
+  <import namespace="http://www.example.org/ErrorResponse" schemaLocation="Error.xsd"/>
+
+  <element name="ResolveErrorRequest">
+    <complexType>
+      <sequence>
+        <element ref="err:ErrorResponse"/>
+        <element name="technicalMessage" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+
+  <element name="ResolveErrorResult">
+    <complexType>
+      <sequence>
+        <element name="httpStatus" type="int"/>
+        <element ref="err:ErrorResponse"/>
+      </sequence>
+    </complexType>
+  </element>
+</schema>
